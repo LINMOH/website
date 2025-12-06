@@ -1,0 +1,150 @@
+baseURL: "https://linmohan.fun/"
+title: "Lin Mohan"
+theme: PaperMod
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+pagination:
+  pagerSize: 20
+
+taxonomies:
+    tag: tags
+
+menu:
+    main:
+        - name: 📒 Notes
+          url: notes/
+          weight: 1
+        - name: 💭 Thoughts
+          url: thoughts/
+          weight: 2
+        - name: 📈 Monthly Report
+          url: monthly-report/
+          weight: 3
+        - name: 🗂️ Archive
+          url: archive/
+          weight: 4
+        - name: 🤝 Friends
+          url: friends/
+          weight: 5
+        - name: 🔍 Search
+          url: search/
+          weight: 6
+        - name: ℹ️ About
+          url: /about
+          weight: 7
+
+
+params:
+    description: "This website hosts Lin Mohan’s research notes, books, course materials, data and contact information."
+    author: "Lin Mohan"
+
+    DateFormat: "January 2, 2006"
+    defaultTheme: dark
+    hideFooter: false
+    disableThemeToggle: true
+    ShowShareButtons: false
+    ShowReadingTime: true
+    disableSpecial1stPost: true
+    disableAnchoredHeadings: true
+    ShowPostNavLinks: false
+    ShowBreadCrumbs: true
+    ShowCodeCopyButtons: true
+    ShowAllPagesInArchive: false
+    MainSections: ["notes","thoughts","monthly-report","about"]
+    ShowToc: true
+    disableScrollToTop: true
+    TocOpen: false
+    ShowWordCount: false
+    UseHugoToc: true
+    comments: false
+    math: true
+
+    profileMode:
+          enabled: true
+          title: "Lin Mohan"
+          subtitle: "A middle school student passionate about computer science and technology."
+          imageUrl: "avatar.png"
+          imageWidth: 160
+          imageHeight: 160
+          buttons:
+            - name: 📒 Notes
+              url: notes/
+              weight: 1
+            - name: 💭 Thoughts
+              url: thoughts/
+              weight: 2
+            - name: 📈 Monthly Report
+              url: monthly-report/
+              weight: 3
+            - name: 🗂️ Archive
+              url: archive/
+              weight: 4
+            - name: 🤝 Friends
+              url: friends/
+              weight: 5
+            - name: 🔍 Search
+              url: search/
+              weight: 6
+            - name: ℹ️ About
+              url: /about
+              weight: 7
+
+
+    socialIcons:
+      # - name: CV
+      #   url: cv.pdf
+        - name: Email
+          url: mailto:linmhwork@outlook.com
+      # - name: Zoom
+      #   url: https://www.zoom.us/my/linmohan
+      # - name: Location
+      #   url: location/
+      # - name: Office Hours
+      #   url: officehours/
+        - name: GitHub
+          url: https://github.com/linmoh
+      # - name: Google Scholar
+      #   url: https://scholar.google.com/
+      # - name: Bluesky
+      #   url: https://bsky.app/profile/linmohan.bsky.social
+      # - name: YouTube
+      #   url: https://www.youtube.com/
+      # - name: Twitter
+      #   url: https://x.com/
+        - name: Bilibili
+          url: https://space.bilibili.com/2126856300
+        - name: Zhihu
+          url: https://www.zhihu.com/people/lin-56-61-20
+        - name: QQ
+          url: https://qm.qq.com/cgi-bin/qm/qr?k=tnjMHnEtiEZ1ZxjxzdH3RaXlLTnTzGBX
+
+    assets:
+        disableScrollBarStyle: false
+
+    cover:
+        hiddenInList: false
+        hiddenInSingle: true
+
+    label:
+      text: "Lin Mohan"
+      icon: favicon.ico
+      iconHeight: 18
+
+markup:
+    goldmark:
+        renderer:
+            unsafe: true
+    highlight:
+        guessSyntax: true
+        style: autumn 
+    tableOfContents:
+        endLevel: 2
+        ordered: false
+        startLevel: 2
+
+outputs:
+     home:
+         - HTML
+         - RSS
+         - JSON
