@@ -9,15 +9,15 @@
 <meta name="keywords" content="">
 <meta name="description" content="本文记录了我在旧电脑上搭建 Ubuntu Server 24.04 并安装 Nextcloud 的过程。包括从官网下载镜像、安装系统、分区、配置账户和 SSH、设置静态 IP，以及通过 Snap 安装 Nextcloud。完成后即可在局域网内访问服务器，搭建个人私有云服务。">
 <meta name="author" content="Lin Mohan">
-<link rel="canonical" href="https://linmohan.fun/notes/ubuntu&#43;nextcloud/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fe613e7f063ee47b50be6d3cdd37d9a40f7ea043e6255a4b79a840557d1e605c.css" integrity="sha256-/mE&#43;fwY&#43;5HtQvm083TfZpA9&#43;oEPmJVpLeahAVX0eYFw=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://linmohan.fun/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://linmohan.fun/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://linmohan.fun/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://linmohan.fun/apple-touch-icon.png">
+<link rel="canonical" href="https://linmoh.github.io/website/notes/ubuntu&#43;nextcloud/">
+<link crossorigin="anonymous" href="/website/assets/css/stylesheet.fe613e7f063ee47b50be6d3cdd37d9a40f7ea043e6255a4b79a840557d1e605c.css" integrity="sha256-/mE&#43;fwY&#43;5HtQvm083TfZpA9&#43;oEPmJVpLeahAVX0eYFw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://linmoh.github.io/website/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://linmoh.github.io/website/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://linmoh.github.io/website/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://linmoh.github.io/website/apple-touch-icon.png">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://linmohan.fun/notes/ubuntu&#43;nextcloud/">
+<link rel="alternate" hreflang="en" href="https://linmoh.github.io/website/notes/ubuntu&#43;nextcloud/">
 <noscript>
     <style>
         #theme-toggle,
@@ -26,7 +26,7 @@
         }
 
     </style>
-</noscript><meta property="og:url" content="https://linmohan.fun/notes/ubuntu&#43;nextcloud/">
+</noscript><meta property="og:url" content="https://linmoh.github.io/website/notes/ubuntu&#43;nextcloud/">
   <meta property="og:site_name" content="Lin Mohan">
   <meta property="og:title" content="Ubuntu Server 24.04 &#43; Nextcloud 安装食用指北">
   <meta property="og:description" content="本文记录了我在旧电脑上搭建 Ubuntu Server 24.04 并安装 Nextcloud 的过程。包括从官网下载镜像、安装系统、分区、配置账户和 SSH、设置静态 IP，以及通过 Snap 安装 Nextcloud。完成后即可在局域网内访问服务器，搭建个人私有云服务。">
@@ -49,13 +49,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Books",
-      "item": "https://linmohan.fun/notes/"
+      "item": "https://linmoh.github.io/website/notes/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Ubuntu Server 24.04 + Nextcloud 安装食用指北",
-      "item": "https://linmohan.fun/notes/ubuntu+nextcloud/"
+      "item": "https://linmoh.github.io/website/notes/ubuntu+nextcloud/"
     }
   ]
 }
@@ -81,14 +81,14 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://linmohan.fun/notes/ubuntu+nextcloud/"
+    "@id": "https://linmoh.github.io/website/notes/ubuntu+nextcloud/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Lin Mohan",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://linmohan.fun/favicon.ico"
+      "url": "https://linmoh.github.io/website/favicon.ico"
     }
   }
 }
@@ -129,8 +129,8 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://linmohan.fun/" accesskey="h" title="Lin Mohan">
-                <img src="https://linmohan.fun/favicon.ico" alt="" aria-label="logo"
+            <a href="https://linmoh.github.io/website/" accesskey="h" title="Lin Mohan">
+                <img src="https://linmoh.github.io/website/favicon.ico" alt="" aria-label="logo"
                     height="18"
                     width="18">Lin Mohan</a>
             <div class="logo-switches">
@@ -138,37 +138,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://linmohan.fun/notes/" title="📒 Notes">
+                <a href="https://linmoh.github.io/website/notes/" title="📒 Notes">
                     <span>📒 Notes</span>
                 </a>
             </li>
             <li>
-                <a href="https://linmohan.fun/thoughts/" title="💭 Thoughts">
+                <a href="https://linmoh.github.io/website/thoughts/" title="💭 Thoughts">
                     <span>💭 Thoughts</span>
                 </a>
             </li>
             <li>
-                <a href="https://linmohan.fun/monthly-report/" title="📈 Monthly Report">
+                <a href="https://linmoh.github.io/website/monthly-report/" title="📈 Monthly Report">
                     <span>📈 Monthly Report</span>
                 </a>
             </li>
             <li>
-                <a href="https://linmohan.fun/archive/" title="🗂️ Archive">
+                <a href="https://linmoh.github.io/website/archive/" title="🗂️ Archive">
                     <span>🗂️ Archive</span>
                 </a>
             </li>
             <li>
-                <a href="https://linmohan.fun/friends/" title="🤝 Friends">
+                <a href="https://linmoh.github.io/website/friends/" title="🤝 Friends">
                     <span>🤝 Friends</span>
                 </a>
             </li>
             <li>
-                <a href="https://linmohan.fun/search/" title="🔍 Search">
+                <a href="https://linmoh.github.io/website/search/" title="🔍 Search">
                     <span>🔍 Search</span>
                 </a>
             </li>
             <li>
-                <a href="https://linmohan.fun/about" title="ℹ️ About">
+                <a href="https://linmoh.github.io/website/about" title="ℹ️ About">
                     <span>ℹ️ About</span>
                 </a>
             </li>
@@ -180,7 +180,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://linmohan.fun/">Home</a>&nbsp;»&nbsp;<a href="https://linmohan.fun/notes/">Books</a></div>
+    <div class="breadcrumbs"><a href="https://linmoh.github.io/website/">Home</a>&nbsp;»&nbsp;<a href="https://linmoh.github.io/website/notes/">Books</a></div>
     <h1 class="post-title entry-hint-parent">
       Ubuntu Server 24.04 &#43; Nextcloud 安装食用指北
     </h1>
