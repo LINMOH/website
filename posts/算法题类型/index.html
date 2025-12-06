@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>算法题类型 | Lin Mohan</title>
+<meta name="keywords" content="">
+<meta name="description" content="1. 排序与查找
+
+排序问题：将一组数据按照特定顺序（通常是升序或降序）排列。
+
+基础排序：简单直观，适用于小规模数据。
+
+冒泡排序：通过不断交换相邻元素进行排序。（稳定排序）
+选择排序：每次选择未排序部分的最小元素放到已排序部分的末尾。（不稳定排序）
+插入排序：将每个元素插入到已排序部分的正确位置。（稳定排序）
+
+
+高级排序：效率较高，适用于大规模数据。
+
+快速排序：通过分治法和基准元素进行排序。（不稳定排序）
+归并排序：通过分治法将数据分成小份排序，然后合并。（稳定排序）
+堆排序：利用堆这种数据结构进行排序。（不稳定排序）
+
+
+线性排序：时间复杂度为O(n)，适用于特定类型的数据。
+
+计数排序：适用于数据范围较小的整数。（稳定排序）
+桶排序：将数据分到不同的桶中，然后分别排序。（稳定排序）
+基数排序：按位进行排序，适用于整数或字符串。（稳定排序）
+
+
+特殊排序：针对特定场景的排序算法。
+
+外部排序：用于处理无法一次性加载到内存的数据。
+
+
+
+
+查找问题：在数据集中寻找特定元素。
+
+线性查找：逐个遍历数据，直到找到目标元素。（时间复杂度O(n)）
+二分查找：在已排序数据中，通过不断缩小搜索范围来查找目标元素。（时间复杂度O(log n)）
+二分查找变种：查找第一个大于等于目标值的元素、查找最后一个小于等于目标值的元素等。
+矩阵中的目标值查找：在二维数组中查找目标元素。
+
+
+
+2. 数学与数论
+
+基础数学：
+
+素数判断：判断一个数是否为素数（只能被1和自身整除的数）。
+
+试除法：通过尝试除以小于等于其平方根的所有整数来判断。（时间复杂度O(sqrt(n))）
+埃拉托斯特尼筛法：一种高效的筛选素数的方法。（时间复杂度O(n log log n)）
+
+
+最大公约数与最小公倍数：
+
+欧几里得算法：用于计算两个整数的最大公约数。（时间复杂度O(log(a, b))）
+
+
+快速幂：高效计算大整数的幂。（时间复杂度O(log n)）
+二进制转换：
+
+二进制转十进制
+十进制转二进制
+
+
+
+
+数论：研究整数性质的数学分支。
+
+同余问题：
+
+线性同余方程：求解形如ax ≡ b (mod m)的方程。
+模运算：求一个数除以另一个数的余数。
+
+
+数论函数：定义在整数集合上的函数。
+
+欧拉函数：计算小于等于n且与n互质的正整数个数。
+莫比乌斯函数：一个数论函数，用于解决一些组合数学问题。
+
+
+中国剩余定理：求解同余方程组。
+矩阵快速幂：用于快速计算矩阵的幂。
+
+
+组合数学：研究组合问题的数学分支。
+
+组合数与杨辉三角：
+
+组合数：从n个元素中选择k个元素的方案数。
+杨辉三角：一个数表，用于计算组合数。
+
+
+卡特兰数：一个出现在各种组合问题中的数列。
+
+
+
+3. 动态规划 (Dynamic Programming, DP)
+
+经典DP问题：
+
+斐波那契数列：一个递归定义的数列，每个数是前两个数之和。（时间复杂度O(n)）
+背包问题：
+
+0/1背包：每个物品只能选择一次。（时间复杂度O(n*capacity)）
+完全背包：每个物品可以选择多次。（时间复杂度O(n*capacity)）
+多重背包：每个物品有有限个。（时间复杂度O(n_capacity_count)）
+
+
+最长公共子序列（LCS）：两个序列的最长公共子序列。（时间复杂度O(m*n)）
+最长递增子序列（LIS）：一个序列的最长递增子序列。（时间复杂度O(n log n)）
+硬币换零钱问题：用最少的硬币凑出指定金额。（时间复杂度O(amount*n)）
+矩阵链乘法：找到矩阵相乘的最佳顺序，使得运算次数最少。（时间复杂度O(n^3)）
+
+
+其他DP问题：
+
+编辑距离问题：将一个字符串转换为另一个字符串所需的最少操作次数。（时间复杂度O(m*n)）
+打家劫舍问题：在不能偷窃相邻房屋的情况下，偷窃最多金额。（时间复杂度O(n)）
+状态压缩DP：使用位运算来表示状态的动态规划。
+数位DP：用于解决与数字位数有关的动态规划问题。
+
+
+
+4. 贪心算法
+
+经典贪心问题：
+
+活动选择问题：选择最多的不重叠活动。（时间复杂度O(n log n)）
+区间调度问题：选择最多的非重叠时间区间。（时间复杂度O(n log n)）
+零钱兑换问题：用最少的硬币凑出指定金额。（不一定能找到最优解）
+
+
+其他贪心问题：
+
+最小生成树：找到连接所有顶点的最小权值边的集合。
+
+Prim算法（时间复杂度O(n^2)）
+Kruskal算法（时间复杂度O(m log n)）
+
+
+霍夫曼编码：用于数据压缩的编码方式。（时间复杂度O(n log n)）
+分数背包问题：允许选择物品的一部分。（时间复杂度O(n log n)）
+Huffman树：一种用于霍夫曼编码的树结构。
+
+
+
+5. 回溯法 (Backtracking)
+
+经典回溯问题：
+
+八皇后问题：在棋盘上放置八个皇后，使其互不攻击。（时间复杂度较高）
+N皇后问题：八皇后问题的推广。（时间复杂度较高）
+全排列与组合：生成集合的所有排列和组合。（时间复杂度较高）
+数独问题：填充数独游戏。（时间复杂度较高）
+
+
+其他回溯问题：
+
+矩阵路径问题：在矩阵中寻找满足条件的路径。（时间复杂度较高）
+子集和问题：找到一个集合的子集，其元素之和等于目标值。（时间复杂度较高）
+
+
+
+6. 分治法 (Divide and Conquer)
+
+经典分治问题：
+
+排序问题：
+
+归并排序（时间复杂度O(n log n)）
+快速排序（平均时间复杂度O(n log n)，最坏时间复杂度O(n^2)）
+
+
+逆序对计数：计算数组中的逆序对数。（时间复杂度O(n log n)）
+最大子数组和问题：找到数组中和最大的连续子数组。（时间复杂度O(n)）
+
+
+其他分治问题：
+
+矩阵乘法：
+
+Strassen算法（时间复杂度O(n^log2(7))）
+
+
+
+
+
+7. 图论 (Graph Theory)
+
+图的遍历：
+
+深度优先搜索（DFS）：沿着图的深度方向遍历。（时间复杂度O(V&#43;E)）
+广度优先搜索（BFS）：沿着图的宽度方向遍历。（时间复杂度O(V&#43;E)）
+
+
+最短路径问题：
+
+Dijkstra算法：用于计算非负权图的单源最短路径。（时间复杂度O(E log V)）
+Bellman-Ford算法：用于计算可以包含负权边的图的单源最短路径。（时间复杂度O(V*E)）
+Floyd-Warshall 算法：用于计算任意两点之间的最短路径。（时间复杂度O(V^3)）
+
+
+最小生成树问题：
+
+Prim 算法（时间复杂度O(E log V)）
+Kruskal 算法（时间复杂度O(E log V)）
+
+
+其他图论问题：
+
+拓扑排序：对有向无环图进行排序，使得所有边都指向后面的顶点。（时间复杂度O(V&#43;E)）
+强连通分量：找到图中互相可达的顶点集合。（时间复杂度O(V&#43;E)）
+图的二分性判断：判断一个图是否为二分图。（时间复杂度O(V&#43;E)）
+网络流：研究网络中流量的分配问题。
+二分图匹配：找到二分图中最大的匹配数。
+
+
+
+8. 位运算
+
+位运算技巧：直接对二进制位进行操作，效率高。
+
+判断是否为 2 的幂：n &amp; (n - 1) == 0
+统计二进制中 1 的个数：Hamming Weight
+交换两个数的值：a ^= b; b ^= a; a ^= b;
+找出只出现一次的数字：利用异或运算的性质
+计算二进制补码
+
+
+位运算应用：
+
+状态压缩：用二进制位表示状态
+快速幂：利用位运算优化幂运算
+
+
+
+9. 树与二叉树
+
+二叉树的遍历：
+
+前序、中序、后序遍历：递归或迭代方式访问所有节点
+层次遍历：逐层访问节点
+
+
+二叉树的性质：
+
+判断是否为二叉搜索树：中序遍历结果为升序
+二叉树的最大深度：递归或迭代方式求解
+路径和问题：寻找满足条件的路径
+
+
+其他树结构：
+
+平衡二叉搜索树：
+
+AVL 树：保持左右子树高度差不超过 1
+红黑树：一种自平衡的二叉搜索树
+
+
+线段树：用于处理区间查询问题
+字典树：用于存储和查找字符串
+
+
+
+10. 并行与分布式算法
+
+并行算法：利用多核处理器并行计算，提高效率。
+
+并行排序问题
+并行搜索问题
+
+
+分布式算法：在分布式系统中运行的算法，解决大规模数据处理和存储问题。
+
+MapReduce 问题：一种分布式计算框架
+分布式一致性问题：Paxos、Raft 等协议
+
+
+
+11. 高级数据结构
+
+平衡树：
+
+AVL 树
+红黑树
+
+
+其他数据结构：
+
+跳表：一种有序链表，支持快速查找
+并查集（Union-Find）：用于处理集合的合并和查询操作
+LRU 缓存机制：最近最少使用缓存
+堆（优先队列）：一种特殊的树形数据结构，用于快速访问最大/最小值
+
+
+">
+<meta name="author" content="Lin Mohan">
+<link rel="canonical" href="http://localhost:1313/posts/%E7%AE%97%E6%B3%95%E9%A2%98%E7%B1%BB%E5%9E%8B/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fe613e7f063ee47b50be6d3cdd37d9a40f7ea043e6255a4b79a840557d1e605c.css" integrity="sha256-/mE&#43;fwY&#43;5HtQvm083TfZpA9&#43;oEPmJVpLeahAVX0eYFw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/%E7%AE%97%E6%B3%95%E9%A2%98%E7%B1%BB%E5%9E%8B/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="http://localhost:1313/posts/%E7%AE%97%E6%B3%95%E9%A2%98%E7%B1%BB%E5%9E%8B/">
+  <meta property="og:site_name" content="Lin Mohan">
+  <meta property="og:title" content="算法题类型">
+  <meta property="og:description" content="1. 排序与查找 排序问题：将一组数据按照特定顺序（通常是升序或降序）排列。 基础排序：简单直观，适用于小规模数据。 冒泡排序：通过不断交换相邻元素进行排序。（稳定排序） 选择排序：每次选择未排序部分的最小元素放到已排序部分的末尾。（不稳定排序） 插入排序：将每个元素插入到已排序部分的正确位置。（稳定排序） 高级排序：效率较高，适用于大规模数据。 快速排序：通过分治法和基准元素进行排序。（不稳定排序） 归并排序：通过分治法将数据分成小份排序，然后合并。（稳定排序） 堆排序：利用堆这种数据结构进行排序。（不稳定排序） 线性排序：时间复杂度为O(n)，适用于特定类型的数据。 计数排序：适用于数据范围较小的整数。（稳定排序） 桶排序：将数据分到不同的桶中，然后分别排序。（稳定排序） 基数排序：按位进行排序，适用于整数或字符串。（稳定排序） 特殊排序：针对特定场景的排序算法。 外部排序：用于处理无法一次性加载到内存的数据。 查找问题：在数据集中寻找特定元素。 线性查找：逐个遍历数据，直到找到目标元素。（时间复杂度O(n)） 二分查找：在已排序数据中，通过不断缩小搜索范围来查找目标元素。（时间复杂度O(log n)） 二分查找变种：查找第一个大于等于目标值的元素、查找最后一个小于等于目标值的元素等。 矩阵中的目标值查找：在二维数组中查找目标元素。 2. 数学与数论 基础数学： 素数判断：判断一个数是否为素数（只能被1和自身整除的数）。 试除法：通过尝试除以小于等于其平方根的所有整数来判断。（时间复杂度O(sqrt(n))） 埃拉托斯特尼筛法：一种高效的筛选素数的方法。（时间复杂度O(n log log n)） 最大公约数与最小公倍数： 欧几里得算法：用于计算两个整数的最大公约数。（时间复杂度O(log(a, b))） 快速幂：高效计算大整数的幂。（时间复杂度O(log n)） 二进制转换： 二进制转十进制 十进制转二进制 数论：研究整数性质的数学分支。 同余问题： 线性同余方程：求解形如ax ≡ b (mod m)的方程。 模运算：求一个数除以另一个数的余数。 数论函数：定义在整数集合上的函数。 欧拉函数：计算小于等于n且与n互质的正整数个数。 莫比乌斯函数：一个数论函数，用于解决一些组合数学问题。 中国剩余定理：求解同余方程组。 矩阵快速幂：用于快速计算矩阵的幂。 组合数学：研究组合问题的数学分支。 组合数与杨辉三角： 组合数：从n个元素中选择k个元素的方案数。 杨辉三角：一个数表，用于计算组合数。 卡特兰数：一个出现在各种组合问题中的数列。 3. 动态规划 (Dynamic Programming, DP) 经典DP问题： 斐波那契数列：一个递归定义的数列，每个数是前两个数之和。（时间复杂度O(n)） 背包问题： 0/1背包：每个物品只能选择一次。（时间复杂度O(n*capacity)） 完全背包：每个物品可以选择多次。（时间复杂度O(n*capacity)） 多重背包：每个物品有有限个。（时间复杂度O(n_capacity_count)） 最长公共子序列（LCS）：两个序列的最长公共子序列。（时间复杂度O(m*n)） 最长递增子序列（LIS）：一个序列的最长递增子序列。（时间复杂度O(n log n)） 硬币换零钱问题：用最少的硬币凑出指定金额。（时间复杂度O(amount*n)） 矩阵链乘法：找到矩阵相乘的最佳顺序，使得运算次数最少。（时间复杂度O(n^3)） 其他DP问题： 编辑距离问题：将一个字符串转换为另一个字符串所需的最少操作次数。（时间复杂度O(m*n)） 打家劫舍问题：在不能偷窃相邻房屋的情况下，偷窃最多金额。（时间复杂度O(n)） 状态压缩DP：使用位运算来表示状态的动态规划。 数位DP：用于解决与数字位数有关的动态规划问题。 4. 贪心算法 经典贪心问题： 活动选择问题：选择最多的不重叠活动。（时间复杂度O(n log n)） 区间调度问题：选择最多的非重叠时间区间。（时间复杂度O(n log n)） 零钱兑换问题：用最少的硬币凑出指定金额。（不一定能找到最优解） 其他贪心问题： 最小生成树：找到连接所有顶点的最小权值边的集合。 Prim算法（时间复杂度O(n^2)） Kruskal算法（时间复杂度O(m log n)） 霍夫曼编码：用于数据压缩的编码方式。（时间复杂度O(n log n)） 分数背包问题：允许选择物品的一部分。（时间复杂度O(n log n)） Huffman树：一种用于霍夫曼编码的树结构。 5. 回溯法 (Backtracking) 经典回溯问题： 八皇后问题：在棋盘上放置八个皇后，使其互不攻击。（时间复杂度较高） N皇后问题：八皇后问题的推广。（时间复杂度较高） 全排列与组合：生成集合的所有排列和组合。（时间复杂度较高） 数独问题：填充数独游戏。（时间复杂度较高） 其他回溯问题： 矩阵路径问题：在矩阵中寻找满足条件的路径。（时间复杂度较高） 子集和问题：找到一个集合的子集，其元素之和等于目标值。（时间复杂度较高） 6. 分治法 (Divide and Conquer) 经典分治问题： 排序问题： 归并排序（时间复杂度O(n log n)） 快速排序（平均时间复杂度O(n log n)，最坏时间复杂度O(n^2)） 逆序对计数：计算数组中的逆序对数。（时间复杂度O(n log n)） 最大子数组和问题：找到数组中和最大的连续子数组。（时间复杂度O(n)） 其他分治问题： 矩阵乘法： Strassen算法（时间复杂度O(n^log2(7))） 7. 图论 (Graph Theory) 图的遍历： 深度优先搜索（DFS）：沿着图的深度方向遍历。（时间复杂度O(V&#43;E)） 广度优先搜索（BFS）：沿着图的宽度方向遍历。（时间复杂度O(V&#43;E)） 最短路径问题： Dijkstra算法：用于计算非负权图的单源最短路径。（时间复杂度O(E log V)） Bellman-Ford算法：用于计算可以包含负权边的图的单源最短路径。（时间复杂度O(V*E)） Floyd-Warshall 算法：用于计算任意两点之间的最短路径。（时间复杂度O(V^3)） 最小生成树问题： Prim 算法（时间复杂度O(E log V)） Kruskal 算法（时间复杂度O(E log V)） 其他图论问题： 拓扑排序：对有向无环图进行排序，使得所有边都指向后面的顶点。（时间复杂度O(V&#43;E)） 强连通分量：找到图中互相可达的顶点集合。（时间复杂度O(V&#43;E)） 图的二分性判断：判断一个图是否为二分图。（时间复杂度O(V&#43;E)） 网络流：研究网络中流量的分配问题。 二分图匹配：找到二分图中最大的匹配数。 8. 位运算 位运算技巧：直接对二进制位进行操作，效率高。 判断是否为 2 的幂：n &amp; (n - 1) == 0 统计二进制中 1 的个数：Hamming Weight 交换两个数的值：a ^= b; b ^= a; a ^= b; 找出只出现一次的数字：利用异或运算的性质 计算二进制补码 位运算应用： 状态压缩：用二进制位表示状态 快速幂：利用位运算优化幂运算 9. 树与二叉树 二叉树的遍历： 前序、中序、后序遍历：递归或迭代方式访问所有节点 层次遍历：逐层访问节点 二叉树的性质： 判断是否为二叉搜索树：中序遍历结果为升序 二叉树的最大深度：递归或迭代方式求解 路径和问题：寻找满足条件的路径 其他树结构： 平衡二叉搜索树： AVL 树：保持左右子树高度差不超过 1 红黑树：一种自平衡的二叉搜索树 线段树：用于处理区间查询问题 字典树：用于存储和查找字符串 10. 并行与分布式算法 并行算法：利用多核处理器并行计算，提高效率。 并行排序问题 并行搜索问题 分布式算法：在分布式系统中运行的算法，解决大规模数据处理和存储问题。 MapReduce 问题：一种分布式计算框架 分布式一致性问题：Paxos、Raft 等协议 11. 高级数据结构 平衡树： AVL 树 红黑树 其他数据结构： 跳表：一种有序链表，支持快速查找 并查集（Union-Find）：用于处理集合的合并和查询操作 LRU 缓存机制：最近最少使用缓存 堆（优先队列）：一种特殊的树形数据结构，用于快速访问最大/最小值 ">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-05T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法题类型">
+<meta name="twitter:description" content="1. 排序与查找
+
+排序问题：将一组数据按照特定顺序（通常是升序或降序）排列。
+
+基础排序：简单直观，适用于小规模数据。
+
+冒泡排序：通过不断交换相邻元素进行排序。（稳定排序）
+选择排序：每次选择未排序部分的最小元素放到已排序部分的末尾。（不稳定排序）
+插入排序：将每个元素插入到已排序部分的正确位置。（稳定排序）
+
+
+高级排序：效率较高，适用于大规模数据。
+
+快速排序：通过分治法和基准元素进行排序。（不稳定排序）
+归并排序：通过分治法将数据分成小份排序，然后合并。（稳定排序）
+堆排序：利用堆这种数据结构进行排序。（不稳定排序）
+
+
+线性排序：时间复杂度为O(n)，适用于特定类型的数据。
+
+计数排序：适用于数据范围较小的整数。（稳定排序）
+桶排序：将数据分到不同的桶中，然后分别排序。（稳定排序）
+基数排序：按位进行排序，适用于整数或字符串。（稳定排序）
+
+
+特殊排序：针对特定场景的排序算法。
+
+外部排序：用于处理无法一次性加载到内存的数据。
+
+
+
+
+查找问题：在数据集中寻找特定元素。
+
+线性查找：逐个遍历数据，直到找到目标元素。（时间复杂度O(n)）
+二分查找：在已排序数据中，通过不断缩小搜索范围来查找目标元素。（时间复杂度O(log n)）
+二分查找变种：查找第一个大于等于目标值的元素、查找最后一个小于等于目标值的元素等。
+矩阵中的目标值查找：在二维数组中查找目标元素。
+
+
+
+2. 数学与数论
+
+基础数学：
+
+素数判断：判断一个数是否为素数（只能被1和自身整除的数）。
+
+试除法：通过尝试除以小于等于其平方根的所有整数来判断。（时间复杂度O(sqrt(n))）
+埃拉托斯特尼筛法：一种高效的筛选素数的方法。（时间复杂度O(n log log n)）
+
+
+最大公约数与最小公倍数：
+
+欧几里得算法：用于计算两个整数的最大公约数。（时间复杂度O(log(a, b))）
+
+
+快速幂：高效计算大整数的幂。（时间复杂度O(log n)）
+二进制转换：
+
+二进制转十进制
+十进制转二进制
+
+
+
+
+数论：研究整数性质的数学分支。
+
+同余问题：
+
+线性同余方程：求解形如ax ≡ b (mod m)的方程。
+模运算：求一个数除以另一个数的余数。
+
+
+数论函数：定义在整数集合上的函数。
+
+欧拉函数：计算小于等于n且与n互质的正整数个数。
+莫比乌斯函数：一个数论函数，用于解决一些组合数学问题。
+
+
+中国剩余定理：求解同余方程组。
+矩阵快速幂：用于快速计算矩阵的幂。
+
+
+组合数学：研究组合问题的数学分支。
+
+组合数与杨辉三角：
+
+组合数：从n个元素中选择k个元素的方案数。
+杨辉三角：一个数表，用于计算组合数。
+
+
+卡特兰数：一个出现在各种组合问题中的数列。
+
+
+
+3. 动态规划 (Dynamic Programming, DP)
+
+经典DP问题：
+
+斐波那契数列：一个递归定义的数列，每个数是前两个数之和。（时间复杂度O(n)）
+背包问题：
+
+0/1背包：每个物品只能选择一次。（时间复杂度O(n*capacity)）
+完全背包：每个物品可以选择多次。（时间复杂度O(n*capacity)）
+多重背包：每个物品有有限个。（时间复杂度O(n_capacity_count)）
+
+
+最长公共子序列（LCS）：两个序列的最长公共子序列。（时间复杂度O(m*n)）
+最长递增子序列（LIS）：一个序列的最长递增子序列。（时间复杂度O(n log n)）
+硬币换零钱问题：用最少的硬币凑出指定金额。（时间复杂度O(amount*n)）
+矩阵链乘法：找到矩阵相乘的最佳顺序，使得运算次数最少。（时间复杂度O(n^3)）
+
+
+其他DP问题：
+
+编辑距离问题：将一个字符串转换为另一个字符串所需的最少操作次数。（时间复杂度O(m*n)）
+打家劫舍问题：在不能偷窃相邻房屋的情况下，偷窃最多金额。（时间复杂度O(n)）
+状态压缩DP：使用位运算来表示状态的动态规划。
+数位DP：用于解决与数字位数有关的动态规划问题。
+
+
+
+4. 贪心算法
+
+经典贪心问题：
+
+活动选择问题：选择最多的不重叠活动。（时间复杂度O(n log n)）
+区间调度问题：选择最多的非重叠时间区间。（时间复杂度O(n log n)）
+零钱兑换问题：用最少的硬币凑出指定金额。（不一定能找到最优解）
+
+
+其他贪心问题：
+
+最小生成树：找到连接所有顶点的最小权值边的集合。
+
+Prim算法（时间复杂度O(n^2)）
+Kruskal算法（时间复杂度O(m log n)）
+
+
+霍夫曼编码：用于数据压缩的编码方式。（时间复杂度O(n log n)）
+分数背包问题：允许选择物品的一部分。（时间复杂度O(n log n)）
+Huffman树：一种用于霍夫曼编码的树结构。
+
+
+
+5. 回溯法 (Backtracking)
+
+经典回溯问题：
+
+八皇后问题：在棋盘上放置八个皇后，使其互不攻击。（时间复杂度较高）
+N皇后问题：八皇后问题的推广。（时间复杂度较高）
+全排列与组合：生成集合的所有排列和组合。（时间复杂度较高）
+数独问题：填充数独游戏。（时间复杂度较高）
+
+
+其他回溯问题：
+
+矩阵路径问题：在矩阵中寻找满足条件的路径。（时间复杂度较高）
+子集和问题：找到一个集合的子集，其元素之和等于目标值。（时间复杂度较高）
+
+
+
+6. 分治法 (Divide and Conquer)
+
+经典分治问题：
+
+排序问题：
+
+归并排序（时间复杂度O(n log n)）
+快速排序（平均时间复杂度O(n log n)，最坏时间复杂度O(n^2)）
+
+
+逆序对计数：计算数组中的逆序对数。（时间复杂度O(n log n)）
+最大子数组和问题：找到数组中和最大的连续子数组。（时间复杂度O(n)）
+
+
+其他分治问题：
+
+矩阵乘法：
+
+Strassen算法（时间复杂度O(n^log2(7))）
+
+
+
+
+
+7. 图论 (Graph Theory)
+
+图的遍历：
+
+深度优先搜索（DFS）：沿着图的深度方向遍历。（时间复杂度O(V&#43;E)）
+广度优先搜索（BFS）：沿着图的宽度方向遍历。（时间复杂度O(V&#43;E)）
+
+
+最短路径问题：
+
+Dijkstra算法：用于计算非负权图的单源最短路径。（时间复杂度O(E log V)）
+Bellman-Ford算法：用于计算可以包含负权边的图的单源最短路径。（时间复杂度O(V*E)）
+Floyd-Warshall 算法：用于计算任意两点之间的最短路径。（时间复杂度O(V^3)）
+
+
+最小生成树问题：
+
+Prim 算法（时间复杂度O(E log V)）
+Kruskal 算法（时间复杂度O(E log V)）
+
+
+其他图论问题：
+
+拓扑排序：对有向无环图进行排序，使得所有边都指向后面的顶点。（时间复杂度O(V&#43;E)）
+强连通分量：找到图中互相可达的顶点集合。（时间复杂度O(V&#43;E)）
+图的二分性判断：判断一个图是否为二分图。（时间复杂度O(V&#43;E)）
+网络流：研究网络中流量的分配问题。
+二分图匹配：找到二分图中最大的匹配数。
+
+
+
+8. 位运算
+
+位运算技巧：直接对二进制位进行操作，效率高。
+
+判断是否为 2 的幂：n &amp; (n - 1) == 0
+统计二进制中 1 的个数：Hamming Weight
+交换两个数的值：a ^= b; b ^= a; a ^= b;
+找出只出现一次的数字：利用异或运算的性质
+计算二进制补码
+
+
+位运算应用：
+
+状态压缩：用二进制位表示状态
+快速幂：利用位运算优化幂运算
+
+
+
+9. 树与二叉树
+
+二叉树的遍历：
+
+前序、中序、后序遍历：递归或迭代方式访问所有节点
+层次遍历：逐层访问节点
+
+
+二叉树的性质：
+
+判断是否为二叉搜索树：中序遍历结果为升序
+二叉树的最大深度：递归或迭代方式求解
+路径和问题：寻找满足条件的路径
+
+
+其他树结构：
+
+平衡二叉搜索树：
+
+AVL 树：保持左右子树高度差不超过 1
+红黑树：一种自平衡的二叉搜索树
+
+
+线段树：用于处理区间查询问题
+字典树：用于存储和查找字符串
+
+
+
+10. 并行与分布式算法
+
+并行算法：利用多核处理器并行计算，提高效率。
+
+并行排序问题
+并行搜索问题
+
+
+分布式算法：在分布式系统中运行的算法，解决大规模数据处理和存储问题。
+
+MapReduce 问题：一种分布式计算框架
+分布式一致性问题：Paxos、Raft 等协议
+
+
+
+11. 高级数据结构
+
+平衡树：
+
+AVL 树
+红黑树
+
+
+其他数据结构：
+
+跳表：一种有序链表，支持快速查找
+并查集（Union-Find）：用于处理集合的合并和查询操作
+LRU 缓存机制：最近最少使用缓存
+堆（优先队列）：一种特殊的树形数据结构，用于快速访问最大/最小值
+
+
+">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "算法题类型",
+      "item": "http://localhost:1313/posts/%E7%AE%97%E6%B3%95%E9%A2%98%E7%B1%BB%E5%9E%8B/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "算法题类型",
+  "name": "算法题类型",
+  "description": "1. 排序与查找 排序问题：将一组数据按照特定顺序（通常是升序或降序）排列。 基础排序：简单直观，适用于小规模数据。 冒泡排序：通过不断交换相邻元素进行排序。（稳定排序） 选择排序：每次选择未排序部分的最小元素放到已排序部分的末尾。（不稳定排序） 插入排序：将每个元素插入到已排序部分的正确位置。（稳定排序） 高级排序：效率较高，适用于大规模数据。 快速排序：通过分治法和基准元素进行排序。（不稳定排序） 归并排序：通过分治法将数据分成小份排序，然后合并。（稳定排序） 堆排序：利用堆这种数据结构进行排序。（不稳定排序） 线性排序：时间复杂度为O(n)，适用于特定类型的数据。 计数排序：适用于数据范围较小的整数。（稳定排序） 桶排序：将数据分到不同的桶中，然后分别排序。（稳定排序） 基数排序：按位进行排序，适用于整数或字符串。（稳定排序） 特殊排序：针对特定场景的排序算法。 外部排序：用于处理无法一次性加载到内存的数据。 查找问题：在数据集中寻找特定元素。 线性查找：逐个遍历数据，直到找到目标元素。（时间复杂度O(n)） 二分查找：在已排序数据中，通过不断缩小搜索范围来查找目标元素。（时间复杂度O(log n)） 二分查找变种：查找第一个大于等于目标值的元素、查找最后一个小于等于目标值的元素等。 矩阵中的目标值查找：在二维数组中查找目标元素。 2. 数学与数论 基础数学： 素数判断：判断一个数是否为素数（只能被1和自身整除的数）。 试除法：通过尝试除以小于等于其平方根的所有整数来判断。（时间复杂度O(sqrt(n))） 埃拉托斯特尼筛法：一种高效的筛选素数的方法。（时间复杂度O(n log log n)） 最大公约数与最小公倍数： 欧几里得算法：用于计算两个整数的最大公约数。（时间复杂度O(log(a, b))） 快速幂：高效计算大整数的幂。（时间复杂度O(log n)） 二进制转换： 二进制转十进制 十进制转二进制 数论：研究整数性质的数学分支。 同余问题： 线性同余方程：求解形如ax ≡ b (mod m)的方程。 模运算：求一个数除以另一个数的余数。 数论函数：定义在整数集合上的函数。 欧拉函数：计算小于等于n且与n互质的正整数个数。 莫比乌斯函数：一个数论函数，用于解决一些组合数学问题。 中国剩余定理：求解同余方程组。 矩阵快速幂：用于快速计算矩阵的幂。 组合数学：研究组合问题的数学分支。 组合数与杨辉三角： 组合数：从n个元素中选择k个元素的方案数。 杨辉三角：一个数表，用于计算组合数。 卡特兰数：一个出现在各种组合问题中的数列。 3. 动态规划 (Dynamic Programming, DP) 经典DP问题： 斐波那契数列：一个递归定义的数列，每个数是前两个数之和。（时间复杂度O(n)） 背包问题： 0/1背包：每个物品只能选择一次。（时间复杂度O(n*capacity)） 完全背包：每个物品可以选择多次。（时间复杂度O(n*capacity)） 多重背包：每个物品有有限个。（时间复杂度O(n_capacity_count)） 最长公共子序列（LCS）：两个序列的最长公共子序列。（时间复杂度O(m*n)） 最长递增子序列（LIS）：一个序列的最长递增子序列。（时间复杂度O(n log n)） 硬币换零钱问题：用最少的硬币凑出指定金额。（时间复杂度O(amount*n)） 矩阵链乘法：找到矩阵相乘的最佳顺序，使得运算次数最少。（时间复杂度O(n^3)） 其他DP问题： 编辑距离问题：将一个字符串转换为另一个字符串所需的最少操作次数。（时间复杂度O(m*n)） 打家劫舍问题：在不能偷窃相邻房屋的情况下，偷窃最多金额。（时间复杂度O(n)） 状态压缩DP：使用位运算来表示状态的动态规划。 数位DP：用于解决与数字位数有关的动态规划问题。 4. 贪心算法 经典贪心问题： 活动选择问题：选择最多的不重叠活动。（时间复杂度O(n log n)） 区间调度问题：选择最多的非重叠时间区间。（时间复杂度O(n log n)） 零钱兑换问题：用最少的硬币凑出指定金额。（不一定能找到最优解） 其他贪心问题： 最小生成树：找到连接所有顶点的最小权值边的集合。 Prim算法（时间复杂度O(n^2)） Kruskal算法（时间复杂度O(m log n)） 霍夫曼编码：用于数据压缩的编码方式。（时间复杂度O(n log n)） 分数背包问题：允许选择物品的一部分。（时间复杂度O(n log n)） Huffman树：一种用于霍夫曼编码的树结构。 5. 回溯法 (Backtracking) 经典回溯问题： 八皇后问题：在棋盘上放置八个皇后，使其互不攻击。（时间复杂度较高） N皇后问题：八皇后问题的推广。（时间复杂度较高） 全排列与组合：生成集合的所有排列和组合。（时间复杂度较高） 数独问题：填充数独游戏。（时间复杂度较高） 其他回溯问题： 矩阵路径问题：在矩阵中寻找满足条件的路径。（时间复杂度较高） 子集和问题：找到一个集合的子集，其元素之和等于目标值。（时间复杂度较高） 6. 分治法 (Divide and Conquer) 经典分治问题： 排序问题： 归并排序（时间复杂度O(n log n)） 快速排序（平均时间复杂度O(n log n)，最坏时间复杂度O(n^2)） 逆序对计数：计算数组中的逆序对数。（时间复杂度O(n log n)） 最大子数组和问题：找到数组中和最大的连续子数组。（时间复杂度O(n)） 其他分治问题： 矩阵乘法： Strassen算法（时间复杂度O(n^log2(7))） 7. 图论 (Graph Theory) 图的遍历： 深度优先搜索（DFS）：沿着图的深度方向遍历。（时间复杂度O(V+E)） 广度优先搜索（BFS）：沿着图的宽度方向遍历。（时间复杂度O(V+E)） 最短路径问题： Dijkstra算法：用于计算非负权图的单源最短路径。（时间复杂度O(E log V)） Bellman-Ford算法：用于计算可以包含负权边的图的单源最短路径。（时间复杂度O(V*E)） Floyd-Warshall 算法：用于计算任意两点之间的最短路径。（时间复杂度O(V^3)） 最小生成树问题： Prim 算法（时间复杂度O(E log V)） Kruskal 算法（时间复杂度O(E log V)） 其他图论问题： 拓扑排序：对有向无环图进行排序，使得所有边都指向后面的顶点。（时间复杂度O(V+E)） 强连通分量：找到图中互相可达的顶点集合。（时间复杂度O(V+E)） 图的二分性判断：判断一个图是否为二分图。（时间复杂度O(V+E)） 网络流：研究网络中流量的分配问题。 二分图匹配：找到二分图中最大的匹配数。 8. 位运算 位运算技巧：直接对二进制位进行操作，效率高。 判断是否为 2 的幂：n \u0026amp; (n - 1) == 0 统计二进制中 1 的个数：Hamming Weight 交换两个数的值：a ^= b; b ^= a; a ^= b; 找出只出现一次的数字：利用异或运算的性质 计算二进制补码 位运算应用： 状态压缩：用二进制位表示状态 快速幂：利用位运算优化幂运算 9. 树与二叉树 二叉树的遍历： 前序、中序、后序遍历：递归或迭代方式访问所有节点 层次遍历：逐层访问节点 二叉树的性质： 判断是否为二叉搜索树：中序遍历结果为升序 二叉树的最大深度：递归或迭代方式求解 路径和问题：寻找满足条件的路径 其他树结构： 平衡二叉搜索树： AVL 树：保持左右子树高度差不超过 1 红黑树：一种自平衡的二叉搜索树 线段树：用于处理区间查询问题 字典树：用于存储和查找字符串 10. 并行与分布式算法 并行算法：利用多核处理器并行计算，提高效率。 并行排序问题 并行搜索问题 分布式算法：在分布式系统中运行的算法，解决大规模数据处理和存储问题。 MapReduce 问题：一种分布式计算框架 分布式一致性问题：Paxos、Raft 等协议 11. 高级数据结构 平衡树： AVL 树 红黑树 其他数据结构： 跳表：一种有序链表，支持快速查找 并查集（Union-Find）：用于处理集合的合并和查询操作 LRU 缓存机制：最近最少使用缓存 堆（优先队列）：一种特殊的树形数据结构，用于快速访问最大/最小值 ",
+  "keywords": [
+    
+  ],
+  "articleBody": "1. 排序与查找 排序问题：将一组数据按照特定顺序（通常是升序或降序）排列。 基础排序：简单直观，适用于小规模数据。 冒泡排序：通过不断交换相邻元素进行排序。（稳定排序） 选择排序：每次选择未排序部分的最小元素放到已排序部分的末尾。（不稳定排序） 插入排序：将每个元素插入到已排序部分的正确位置。（稳定排序） 高级排序：效率较高，适用于大规模数据。 快速排序：通过分治法和基准元素进行排序。（不稳定排序） 归并排序：通过分治法将数据分成小份排序，然后合并。（稳定排序） 堆排序：利用堆这种数据结构进行排序。（不稳定排序） 线性排序：时间复杂度为O(n)，适用于特定类型的数据。 计数排序：适用于数据范围较小的整数。（稳定排序） 桶排序：将数据分到不同的桶中，然后分别排序。（稳定排序） 基数排序：按位进行排序，适用于整数或字符串。（稳定排序） 特殊排序：针对特定场景的排序算法。 外部排序：用于处理无法一次性加载到内存的数据。 查找问题：在数据集中寻找特定元素。 线性查找：逐个遍历数据，直到找到目标元素。（时间复杂度O(n)） 二分查找：在已排序数据中，通过不断缩小搜索范围来查找目标元素。（时间复杂度O(log n)） 二分查找变种：查找第一个大于等于目标值的元素、查找最后一个小于等于目标值的元素等。 矩阵中的目标值查找：在二维数组中查找目标元素。 2. 数学与数论 基础数学： 素数判断：判断一个数是否为素数（只能被1和自身整除的数）。 试除法：通过尝试除以小于等于其平方根的所有整数来判断。（时间复杂度O(sqrt(n))） 埃拉托斯特尼筛法：一种高效的筛选素数的方法。（时间复杂度O(n log log n)） 最大公约数与最小公倍数： 欧几里得算法：用于计算两个整数的最大公约数。（时间复杂度O(log(a, b))） 快速幂：高效计算大整数的幂。（时间复杂度O(log n)） 二进制转换： 二进制转十进制 十进制转二进制 数论：研究整数性质的数学分支。 同余问题： 线性同余方程：求解形如ax ≡ b (mod m)的方程。 模运算：求一个数除以另一个数的余数。 数论函数：定义在整数集合上的函数。 欧拉函数：计算小于等于n且与n互质的正整数个数。 莫比乌斯函数：一个数论函数，用于解决一些组合数学问题。 中国剩余定理：求解同余方程组。 矩阵快速幂：用于快速计算矩阵的幂。 组合数学：研究组合问题的数学分支。 组合数与杨辉三角： 组合数：从n个元素中选择k个元素的方案数。 杨辉三角：一个数表，用于计算组合数。 卡特兰数：一个出现在各种组合问题中的数列。 3. 动态规划 (Dynamic Programming, DP) 经典DP问题： 斐波那契数列：一个递归定义的数列，每个数是前两个数之和。（时间复杂度O(n)） 背包问题： 0/1背包：每个物品只能选择一次。（时间复杂度O(n*capacity)） 完全背包：每个物品可以选择多次。（时间复杂度O(n*capacity)） 多重背包：每个物品有有限个。（时间复杂度O(n_capacity_count)） 最长公共子序列（LCS）：两个序列的最长公共子序列。（时间复杂度O(m*n)） 最长递增子序列（LIS）：一个序列的最长递增子序列。（时间复杂度O(n log n)） 硬币换零钱问题：用最少的硬币凑出指定金额。（时间复杂度O(amount*n)） 矩阵链乘法：找到矩阵相乘的最佳顺序，使得运算次数最少。（时间复杂度O(n^3)） 其他DP问题： 编辑距离问题：将一个字符串转换为另一个字符串所需的最少操作次数。（时间复杂度O(m*n)） 打家劫舍问题：在不能偷窃相邻房屋的情况下，偷窃最多金额。（时间复杂度O(n)） 状态压缩DP：使用位运算来表示状态的动态规划。 数位DP：用于解决与数字位数有关的动态规划问题。 4. 贪心算法 经典贪心问题： 活动选择问题：选择最多的不重叠活动。（时间复杂度O(n log n)） 区间调度问题：选择最多的非重叠时间区间。（时间复杂度O(n log n)） 零钱兑换问题：用最少的硬币凑出指定金额。（不一定能找到最优解） 其他贪心问题： 最小生成树：找到连接所有顶点的最小权值边的集合。 Prim算法（时间复杂度O(n^2)） Kruskal算法（时间复杂度O(m log n)） 霍夫曼编码：用于数据压缩的编码方式。（时间复杂度O(n log n)） 分数背包问题：允许选择物品的一部分。（时间复杂度O(n log n)） Huffman树：一种用于霍夫曼编码的树结构。 5. 回溯法 (Backtracking) 经典回溯问题： 八皇后问题：在棋盘上放置八个皇后，使其互不攻击。（时间复杂度较高） N皇后问题：八皇后问题的推广。（时间复杂度较高） 全排列与组合：生成集合的所有排列和组合。（时间复杂度较高） 数独问题：填充数独游戏。（时间复杂度较高） 其他回溯问题： 矩阵路径问题：在矩阵中寻找满足条件的路径。（时间复杂度较高） 子集和问题：找到一个集合的子集，其元素之和等于目标值。（时间复杂度较高） 6. 分治法 (Divide and Conquer) 经典分治问题： 排序问题： 归并排序（时间复杂度O(n log n)） 快速排序（平均时间复杂度O(n log n)，最坏时间复杂度O(n^2)） 逆序对计数：计算数组中的逆序对数。（时间复杂度O(n log n)） 最大子数组和问题：找到数组中和最大的连续子数组。（时间复杂度O(n)） 其他分治问题： 矩阵乘法： Strassen算法（时间复杂度O(n^log2(7))） 7. 图论 (Graph Theory) 图的遍历： 深度优先搜索（DFS）：沿着图的深度方向遍历。（时间复杂度O(V+E)） 广度优先搜索（BFS）：沿着图的宽度方向遍历。（时间复杂度O(V+E)） 最短路径问题： Dijkstra算法：用于计算非负权图的单源最短路径。（时间复杂度O(E log V)） Bellman-Ford算法：用于计算可以包含负权边的图的单源最短路径。（时间复杂度O(V*E)） Floyd-Warshall 算法：用于计算任意两点之间的最短路径。（时间复杂度O(V^3)） 最小生成树问题： Prim 算法（时间复杂度O(E log V)） Kruskal 算法（时间复杂度O(E log V)） 其他图论问题： 拓扑排序：对有向无环图进行排序，使得所有边都指向后面的顶点。（时间复杂度O(V+E)） 强连通分量：找到图中互相可达的顶点集合。（时间复杂度O(V+E)） 图的二分性判断：判断一个图是否为二分图。（时间复杂度O(V+E)） 网络流：研究网络中流量的分配问题。 二分图匹配：找到二分图中最大的匹配数。 8. 位运算 位运算技巧：直接对二进制位进行操作，效率高。 判断是否为 2 的幂：n \u0026 (n - 1) == 0 统计二进制中 1 的个数：Hamming Weight 交换两个数的值：a ^= b; b ^= a; a ^= b; 找出只出现一次的数字：利用异或运算的性质 计算二进制补码 位运算应用： 状态压缩：用二进制位表示状态 快速幂：利用位运算优化幂运算 9. 树与二叉树 二叉树的遍历： 前序、中序、后序遍历：递归或迭代方式访问所有节点 层次遍历：逐层访问节点 二叉树的性质： 判断是否为二叉搜索树：中序遍历结果为升序 二叉树的最大深度：递归或迭代方式求解 路径和问题：寻找满足条件的路径 其他树结构： 平衡二叉搜索树： AVL 树：保持左右子树高度差不超过 1 红黑树：一种自平衡的二叉搜索树 线段树：用于处理区间查询问题 字典树：用于存储和查找字符串 10. 并行与分布式算法 并行算法：利用多核处理器并行计算，提高效率。 并行排序问题 并行搜索问题 分布式算法：在分布式系统中运行的算法，解决大规模数据处理和存储问题。 MapReduce 问题：一种分布式计算框架 分布式一致性问题：Paxos、Raft 等协议 11. 高级数据结构 平衡树： AVL 树 红黑树 其他数据结构： 跳表：一种有序链表，支持快速查找 并查集（Union-Find）：用于处理集合的合并和查询操作 LRU 缓存机制：最近最少使用缓存 堆（优先队列）：一种特殊的树形数据结构，用于快速访问最大/最小值 ",
+  "wordCount" : "232",
+  "inLanguage": "en",
+  "datePublished": "2025-02-05T00:00:00Z",
+  "dateModified": "2025-02-05T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Lin Mohan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/%E7%AE%97%E6%B3%95%E9%A2%98%E7%B1%BB%E5%9E%8B/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lin Mohan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class=" dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Lin Mohan">
+                <img src="http://localhost:1313/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">Lin Mohan</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/notes/" title="📒 Notes">
+                    <span>📒 Notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/thoughts/" title="💭 Thoughts">
+                    <span>💭 Thoughts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/monthly-report/" title="📈 Monthly Report">
+                    <span>📈 Monthly Report</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="🗂️ Archive">
+                    <span>🗂️ Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/friends/" title="🤝 Friends">
+                    <span>🤝 Friends</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="🔍 Search">
+                    <span>🔍 Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="ℹ️ About">
+                    <span>ℹ️ About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      算法题类型
+    </h1>
+    <div class="post-meta"><span title='2025-02-05 00:00:00 +0000 UTC'>February 5, 2025</span>&nbsp;&middot;&nbsp;2 min&nbsp;&middot;&nbsp;Lin Mohan
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-排序与查找">1. 排序与查找</a></li>
+    <li><a href="#2-数学与数论">2. 数学与数论</a></li>
+    <li><a href="#3-动态规划-dynamic-programming-dp">3. 动态规划 (Dynamic Programming, DP)</a></li>
+    <li><a href="#4-贪心算法">4. 贪心算法</a></li>
+    <li><a href="#5-回溯法-backtracking">5. 回溯法 (Backtracking)</a></li>
+    <li><a href="#6-分治法-divide-and-conquer">6. 分治法 (Divide and Conquer)</a></li>
+    <li><a href="#7-图论-graph-theory">7. 图论 (Graph Theory)</a></li>
+    <li><a href="#8-位运算">8. 位运算</a></li>
+    <li><a href="#9-树与二叉树">9. 树与二叉树</a></li>
+    <li><a href="#10-并行与分布式算法">10. 并行与分布式算法</a></li>
+    <li><a href="#11-高级数据结构">11. 高级数据结构</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="1-排序与查找">1. 排序与查找</h2>
+<ul>
+<li><strong>排序问题</strong>：将一组数据按照特定顺序（通常是升序或降序）排列。
+<ul>
+<li>基础排序：简单直观，适用于小规模数据。
+<ul>
+<li>冒泡排序：通过不断交换相邻元素进行排序。（<strong>稳定排序</strong>）</li>
+<li>选择排序：每次选择未排序部分的最小元素放到已排序部分的末尾。（<strong>不稳定排序</strong>）</li>
+<li>插入排序：将每个元素插入到已排序部分的正确位置。（<strong>稳定排序</strong>）</li>
+</ul>
+</li>
+<li>高级排序：效率较高，适用于大规模数据。
+<ul>
+<li>快速排序：通过分治法和基准元素进行排序。（<strong>不稳定排序</strong>）</li>
+<li>归并排序：通过分治法将数据分成小份排序，然后合并。（<strong>稳定排序</strong>）</li>
+<li>堆排序：利用堆这种数据结构进行排序。（<strong>不稳定排序</strong>）</li>
+</ul>
+</li>
+<li>线性排序：时间复杂度为O(n)，适用于特定类型的数据。
+<ul>
+<li>计数排序：适用于数据范围较小的整数。（<strong>稳定排序</strong>）</li>
+<li>桶排序：将数据分到不同的桶中，然后分别排序。（<strong>稳定排序</strong>）</li>
+<li>基数排序：按位进行排序，适用于整数或字符串。（<strong>稳定排序</strong>）</li>
+</ul>
+</li>
+<li>特殊排序：针对特定场景的排序算法。
+<ul>
+<li>外部排序：用于处理无法一次性加载到内存的数据。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>查找问题</strong>：在数据集中寻找特定元素。
+<ul>
+<li>线性查找：逐个遍历数据，直到找到目标元素。（<strong>时间复杂度O(n)</strong>）</li>
+<li>二分查找：在已排序数据中，通过不断缩小搜索范围来查找目标元素。（<strong>时间复杂度O(log n)</strong>）</li>
+<li>二分查找变种：查找第一个大于等于目标值的元素、查找最后一个小于等于目标值的元素等。</li>
+<li>矩阵中的目标值查找：在二维数组中查找目标元素。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-数学与数论">2. 数学与数论</h2>
+<ul>
+<li><strong>基础数学</strong>：
+<ul>
+<li>素数判断：判断一个数是否为素数（只能被1和自身整除的数）。
+<ul>
+<li>试除法：通过尝试除以小于等于其平方根的所有整数来判断。（<strong>时间复杂度O(sqrt(n))</strong>）</li>
+<li>埃拉托斯特尼筛法：一种高效的筛选素数的方法。（<strong>时间复杂度O(n log log n)</strong>）</li>
+</ul>
+</li>
+<li>最大公约数与最小公倍数：
+<ul>
+<li>欧几里得算法：用于计算两个整数的最大公约数。（<strong>时间复杂度O(log(a, b))</strong>）</li>
+</ul>
+</li>
+<li>快速幂：高效计算大整数的幂。（<strong>时间复杂度O(log n)</strong>）</li>
+<li>二进制转换：
+<ul>
+<li>二进制转十进制</li>
+<li>十进制转二进制</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>数论</strong>：研究整数性质的数学分支。
+<ul>
+<li>同余问题：
+<ul>
+<li>线性同余方程：求解形如ax ≡ b (mod m)的方程。</li>
+<li>模运算：求一个数除以另一个数的余数。</li>
+</ul>
+</li>
+<li>数论函数：定义在整数集合上的函数。
+<ul>
+<li>欧拉函数：计算小于等于n且与n互质的正整数个数。</li>
+<li>莫比乌斯函数：一个数论函数，用于解决一些组合数学问题。</li>
+</ul>
+</li>
+<li>中国剩余定理：求解同余方程组。</li>
+<li>矩阵快速幂：用于快速计算矩阵的幂。</li>
+</ul>
+</li>
+<li><strong>组合数学</strong>：研究组合问题的数学分支。
+<ul>
+<li>组合数与杨辉三角：
+<ul>
+<li>组合数：从n个元素中选择k个元素的方案数。</li>
+<li>杨辉三角：一个数表，用于计算组合数。</li>
+</ul>
+</li>
+<li>卡特兰数：一个出现在各种组合问题中的数列。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-动态规划-dynamic-programming-dp">3. 动态规划 (Dynamic Programming, DP)</h2>
+<ul>
+<li><strong>经典DP问题</strong>：
+<ul>
+<li>斐波那契数列：一个递归定义的数列，每个数是前两个数之和。（<strong>时间复杂度O(n)</strong>）</li>
+<li>背包问题：
+<ul>
+<li>0/1背包：每个物品只能选择一次。（<strong>时间复杂度O(n*capacity)</strong>）</li>
+<li>完全背包：每个物品可以选择多次。（<strong>时间复杂度O(n*capacity)</strong>）</li>
+<li>多重背包：每个物品有有限个。（<strong>时间复杂度O(n_capacity_count)</strong>）</li>
+</ul>
+</li>
+<li>最长公共子序列（LCS）：两个序列的最长公共子序列。（<strong>时间复杂度O(m*n)</strong>）</li>
+<li>最长递增子序列（LIS）：一个序列的最长递增子序列。（<strong>时间复杂度O(n log n)</strong>）</li>
+<li>硬币换零钱问题：用最少的硬币凑出指定金额。（<strong>时间复杂度O(amount*n)</strong>）</li>
+<li>矩阵链乘法：找到矩阵相乘的最佳顺序，使得运算次数最少。（<strong>时间复杂度O(n^3)</strong>）</li>
+</ul>
+</li>
+<li><strong>其他DP问题</strong>：
+<ul>
+<li>编辑距离问题：将一个字符串转换为另一个字符串所需的最少操作次数。（<strong>时间复杂度O(m*n)</strong>）</li>
+<li>打家劫舍问题：在不能偷窃相邻房屋的情况下，偷窃最多金额。（<strong>时间复杂度O(n)</strong>）</li>
+<li>状态压缩DP：使用位运算来表示状态的动态规划。</li>
+<li>数位DP：用于解决与数字位数有关的动态规划问题。</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-贪心算法">4. 贪心算法</h2>
+<ul>
+<li><strong>经典贪心问题</strong>：
+<ul>
+<li>活动选择问题：选择最多的不重叠活动。（<strong>时间复杂度O(n log n)</strong>）</li>
+<li>区间调度问题：选择最多的非重叠时间区间。（<strong>时间复杂度O(n log n)</strong>）</li>
+<li>零钱兑换问题：用最少的硬币凑出指定金额。（<strong>不一定能找到最优解</strong>）</li>
+</ul>
+</li>
+<li><strong>其他贪心问题</strong>：
+<ul>
+<li>最小生成树：找到连接所有顶点的最小权值边的集合。
+<ul>
+<li>Prim算法（<strong>时间复杂度O(n^2)</strong>）</li>
+<li>Kruskal算法（<strong>时间复杂度O(m log n)</strong>）</li>
+</ul>
+</li>
+<li>霍夫曼编码：用于数据压缩的编码方式。（<strong>时间复杂度O(n log n)</strong>）</li>
+<li>分数背包问题：允许选择物品的一部分。（<strong>时间复杂度O(n log n)</strong>）</li>
+<li>Huffman树：一种用于霍夫曼编码的树结构。</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-回溯法-backtracking">5. 回溯法 (Backtracking)</h2>
+<ul>
+<li><strong>经典回溯问题</strong>：
+<ul>
+<li>八皇后问题：在棋盘上放置八个皇后，使其互不攻击。（<strong>时间复杂度较高</strong>）</li>
+<li>N皇后问题：八皇后问题的推广。（<strong>时间复杂度较高</strong>）</li>
+<li>全排列与组合：生成集合的所有排列和组合。（<strong>时间复杂度较高</strong>）</li>
+<li>数独问题：填充数独游戏。（<strong>时间复杂度较高</strong>）</li>
+</ul>
+</li>
+<li><strong>其他回溯问题</strong>：
+<ul>
+<li>矩阵路径问题：在矩阵中寻找满足条件的路径。（<strong>时间复杂度较高</strong>）</li>
+<li>子集和问题：找到一个集合的子集，其元素之和等于目标值。（<strong>时间复杂度较高</strong>）</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-分治法-divide-and-conquer">6. 分治法 (Divide and Conquer)</h2>
+<ul>
+<li><strong>经典分治问题</strong>：
+<ul>
+<li>排序问题：
+<ul>
+<li>归并排序（<strong>时间复杂度O(n log n)</strong>）</li>
+<li>快速排序（<strong>平均时间复杂度O(n log n)，最坏时间复杂度O(n^2)</strong>）</li>
+</ul>
+</li>
+<li>逆序对计数：计算数组中的逆序对数。（<strong>时间复杂度O(n log n)</strong>）</li>
+<li>最大子数组和问题：找到数组中和最大的连续子数组。（<strong>时间复杂度O(n)</strong>）</li>
+</ul>
+</li>
+<li><strong>其他分治问题</strong>：
+<ul>
+<li>矩阵乘法：
+<ul>
+<li>Strassen算法（<strong>时间复杂度O(n^log2(7))</strong>）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-图论-graph-theory">7. 图论 (Graph Theory)</h2>
+<ul>
+<li><strong>图的遍历</strong>：
+<ul>
+<li>深度优先搜索（DFS）：沿着图的深度方向遍历。（<strong>时间复杂度O(V+E)</strong>）</li>
+<li>广度优先搜索（BFS）：沿着图的宽度方向遍历。（<strong>时间复杂度O(V+E)</strong>）</li>
+</ul>
+</li>
+<li><strong>最短路径问题</strong>：
+<ul>
+<li>Dijkstra算法：用于计算非负权图的单源最短路径。（<strong>时间复杂度O(E log V)</strong>）</li>
+<li>Bellman-Ford算法：用于计算可以包含负权边的图的单源最短路径。（<strong>时间复杂度O(V*E)</strong>）</li>
+<li>Floyd-Warshall 算法：用于计算任意两点之间的最短路径。（<strong>时间复杂度O(V^3)</strong>）</li>
+</ul>
+</li>
+<li><strong>最小生成树问题</strong>：
+<ul>
+<li>Prim 算法（<strong>时间复杂度O(E log V)</strong>）</li>
+<li>Kruskal 算法（<strong>时间复杂度O(E log V)</strong>）</li>
+</ul>
+</li>
+<li><strong>其他图论问题</strong>：
+<ul>
+<li>拓扑排序：对有向无环图进行排序，使得所有边都指向后面的顶点。（<strong>时间复杂度O(V+E)</strong>）</li>
+<li>强连通分量：找到图中互相可达的顶点集合。（<strong>时间复杂度O(V+E)</strong>）</li>
+<li>图的二分性判断：判断一个图是否为二分图。（<strong>时间复杂度O(V+E)</strong>）</li>
+<li>网络流：研究网络中流量的分配问题。</li>
+<li>二分图匹配：找到二分图中最大的匹配数。</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-位运算">8. 位运算</h2>
+<ul>
+<li><strong>位运算技巧</strong>：直接对二进制位进行操作，效率高。
+<ul>
+<li>判断是否为 2 的幂：<code>n &amp; (n - 1) == 0</code></li>
+<li>统计二进制中 1 的个数：Hamming Weight</li>
+<li>交换两个数的值：<code>a ^= b; b ^= a; a ^= b;</code></li>
+<li>找出只出现一次的数字：利用异或运算的性质</li>
+<li>计算二进制补码</li>
+</ul>
+</li>
+<li><strong>位运算应用</strong>：
+<ul>
+<li>状态压缩：用二进制位表示状态</li>
+<li>快速幂：利用位运算优化幂运算</li>
+</ul>
+</li>
+</ul>
+<h2 id="9-树与二叉树">9. 树与二叉树</h2>
+<ul>
+<li><strong>二叉树的遍历</strong>：
+<ul>
+<li>前序、中序、后序遍历：递归或迭代方式访问所有节点</li>
+<li>层次遍历：逐层访问节点</li>
+</ul>
+</li>
+<li><strong>二叉树的性质</strong>：
+<ul>
+<li>判断是否为二叉搜索树：中序遍历结果为升序</li>
+<li>二叉树的最大深度：递归或迭代方式求解</li>
+<li>路径和问题：寻找满足条件的路径</li>
+</ul>
+</li>
+<li><strong>其他树结构</strong>：
+<ul>
+<li>平衡二叉搜索树：
+<ul>
+<li>AVL 树：保持左右子树高度差不超过 1</li>
+<li>红黑树：一种自平衡的二叉搜索树</li>
+</ul>
+</li>
+<li>线段树：用于处理区间查询问题</li>
+<li>字典树：用于存储和查找字符串</li>
+</ul>
+</li>
+</ul>
+<h2 id="10-并行与分布式算法">10. 并行与分布式算法</h2>
+<ul>
+<li><strong>并行算法</strong>：利用多核处理器并行计算，提高效率。
+<ul>
+<li>并行排序问题</li>
+<li>并行搜索问题</li>
+</ul>
+</li>
+<li><strong>分布式算法</strong>：在分布式系统中运行的算法，解决大规模数据处理和存储问题。
+<ul>
+<li>MapReduce 问题：一种分布式计算框架</li>
+<li>分布式一致性问题：Paxos、Raft 等协议</li>
+</ul>
+</li>
+</ul>
+<h2 id="11-高级数据结构">11. 高级数据结构</h2>
+<ul>
+<li><strong>平衡树</strong>：
+<ul>
+<li>AVL 树</li>
+<li>红黑树</li>
+</ul>
+</li>
+<li><strong>其他数据结构</strong>：
+<ul>
+<li>跳表：一种有序链表，支持快速查找</li>
+<li>并查集（Union-Find）：用于处理集合的合并和查询操作</li>
+<li>LRU 缓存机制：最近最少使用缓存</li>
+<li>堆（优先队列）：一种特殊的树形数据结构，用于快速访问最大/最小值</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+            <span>&copy; 2025 Lin Mohan</span> · 
+
+    <span>
+        Built with 
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a>.
+    </span>
+
+</footer>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>

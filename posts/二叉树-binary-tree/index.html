@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>二叉树 Binary Tree | Lin Mohan</title>
+<meta name="keywords" content="">
+<meta name="description" content="二叉树是一种每个节点最多有两个子节点的树形数据结构。它是一种广泛应用于计算机科学中的数据结构，常用于表达层次结构、实现查找、排序、表达式求值等任务。
+二叉树的基本定义：
+
+节点：二叉树中的每个元素，通常包含数据和指向其子节点的指针。
+根节点（Root）：二叉树的第一个节点，是树的起点。
+子节点（Children）：每个节点可以有最多两个子节点，分别是左子节点和右子节点。
+叶节点（Leaf）：没有任何子节点的节点，也叫终端节点。
+父节点（Parent）：指向某一节点的上级节点。
+深度（Depth）：从根节点到该节点的路径长度。
+高度（Height）：从该节点到最远叶子节点的路径长度。
+
+二叉树的基本类型
+
+满二叉树（Full Binary Tree）：
+
+每个节点要么没有子节点，要么有两个 子节点。
+即，除了叶节点外，其他每个节点都有两个子节点。
+
+
+完全二叉树（Complete Binary Tree）：
+
+除了最后一层外，每一层的节点都尽可能多，且最后一层的节点都集中在左侧。
+
+
+平衡二叉树（Balanced Binary Tree）：
+
+任意节点的左右子树的高度差不超过 1。
+例如，AVL树和红黑树是常见的平衡二叉树。
+
+
+二叉搜索树（Binary Search Tree, BST）：
+
+对于树中的每一个节点，左子树的所有节点的值小于该节点的值，右子树的所有节点的值大于该节点的值。
+二叉搜索树提供了高效的查找、插入和删除操作。
+
+
+赫夫曼树（Huffman Tree）：
+
+一种带权路径长度最短的二叉树，常用于数据压缩算法中。
+
+
+
+二叉树的基本操作
+二叉树的操作主要包括遍历、插入、删除、查找等。下面介绍常见的操作：
+1. 遍历（Traversal）
+遍历是指按照一定的顺序访问二叉树的每个节点。常见的遍历方式有：
+
+前序遍历（Pre-order Traversal）：访问根节点，然后递归遍历左子树和右子树。
+
+顺序：根 → 左 → 右
+示例：A, B, D, E, C, F
+
+
+中序遍历（In-order Traversal）：递归遍历左子树，然后访问根节点，最后递归遍历右子树。
+
+顺序：左 → 根 → 右
+示例：D, B, E, A, F, C
+
+
+后 序遍历（Post-order Traversal）：递归遍历左子树和右子树，然后访问根节点。
+
+顺序：左 → 右 → 根
+示例：D, E, B, F, C, A
+
+
+层次遍历（Level-order Traversal）：逐层遍历树的节点，通常使用队列实现。
+
+顺序：从根节点开始，逐层访问每个节点。
+示例：A, B, C, D, E, F
+
+
+
+2. 插入（Insertion）
+
+二叉搜索树的插入：在二叉搜索树中插入节点时，根据节点的值与当前节点的值进行比较，决定将新节点插入到左子树还是右子树，直到找到合适的位置。
+
+3. 删除（Deletion）
+
+删除节点：删除二叉树中的节点时，需要考虑三种情况：
+
+没有子节点（叶节点）：直接删除。
+有一个子节点：用子节点替代被删除的节点。
+有两个子节点：通常用右子树中的最小节点或左子树中的最大节点来替代被删除的节点，然后递归删除替代节点。
+
+
+
+4. 查找（Search）
+
+二叉搜索树的查找：从根节点开始，根据查找的值与当前节点的值比较，决定是向左子树还是右子树查找，直到找到该节点或遍历完整棵树。
+
+二叉树的应用：
+               *
+              / \
+            &#43;   &#43;
+           / \  / \
+          a   b c   d
+
+表达式树：用于表示数学表达式。在计算机科学中，表达式树是二叉树的一种应用，其中每个叶子节点代表操作数，每个非叶子节点代表操作符。
+
+例如：(a &#43; b) * (c &#43; d) 可以表示为以上代码块。
+
+
+二叉查找树的应用：
+
+高效查找：在二叉查找树中，查找操作的平均时间复杂度是 O(log n)，比线性查找 O(n) 更高效。
+排序：通过中序遍历二叉搜索树可以得到一个有序序列，从而实现排序。
+
+
+堆（Heap）：
+
+二叉堆是一种特殊的二叉树，常用于实现优先队列。二叉堆有两种：最大堆和最小堆。最大堆的父节点的值大于等于子节点的值，最小堆则相反。
+
+
+二叉树的平衡：AVL 树、红黑树等自平衡二叉树可以用于实现高效的查找、插入和删除操作，广泛应用于数据库索引、内存管理等领域。
+
+二叉树的优缺点：
+优点：">
+<meta name="author" content="Lin Mohan">
+<link rel="canonical" href="http://localhost:1313/posts/%E4%BA%8C%E5%8F%89%E6%A0%91-binary-tree/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fe613e7f063ee47b50be6d3cdd37d9a40f7ea043e6255a4b79a840557d1e605c.css" integrity="sha256-/mE&#43;fwY&#43;5HtQvm083TfZpA9&#43;oEPmJVpLeahAVX0eYFw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/%E4%BA%8C%E5%8F%89%E6%A0%91-binary-tree/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="http://localhost:1313/posts/%E4%BA%8C%E5%8F%89%E6%A0%91-binary-tree/">
+  <meta property="og:site_name" content="Lin Mohan">
+  <meta property="og:title" content="二叉树 Binary Tree">
+  <meta property="og:description" content="二叉树是一种每个节点最多有两个子节点的树形数据结构。它是一种广泛应用于计算机科学中的数据结构，常用于表达层次结构、实现查找、排序、表达式求值等任务。
+二叉树的基本定义： 节点：二叉树中的每个元素，通常包含数据和指向其子节点的指针。 根节点（Root）：二叉树的第一个节点，是树的起点。 子节点（Children）：每个节点可以有最多两个子节点，分别是左子节点和右子节点。 叶节点（Leaf）：没有任何子节点的节点，也叫终端节点。 父节点（Parent）：指向某一节点的上级节点。 深度（Depth）：从根节点到该节点的路径长度。 高度（Height）：从该节点到最远叶子节点的路径长度。 二叉树的基本类型 满二叉树（Full Binary Tree）： 每个节点要么没有子节点，要么有两个 子节点。 即，除了叶节点外，其他每个节点都有两个子节点。 完全二叉树（Complete Binary Tree）： 除了最后一层外，每一层的节点都尽可能多，且最后一层的节点都集中在左侧。 平衡二叉树（Balanced Binary Tree）： 任意节点的左右子树的高度差不超过 1。 例如，AVL树和红黑树是常见的平衡二叉树。 二叉搜索树（Binary Search Tree, BST）： 对于树中的每一个节点，左子树的所有节点的值小于该节点的值，右子树的所有节点的值大于该节点的值。 二叉搜索树提供了高效的查找、插入和删除操作。 赫夫曼树（Huffman Tree）： 一种带权路径长度最短的二叉树，常用于数据压缩算法中。 二叉树的基本操作 二叉树的操作主要包括遍历、插入、删除、查找等。下面介绍常见的操作：
+1. 遍历（Traversal） 遍历是指按照一定的顺序访问二叉树的每个节点。常见的遍历方式有：
+前序遍历（Pre-order Traversal）：访问根节点，然后递归遍历左子树和右子树。 顺序：根 → 左 → 右 示例：A, B, D, E, C, F 中序遍历（In-order Traversal）：递归遍历左子树，然后访问根节点，最后递归遍历右子树。 顺序：左 → 根 → 右 示例：D, B, E, A, F, C 后 序遍历（Post-order Traversal）：递归遍历左子树和右子树，然后访问根节点。 顺序：左 → 右 → 根 示例：D, E, B, F, C, A 层次遍历（Level-order Traversal）：逐层遍历树的节点，通常使用队列实现。 顺序：从根节点开始，逐层访问每个节点。 示例：A, B, C, D, E, F 2. 插入（Insertion） 二叉搜索树的插入：在二叉搜索树中插入节点时，根据节点的值与当前节点的值进行比较，决定将新节点插入到左子树还是右子树，直到找到合适的位置。 3. 删除（Deletion） 删除节点：删除二叉树中的节点时，需要考虑三种情况： 没有子节点（叶节点）：直接删除。 有一个子节点：用子节点替代被删除的节点。 有两个子节点：通常用右子树中的最小节点或左子树中的最大节点来替代被删除的节点，然后递归删除替代节点。 4. 查找（Search） 二叉搜索树的查找：从根节点开始，根据查找的值与当前节点的值比较，决定是向左子树还是右子树查找，直到找到该节点或遍历完整棵树。 二叉树的应用： * / \ &#43; &#43; / \ / \ a b c d 表达式树：用于表示数学表达式。在计算机科学中，表达式树是二叉树的一种应用，其中每个叶子节点代表操作数，每个非叶子节点代表操作符。 例如：(a &#43; b) * (c &#43; d) 可以表示为以上代码块。 二叉查找树的应用： 高效查找：在二叉查找树中，查找操作的平均时间复杂度是 O(log n)，比线性查找 O(n) 更高效。 排序：通过中序遍历二叉搜索树可以得到一个有序序列，从而实现排序。 堆（Heap）： 二叉堆是一种特殊的二叉树，常用于实现优先队列。二叉堆有两种：最大堆和最小堆。最大堆的父节点的值大于等于子节点的值，最小堆则相反。 二叉树的平衡：AVL 树、红黑树等自平衡二叉树可以用于实现高效的查找、插入和删除操作，广泛应用于数据库索引、内存管理等领域。 二叉树的优缺点： 优点：">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-18T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-18T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="二叉树 Binary Tree">
+<meta name="twitter:description" content="二叉树是一种每个节点最多有两个子节点的树形数据结构。它是一种广泛应用于计算机科学中的数据结构，常用于表达层次结构、实现查找、排序、表达式求值等任务。
+二叉树的基本定义：
+
+节点：二叉树中的每个元素，通常包含数据和指向其子节点的指针。
+根节点（Root）：二叉树的第一个节点，是树的起点。
+子节点（Children）：每个节点可以有最多两个子节点，分别是左子节点和右子节点。
+叶节点（Leaf）：没有任何子节点的节点，也叫终端节点。
+父节点（Parent）：指向某一节点的上级节点。
+深度（Depth）：从根节点到该节点的路径长度。
+高度（Height）：从该节点到最远叶子节点的路径长度。
+
+二叉树的基本类型
+
+满二叉树（Full Binary Tree）：
+
+每个节点要么没有子节点，要么有两个 子节点。
+即，除了叶节点外，其他每个节点都有两个子节点。
+
+
+完全二叉树（Complete Binary Tree）：
+
+除了最后一层外，每一层的节点都尽可能多，且最后一层的节点都集中在左侧。
+
+
+平衡二叉树（Balanced Binary Tree）：
+
+任意节点的左右子树的高度差不超过 1。
+例如，AVL树和红黑树是常见的平衡二叉树。
+
+
+二叉搜索树（Binary Search Tree, BST）：
+
+对于树中的每一个节点，左子树的所有节点的值小于该节点的值，右子树的所有节点的值大于该节点的值。
+二叉搜索树提供了高效的查找、插入和删除操作。
+
+
+赫夫曼树（Huffman Tree）：
+
+一种带权路径长度最短的二叉树，常用于数据压缩算法中。
+
+
+
+二叉树的基本操作
+二叉树的操作主要包括遍历、插入、删除、查找等。下面介绍常见的操作：
+1. 遍历（Traversal）
+遍历是指按照一定的顺序访问二叉树的每个节点。常见的遍历方式有：
+
+前序遍历（Pre-order Traversal）：访问根节点，然后递归遍历左子树和右子树。
+
+顺序：根 → 左 → 右
+示例：A, B, D, E, C, F
+
+
+中序遍历（In-order Traversal）：递归遍历左子树，然后访问根节点，最后递归遍历右子树。
+
+顺序：左 → 根 → 右
+示例：D, B, E, A, F, C
+
+
+后 序遍历（Post-order Traversal）：递归遍历左子树和右子树，然后访问根节点。
+
+顺序：左 → 右 → 根
+示例：D, E, B, F, C, A
+
+
+层次遍历（Level-order Traversal）：逐层遍历树的节点，通常使用队列实现。
+
+顺序：从根节点开始，逐层访问每个节点。
+示例：A, B, C, D, E, F
+
+
+
+2. 插入（Insertion）
+
+二叉搜索树的插入：在二叉搜索树中插入节点时，根据节点的值与当前节点的值进行比较，决定将新节点插入到左子树还是右子树，直到找到合适的位置。
+
+3. 删除（Deletion）
+
+删除节点：删除二叉树中的节点时，需要考虑三种情况：
+
+没有子节点（叶节点）：直接删除。
+有一个子节点：用子节点替代被删除的节点。
+有两个子节点：通常用右子树中的最小节点或左子树中的最大节点来替代被删除的节点，然后递归删除替代节点。
+
+
+
+4. 查找（Search）
+
+二叉搜索树的查找：从根节点开始，根据查找的值与当前节点的值比较，决定是向左子树还是右子树查找，直到找到该节点或遍历完整棵树。
+
+二叉树的应用：
+               *
+              / \
+            &#43;   &#43;
+           / \  / \
+          a   b c   d
+
+表达式树：用于表示数学表达式。在计算机科学中，表达式树是二叉树的一种应用，其中每个叶子节点代表操作数，每个非叶子节点代表操作符。
+
+例如：(a &#43; b) * (c &#43; d) 可以表示为以上代码块。
+
+
+二叉查找树的应用：
+
+高效查找：在二叉查找树中，查找操作的平均时间复杂度是 O(log n)，比线性查找 O(n) 更高效。
+排序：通过中序遍历二叉搜索树可以得到一个有序序列，从而实现排序。
+
+
+堆（Heap）：
+
+二叉堆是一种特殊的二叉树，常用于实现优先队列。二叉堆有两种：最大堆和最小堆。最大堆的父节点的值大于等于子节点的值，最小堆则相反。
+
+
+二叉树的平衡：AVL 树、红黑树等自平衡二叉树可以用于实现高效的查找、插入和删除操作，广泛应用于数据库索引、内存管理等领域。
+
+二叉树的优缺点：
+优点：">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "二叉树 Binary Tree",
+      "item": "http://localhost:1313/posts/%E4%BA%8C%E5%8F%89%E6%A0%91-binary-tree/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "二叉树 Binary Tree",
+  "name": "二叉树 Binary Tree",
+  "description": "二叉树是一种每个节点最多有两个子节点的树形数据结构。它是一种广泛应用于计算机科学中的数据结构，常用于表达层次结构、实现查找、排序、表达式求值等任务。\n二叉树的基本定义： 节点：二叉树中的每个元素，通常包含数据和指向其子节点的指针。 根节点（Root）：二叉树的第一个节点，是树的起点。 子节点（Children）：每个节点可以有最多两个子节点，分别是左子节点和右子节点。 叶节点（Leaf）：没有任何子节点的节点，也叫终端节点。 父节点（Parent）：指向某一节点的上级节点。 深度（Depth）：从根节点到该节点的路径长度。 高度（Height）：从该节点到最远叶子节点的路径长度。 二叉树的基本类型 满二叉树（Full Binary Tree）： 每个节点要么没有子节点，要么有两个 子节点。 即，除了叶节点外，其他每个节点都有两个子节点。 完全二叉树（Complete Binary Tree）： 除了最后一层外，每一层的节点都尽可能多，且最后一层的节点都集中在左侧。 平衡二叉树（Balanced Binary Tree）： 任意节点的左右子树的高度差不超过 1。 例如，AVL树和红黑树是常见的平衡二叉树。 二叉搜索树（Binary Search Tree, BST）： 对于树中的每一个节点，左子树的所有节点的值小于该节点的值，右子树的所有节点的值大于该节点的值。 二叉搜索树提供了高效的查找、插入和删除操作。 赫夫曼树（Huffman Tree）： 一种带权路径长度最短的二叉树，常用于数据压缩算法中。 二叉树的基本操作 二叉树的操作主要包括遍历、插入、删除、查找等。下面介绍常见的操作：\n1. 遍历（Traversal） 遍历是指按照一定的顺序访问二叉树的每个节点。常见的遍历方式有：\n前序遍历（Pre-order Traversal）：访问根节点，然后递归遍历左子树和右子树。 顺序：根 → 左 → 右 示例：A, B, D, E, C, F 中序遍历（In-order Traversal）：递归遍历左子树，然后访问根节点，最后递归遍历右子树。 顺序：左 → 根 → 右 示例：D, B, E, A, F, C 后 序遍历（Post-order Traversal）：递归遍历左子树和右子树，然后访问根节点。 顺序：左 → 右 → 根 示例：D, E, B, F, C, A 层次遍历（Level-order Traversal）：逐层遍历树的节点，通常使用队列实现。 顺序：从根节点开始，逐层访问每个节点。 示例：A, B, C, D, E, F 2. 插入（Insertion） 二叉搜索树的插入：在二叉搜索树中插入节点时，根据节点的值与当前节点的值进行比较，决定将新节点插入到左子树还是右子树，直到找到合适的位置。 3. 删除（Deletion） 删除节点：删除二叉树中的节点时，需要考虑三种情况： 没有子节点（叶节点）：直接删除。 有一个子节点：用子节点替代被删除的节点。 有两个子节点：通常用右子树中的最小节点或左子树中的最大节点来替代被删除的节点，然后递归删除替代节点。 4. 查找（Search） 二叉搜索树的查找：从根节点开始，根据查找的值与当前节点的值比较，决定是向左子树还是右子树查找，直到找到该节点或遍历完整棵树。 二叉树的应用： * / \\ + + / \\ / \\ a b c d 表达式树：用于表示数学表达式。在计算机科学中，表达式树是二叉树的一种应用，其中每个叶子节点代表操作数，每个非叶子节点代表操作符。 例如：(a + b) * (c + d) 可以表示为以上代码块。 二叉查找树的应用： 高效查找：在二叉查找树中，查找操作的平均时间复杂度是 O(log n)，比线性查找 O(n) 更高效。 排序：通过中序遍历二叉搜索树可以得到一个有序序列，从而实现排序。 堆（Heap）： 二叉堆是一种特殊的二叉树，常用于实现优先队列。二叉堆有两种：最大堆和最小堆。最大堆的父节点的值大于等于子节点的值，最小堆则相反。 二叉树的平衡：AVL 树、红黑树等自平衡二叉树可以用于实现高效的查找、插入和删除操作，广泛应用于数据库索引、内存管理等领域。 二叉树的优缺点： 优点：\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "二叉树是一种每个节点最多有两个子节点的树形数据结构。它是一种广泛应用于计算机科学中的数据结构，常用于表达层次结构、实现查找、排序、表达式求值等任务。\n二叉树的基本定义： 节点：二叉树中的每个元素，通常包含数据和指向其子节点的指针。 根节点（Root）：二叉树的第一个节点，是树的起点。 子节点（Children）：每个节点可以有最多两个子节点，分别是左子节点和右子节点。 叶节点（Leaf）：没有任何子节点的节点，也叫终端节点。 父节点（Parent）：指向某一节点的上级节点。 深度（Depth）：从根节点到该节点的路径长度。 高度（Height）：从该节点到最远叶子节点的路径长度。 二叉树的基本类型 满二叉树（Full Binary Tree）： 每个节点要么没有子节点，要么有两个 子节点。 即，除了叶节点外，其他每个节点都有两个子节点。 完全二叉树（Complete Binary Tree）： 除了最后一层外，每一层的节点都尽可能多，且最后一层的节点都集中在左侧。 平衡二叉树（Balanced Binary Tree）： 任意节点的左右子树的高度差不超过 1。 例如，AVL树和红黑树是常见的平衡二叉树。 二叉搜索树（Binary Search Tree, BST）： 对于树中的每一个节点，左子树的所有节点的值小于该节点的值，右子树的所有节点的值大于该节点的值。 二叉搜索树提供了高效的查找、插入和删除操作。 赫夫曼树（Huffman Tree）： 一种带权路径长度最短的二叉树，常用于数据压缩算法中。 二叉树的基本操作 二叉树的操作主要包括遍历、插入、删除、查找等。下面介绍常见的操作：\n1. 遍历（Traversal） 遍历是指按照一定的顺序访问二叉树的每个节点。常见的遍历方式有：\n前序遍历（Pre-order Traversal）：访问根节点，然后递归遍历左子树和右子树。 顺序：根 → 左 → 右 示例：A, B, D, E, C, F 中序遍历（In-order Traversal）：递归遍历左子树，然后访问根节点，最后递归遍历右子树。 顺序：左 → 根 → 右 示例：D, B, E, A, F, C 后 序遍历（Post-order Traversal）：递归遍历左子树和右子树，然后访问根节点。 顺序：左 → 右 → 根 示例：D, E, B, F, C, A 层次遍历（Level-order Traversal）：逐层遍历树的节点，通常使用队列实现。 顺序：从根节点开始，逐层访问每个节点。 示例：A, B, C, D, E, F 2. 插入（Insertion） 二叉搜索树的插入：在二叉搜索树中插入节点时，根据节点的值与当前节点的值进行比较，决定将新节点插入到左子树还是右子树，直到找到合适的位置。 3. 删除（Deletion） 删除节点：删除二叉树中的节点时，需要考虑三种情况： 没有子节点（叶节点）：直接删除。 有一个子节点：用子节点替代被删除的节点。 有两个子节点：通常用右子树中的最小节点或左子树中的最大节点来替代被删除的节点，然后递归删除替代节点。 4. 查找（Search） 二叉搜索树的查找：从根节点开始，根据查找的值与当前节点的值比较，决定是向左子树还是右子树查找，直到找到该节点或遍历完整棵树。 二叉树的应用： * / \\ + + / \\ / \\ a b c d 表达式树：用于表示数学表达式。在计算机科学中，表达式树是二叉树的一种应用，其中每个叶子节点代表操作数，每个非叶子节点代表操作符。 例如：(a + b) * (c + d) 可以表示为以上代码块。 二叉查找树的应用： 高效查找：在二叉查找树中，查找操作的平均时间复杂度是 O(log n)，比线性查找 O(n) 更高效。 排序：通过中序遍历二叉搜索树可以得到一个有序序列，从而实现排序。 堆（Heap）： 二叉堆是一种特殊的二叉树，常用于实现优先队列。二叉堆有两种：最大堆和最小堆。最大堆的父节点的值大于等于子节点的值，最小堆则相反。 二叉树的平衡：AVL 树、红黑树等自平衡二叉树可以用于实现高效的查找、插入和删除操作，广泛应用于数据库索引、内存管理等领域。 二叉树的优缺点： 优点：\n结构简单：二叉树结构简单，易于理解和实现。 查找效率高：对于平衡的二叉搜索树（如 AVL 树、红黑树），其查找、插入、删除操作的平均时间复杂度是 O(log n)，相比线性数据结构更高效。 缺点：\n不平衡会导致效率降低：如果二叉树不平衡（例如退化成链表），则查找、插入、删除的时间复杂度将变为 O(n)。 空间开销较大：每个节点需要存储指向左右子节点的指针，相较于一些线性数据结构，空间开销较大。 二叉树的实现示例（C++）： #include using namespace std; // 定义二叉树节点结构体 struct TreeNode { int value; // 节点值 TreeNode* left; // 左子节点 TreeNode* right; // 右子节点 TreeNode(int x) : value(x), left(nullptr), right(nullptr) {} }; // 前序遍历 void preorder(TreeNode* root) { if (root == nullptr) return; cout \u003c\u003c root-\u003evalue \u003c\u003c \" \"; // 访问根节点 preorder(root-\u003eleft); // 遍历左子树 preorder(root-\u003eright); // 遍历右子树 } // 中序遍历 void inorder(TreeNode* root) { if (root == nullptr) return; inorder(root-\u003eleft); // 遍历左子树 cout \u003c\u003c root-\u003evalue \u003c\u003c \" \"; // 访问根节点 inorder(root-\u003eright); // 遍历右子树 } // 后序遍历 void postorder(TreeNode* root) { if (root == nullptr) return; postorder(root-\u003eleft); // 遍历左子树 postorder(root-\u003eright); // 遍历右子树 cout \u003c\u003c root-\u003evalue \u003c\u003c \" \"; // 访问根节点 } int main() { // 构建一棵二叉树 TreeNode* root = new TreeNode(1); root-\u003eleft = new TreeNode(2); root-\u003eright = new TreeNode(3); root-\u003eleft-\u003eleft = new TreeNode(4); root-\u003eleft-\u003eright = new TreeNode(5); cout \u003c\u003c \"前序遍历: \"; preorder(root); cout \u003c\u003c endl; cout \u003c\u003c \"中序遍历: \"; inorder(root); cout \u003c\u003c endl; cout \u003c\u003c \"后序遍历: \"; postorder(root); cout \u003c\u003c endl; return 0; } 代码解析： TreeNode：定义了一个二叉树节点结构，包含节点值、左子节点和右子节点。 preorder、inorder、postorder：分别是前序、中序、后序遍历的递归实现。 main：在主函数中构建了一个简单的二叉树，并进行遍历。 总结： 二叉树是一种非常基础且重要的树形数据结构，广泛应用于各种算法和系统中。它具有良好的灵活性和扩展性，可以支持不同的变种，如二叉搜索树、AVL 树、红黑树等，能够有效地提升查找、插入和删除操作的效率。\n",
+  "wordCount" : "316",
+  "inLanguage": "en",
+  "datePublished": "2025-02-18T00:00:00Z",
+  "dateModified": "2025-02-18T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Lin Mohan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/%E4%BA%8C%E5%8F%89%E6%A0%91-binary-tree/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lin Mohan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class=" dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Lin Mohan">
+                <img src="http://localhost:1313/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">Lin Mohan</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/notes/" title="📒 Notes">
+                    <span>📒 Notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/thoughts/" title="💭 Thoughts">
+                    <span>💭 Thoughts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/monthly-report/" title="📈 Monthly Report">
+                    <span>📈 Monthly Report</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="🗂️ Archive">
+                    <span>🗂️ Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/friends/" title="🤝 Friends">
+                    <span>🤝 Friends</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="🔍 Search">
+                    <span>🔍 Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="ℹ️ About">
+                    <span>ℹ️ About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      二叉树 Binary Tree
+    </h1>
+    <div class="post-meta"><span title='2025-02-18 00:00:00 +0000 UTC'>February 18, 2025</span>&nbsp;&middot;&nbsp;2 min&nbsp;&middot;&nbsp;Lin Mohan
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#二叉树的基本定义">二叉树的基本定义：</a></li>
+    <li><a href="#二叉树的基本类型">二叉树的基本类型</a></li>
+    <li><a href="#二叉树的基本操作">二叉树的基本操作</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>二叉树是一种每个节点最多有两个子节点的树形数据结构。它是一种广泛应用于计算机科学中的数据结构，常用于表达层次结构、实现查找、排序、表达式求值等任务。</p>
+<h2 id="二叉树的基本定义">二叉树的基本定义：</h2>
+<ul>
+<li><strong>节点</strong>：二叉树中的每个元素，通常包含数据和指向其子节点的指针。</li>
+<li><strong>根节点（Root）</strong>：二叉树的第一个节点，是树的起点。</li>
+<li><strong>子节点（Children）</strong>：每个节点可以有最多两个子节点，分别是左子节点和右子节点。</li>
+<li><strong>叶节点（Leaf）</strong>：没有任何子节点的节点，也叫终端节点。</li>
+<li><strong>父节点（Parent）</strong>：指向某一节点的上级节点。</li>
+<li><strong>深度（Depth）</strong>：从根节点到该节点的路径长度。</li>
+<li><strong>高度（Height）</strong>：从该节点到最远叶子节点的路径长度。</li>
+</ul>
+<h2 id="二叉树的基本类型">二叉树的基本类型</h2>
+<ol>
+<li><strong>满二叉树（Full Binary Tree）</strong>：
+<ul>
+<li>每个节点要么没有子节点，要么有两个 子节点。</li>
+<li>即，除了叶节点外，其他每个节点都有两个子节点。</li>
+</ul>
+</li>
+<li><strong>完全二叉树（Complete Binary Tree）</strong>：
+<ul>
+<li>除了最后一层外，每一层的节点都尽可能多，且最后一层的节点都集中在左侧。</li>
+</ul>
+</li>
+<li><strong>平衡二叉树（Balanced Binary Tree）</strong>：
+<ul>
+<li>任意节点的左右子树的高度差不超过 1。</li>
+<li>例如，AVL树和红黑树是常见的平衡二叉树。</li>
+</ul>
+</li>
+<li><strong>二叉搜索树（Binary Search Tree, BST）</strong>：
+<ul>
+<li>对于树中的每一个节点，左子树的所有节点的值小于该节点的值，右子树的所有节点的值大于该节点的值。</li>
+<li>二叉搜索树提供了高效的查找、插入和删除操作。</li>
+</ul>
+</li>
+<li><strong>赫夫曼树（Huffman Tree）</strong>：
+<ul>
+<li>一种带权路径长度最短的二叉树，常用于数据压缩算法中。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二叉树的基本操作">二叉树的基本操作</h2>
+<p>二叉树的操作主要包括遍历、插入、删除、查找等。下面介绍常见的操作：</p>
+<h4 id="1-遍历traversal">1. <strong>遍历（Traversal）</strong></h4>
+<p>遍历是指按照一定的顺序访问二叉树的每个节点。常见的遍历方式有：</p>
+<ul>
+<li><strong>前序遍历（Pre-order Traversal）</strong>：访问根节点，然后递归遍历左子树和右子树。
+<ul>
+<li>顺序：根 → 左 → 右</li>
+<li>示例：<code>A, B, D, E, C, F</code></li>
+</ul>
+</li>
+<li><strong>中序遍历（In-order Traversal）</strong>：递归遍历左子树，然后访问根节点，最后递归遍历右子树。
+<ul>
+<li>顺序：左 → 根 → 右</li>
+<li>示例：<code>D, B, E, A, F, C</code></li>
+</ul>
+</li>
+<li><strong>后 序遍历（Post-order Traversal）</strong>：递归遍历左子树和右子树，然后访问根节点。
+<ul>
+<li>顺序：左 → 右 → 根</li>
+<li>示例：<code>D, E, B, F, C, A</code></li>
+</ul>
+</li>
+<li><strong>层次遍历（Level-order Traversal）</strong>：逐层遍历树的节点，通常使用队列实现。
+<ul>
+<li>顺序：从根节点开始，逐层访问每个节点。</li>
+<li>示例：<code>A, B, C, D, E, F</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="2-插入insertion">2. <strong>插入（Insertion）</strong></h4>
+<ul>
+<li><strong>二叉搜索树的插入</strong>：在二叉搜索树中插入节点时，根据节点的值与当前节点的值进行比较，决定将新节点插入到左子树还是右子树，直到找到合适的位置。</li>
+</ul>
+<h4 id="3-删除deletion">3. <strong>删除（Deletion）</strong></h4>
+<ul>
+<li><strong>删除节点</strong>：删除二叉树中的节点时，需要考虑三种情况：
+<ul>
+<li><strong>没有子节点</strong>（叶节点）：直接删除。</li>
+<li><strong>有一个子节点</strong>：用子节点替代被删除的节点。</li>
+<li><strong>有两个子节点</strong>：通常用右子树中的最小节点或左子树中的最大节点来替代被删除的节点，然后递归删除替代节点。</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-查找search">4. <strong>查找（Search）</strong></h4>
+<ul>
+<li><strong>二叉搜索树的查找</strong>：从根节点开始，根据查找的值与当前节点的值比较，决定是向左子树还是右子树查找，直到找到该节点或遍历完整棵树。</li>
+</ul>
+<h3 id="二叉树的应用">二叉树的应用：</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>               *
+</span></span><span style="display:flex;"><span>              / \
+</span></span><span style="display:flex;"><span>            +   +
+</span></span><span style="display:flex;"><span>           / \  / \
+</span></span><span style="display:flex;"><span>          a   b c   d
+</span></span></code></pre></div><ol>
+<li><strong>表达式树</strong>：用于表示数学表达式。在计算机科学中，表达式树是二叉树的一种应用，其中每个叶子节点代表操作数，每个非叶子节点代表操作符。
+<ul>
+<li>例如：<code>(a + b) * (c + d)</code> 可以表示为以上代码块。</li>
+</ul>
+</li>
+<li><strong>二叉查找树的应用</strong>：
+<ul>
+<li><strong>高效查找</strong>：在二叉查找树中，查找操作的平均时间复杂度是 O(log n)，比线性查找 O(n) 更高效。</li>
+<li><strong>排序</strong>：通过中序遍历二叉搜索树可以得到一个有序序列，从而实现排序。</li>
+</ul>
+</li>
+<li><strong>堆（Heap）</strong>：
+<ul>
+<li><strong>二叉堆</strong>是一种特殊的二叉树，常用于实现优先队列。二叉堆有两种：最大堆和最小堆。最大堆的父节点的值大于等于子节点的值，最小堆则相反。</li>
+</ul>
+</li>
+<li><strong>二叉树的平衡</strong>：AVL 树、红黑树等自平衡二叉树可以用于实现高效的查找、插入和删除操作，广泛应用于数据库索引、内存管理等领域。</li>
+</ol>
+<h3 id="二叉树的优缺点">二叉树的优缺点：</h3>
+<p><strong>优点</strong>：</p>
+<ul>
+<li><strong>结构简单</strong>：二叉树结构简单，易于理解和实现。</li>
+<li><strong>查找效率高</strong>：对于平衡的二叉搜索树（如 AVL 树、红黑树），其查找、插入、删除操作的平均时间复杂度是 O(log n)，相比线性数据结构更高效。</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><strong>不平衡会导致效率降低</strong>：如果二叉树不平衡（例如退化成链表），则查找、插入、删除的时间复杂度将变为 O(n)。</li>
+<li><strong>空间开销较大</strong>：每个节点需要存储指向左右子节点的指针，相较于一些线性数据结构，空间开销较大。</li>
+</ul>
+<h3 id="二叉树的实现示例c">二叉树的实现示例（C++）：</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#4c8317">#include</span> <span style="color:#4c8317">&lt;iostream&gt;</span><span style="color:#4c8317">
+</span></span></span><span style="display:flex;"><span><span style="color:#4c8317"></span><span style="color:#00a">using</span> <span style="color:#00a">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic">// 定义二叉树节点结构体
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span><span style="color:#00a">struct</span> <span style="color:#0a0;text-decoration:underline">TreeNode</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#0aa">int</span> value;  <span style="color:#aaa;font-style:italic">// 节点值
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    TreeNode* left;  <span style="color:#aaa;font-style:italic">// 左子节点
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    TreeNode* right;  <span style="color:#aaa;font-style:italic">// 右子节点
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    
+</span></span><span style="display:flex;"><span>    TreeNode(<span style="color:#0aa">int</span> x) : value(x), left(<span style="color:#00a">nullptr</span>), right(<span style="color:#00a">nullptr</span>) {}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic">// 前序遍历
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span><span style="color:#0aa">void</span> <span style="color:#0a0">preorder</span>(TreeNode* root) {
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">if</span> (root == <span style="color:#00a">nullptr</span>) <span style="color:#00a">return</span>;
+</span></span><span style="display:flex;"><span>    cout &lt;&lt; root-&gt;value &lt;&lt; <span style="color:#a50">&#34; &#34;</span>;  <span style="color:#aaa;font-style:italic">// 访问根节点
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    preorder(root-&gt;left);  <span style="color:#aaa;font-style:italic">// 遍历左子树
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    preorder(root-&gt;right);  <span style="color:#aaa;font-style:italic">// 遍历右子树
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic">// 中序遍历
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span><span style="color:#0aa">void</span> <span style="color:#0a0">inorder</span>(TreeNode* root) {
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">if</span> (root == <span style="color:#00a">nullptr</span>) <span style="color:#00a">return</span>;
+</span></span><span style="display:flex;"><span>    inorder(root-&gt;left);  <span style="color:#aaa;font-style:italic">// 遍历左子树
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    cout &lt;&lt; root-&gt;value &lt;&lt; <span style="color:#a50">&#34; &#34;</span>;  <span style="color:#aaa;font-style:italic">// 访问根节点
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    inorder(root-&gt;right);  <span style="color:#aaa;font-style:italic">// 遍历右子树
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic">// 后序遍历
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span><span style="color:#0aa">void</span> <span style="color:#0a0">postorder</span>(TreeNode* root) {
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">if</span> (root == <span style="color:#00a">nullptr</span>) <span style="color:#00a">return</span>;
+</span></span><span style="display:flex;"><span>    postorder(root-&gt;left);  <span style="color:#aaa;font-style:italic">// 遍历左子树
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    postorder(root-&gt;right);  <span style="color:#aaa;font-style:italic">// 遍历右子树
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    cout &lt;&lt; root-&gt;value &lt;&lt; <span style="color:#a50">&#34; &#34;</span>;  <span style="color:#aaa;font-style:italic">// 访问根节点
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">int</span> <span style="color:#0a0">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic">// 构建一棵二叉树
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    TreeNode* root = <span style="color:#00a">new</span> TreeNode(<span style="color:#099">1</span>);
+</span></span><span style="display:flex;"><span>    root-&gt;left = <span style="color:#00a">new</span> TreeNode(<span style="color:#099">2</span>);
+</span></span><span style="display:flex;"><span>    root-&gt;right = <span style="color:#00a">new</span> TreeNode(<span style="color:#099">3</span>);
+</span></span><span style="display:flex;"><span>    root-&gt;left-&gt;left = <span style="color:#00a">new</span> TreeNode(<span style="color:#099">4</span>);
+</span></span><span style="display:flex;"><span>    root-&gt;left-&gt;right = <span style="color:#00a">new</span> TreeNode(<span style="color:#099">5</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    cout &lt;&lt; <span style="color:#a50">&#34;前序遍历: &#34;</span>;
+</span></span><span style="display:flex;"><span>    preorder(root);
+</span></span><span style="display:flex;"><span>    cout &lt;&lt; endl;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    cout &lt;&lt; <span style="color:#a50">&#34;中序遍历: &#34;</span>;
+</span></span><span style="display:flex;"><span>    inorder(root);
+</span></span><span style="display:flex;"><span>    cout &lt;&lt; endl;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    cout &lt;&lt; <span style="color:#a50">&#34;后序遍历: &#34;</span>;
+</span></span><span style="display:flex;"><span>    postorder(root);
+</span></span><span style="display:flex;"><span>    cout &lt;&lt; endl;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">return</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="代码解析">代码解析：</h3>
+<ol>
+<li><strong>TreeNode</strong>：定义了一个二叉树节点结构，包含节点值、左子节点和右子节点。</li>
+<li><strong>preorder</strong>、<strong>inorder</strong>、<strong>postorder</strong>：分别是前序、中序、后序遍历的递归实现。</li>
+<li><strong>main</strong>：在主函数中构建了一个简单的二叉树，并进行遍历。</li>
+</ol>
+<h3 id="总结">总结：</h3>
+<p>二叉树是一种非常基础且重要的树形数据结构，广泛应用于各种算法和系统中。它具有良好的灵活性和扩展性，可以支持不同的变种，如二叉搜索树、AVL 树、红黑树等，能够有效地提升查找、插入和删除操作的效率。</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+            <span>&copy; 2025 Lin Mohan</span> · 
+
+    <span>
+        Built with 
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a>.
+    </span>
+
+</footer>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>

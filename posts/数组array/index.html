@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>数组 array | Lin Mohan</title>
+<meta name="keywords" content="">
+<meta name="description" content="数组的特点：
+
+固定大小：数组在创建时必须指定大小，一旦定义，大小不能更改。这意味着，如果需要存储更多的数据，必须创建一个新的数组并复制数据。
+元素类型相同：数组中的所有元素必须是相同类型的数据（如整数、字符、浮点数等）。
+按索引访问：数组的每个元素都有一个唯一的索引，索引从0开始，允许直接访问任何元素。
+连续内存：数组的元素在内存中是连续存储的，这使得数组具有较快的访问速度。
+
+数组的缺点：
+
+固定大小：数组一旦创建，其大小是固定的，无法动态扩展。如果数据量超出了原先设定的大小，必须重新分配更大的数组并复制数据，效率较低。
+浪费内存：如果你事先定义的数组大小过大，可能会浪费内存空间；如果大小过小，可能会导致无法存储所有数据。
+插入和删除效率低：数组中的元素是连续存储的，因此在数组中间插入或删除元素时，需要移动大量的数据，效率较低。
+
+示例（C&#43;&#43;）：
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() 
+{
+    // 声明并初始化一个包含5个整数的数组
+    int arr[5] = {1, 2, 3, 4, 5};  
+
+    // 访问数组元素
+    cout &lt;&lt; &#34;数组的第一个元素: &#34; &lt;&lt; arr[0] &lt;&lt; endl;  // 输出 1
+
+    // 修改数组元素
+    arr[2] = 10;  // 将数组中第三个元素修改为 10
+
+    // 输出修改后的数组元素
+    cout &lt;&lt; &#34;修改后的第三个元素: &#34; &lt;&lt; arr[2] &lt;&lt; endl;  // 输出 10
+
+    return 0;
+}
+数组的操作：
+
+访问元素：通过索引访问数组中的元素。例如，arr[3] 访问数组 arr 的第四个元素（索引从0开始）。
+修改元素：通过指定索引修改数组中的元素。例如，arr[1] = 20 将数组中第二个元素的值改为20。
+遍历数组：通过循环遍历数组中的每个元素。例如，使用 for 循环来访问所有元素。
+
+for (int i = 0; i &lt; 5; i&#43;&#43;) 
+{
+    cout &lt;&lt; arr[i] &lt;&lt; &#34; &#34;;
+}
+
+数组初始化：在声明时，你可以通过花括号 {} 初始化数组，或者使用循环动态赋值。
+
+数组的应用：
+
+存储一组相同类型的数据：最常见的应用是存储同类型的数据集合，例如学生的成绩、多个传感器的测量值等。
+
+例：存储班级学生的数学成绩。
+
+
+
+int scores[30];  // 存储30个学生的成绩
+
+实现栈和队列：通过数组可以实现栈（后进先出）和队列（先进先出）的数据结构。
+
+例：使用数组来实现一个队列：
+
+
+
+int queue[100];
+int front = -1, rear = -1;
+
+数据处理和分析：在数据科学和计算机科学中，数组广泛用于存储和处理数据。
+
+例：用数组存储每日气温数据，进行温度变化分析。
+
+
+排序和查找：数组是许多经典排序和查找算法（如冒泡排序、二分查找）的基础数据结构。
+
+例：使用数组进行排序：
+
+
+
+for (int i = 0; i &lt; 5; i&#43;&#43;) 
+{
+    for (int j = 0; j &lt; 5 - i - 1; j&#43;&#43;) 
+    {
+        if (arr[j] &gt; arr[j &#43; 1]) 
+        {
+            swap(arr[j], arr[j &#43; 1]);
+        }
+    }
+}
+
+图像处理：在图像处理中，像素值通常以二维数组的形式存储，用于表示图像中的颜色和亮度。
+
+例：一个图像的RGB像素值可以用二维数组表示。
+
+
+
+int image[100][100][3];  // 100x100像素的图像，每个像素有RGB三个值
+">
+<meta name="author" content="Lin Mohan">
+<link rel="canonical" href="http://localhost:1313/posts/%E6%95%B0%E7%BB%84array/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fe613e7f063ee47b50be6d3cdd37d9a40f7ea043e6255a4b79a840557d1e605c.css" integrity="sha256-/mE&#43;fwY&#43;5HtQvm083TfZpA9&#43;oEPmJVpLeahAVX0eYFw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/%E6%95%B0%E7%BB%84array/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="http://localhost:1313/posts/%E6%95%B0%E7%BB%84array/">
+  <meta property="og:site_name" content="Lin Mohan">
+  <meta property="og:title" content="数组 array">
+  <meta property="og:description" content="数组的特点： 固定大小：数组在创建时必须指定大小，一旦定义，大小不能更改。这意味着，如果需要存储更多的数据，必须创建一个新的数组并复制数据。 元素类型相同：数组中的所有元素必须是相同类型的数据（如整数、字符、浮点数等）。 按索引访问：数组的每个元素都有一个唯一的索引，索引从0开始，允许直接访问任何元素。 连续内存：数组的元素在内存中是连续存储的，这使得数组具有较快的访问速度。 数组的缺点： 固定大小：数组一旦创建，其大小是固定的，无法动态扩展。如果数据量超出了原先设定的大小，必须重新分配更大的数组并复制数据，效率较低。 浪费内存：如果你事先定义的数组大小过大，可能会浪费内存空间；如果大小过小，可能会导致无法存储所有数据。 插入和删除效率低：数组中的元素是连续存储的，因此在数组中间插入或删除元素时，需要移动大量的数据，效率较低。 示例（C&#43;&#43;）： #include &lt;iostream&gt; using namespace std; int main() { // 声明并初始化一个包含5个整数的数组 int arr[5] = {1, 2, 3, 4, 5}; // 访问数组元素 cout &lt;&lt; &#34;数组的第一个元素: &#34; &lt;&lt; arr[0] &lt;&lt; endl; // 输出 1 // 修改数组元素 arr[2] = 10; // 将数组中第三个元素修改为 10 // 输出修改后的数组元素 cout &lt;&lt; &#34;修改后的第三个元素: &#34; &lt;&lt; arr[2] &lt;&lt; endl; // 输出 10 return 0; } 数组的操作： 访问元素：通过索引访问数组中的元素。例如，arr[3] 访问数组 arr 的第四个元素（索引从0开始）。 修改元素：通过指定索引修改数组中的元素。例如，arr[1] = 20 将数组中第二个元素的值改为20。 遍历数组：通过循环遍历数组中的每个元素。例如，使用 for 循环来访问所有元素。 for (int i = 0; i &lt; 5; i&#43;&#43;) { cout &lt;&lt; arr[i] &lt;&lt; &#34; &#34;; } 数组初始化：在声明时，你可以通过花括号 {} 初始化数组，或者使用循环动态赋值。 数组的应用： 存储一组相同类型的数据：最常见的应用是存储同类型的数据集合，例如学生的成绩、多个传感器的测量值等。 例：存储班级学生的数学成绩。 int scores[30]; // 存储30个学生的成绩 实现栈和队列：通过数组可以实现栈（后进先出）和队列（先进先出）的数据结构。 例：使用数组来实现一个队列： int queue[100]; int front = -1, rear = -1; 数据处理和分析：在数据科学和计算机科学中，数组广泛用于存储和处理数据。 例：用数组存储每日气温数据，进行温度变化分析。 排序和查找：数组是许多经典排序和查找算法（如冒泡排序、二分查找）的基础数据结构。 例：使用数组进行排序： for (int i = 0; i &lt; 5; i&#43;&#43;) { for (int j = 0; j &lt; 5 - i - 1; j&#43;&#43;) { if (arr[j] &gt; arr[j &#43; 1]) { swap(arr[j], arr[j &#43; 1]); } } } 图像处理：在图像处理中，像素值通常以二维数组的形式存储，用于表示图像中的颜色和亮度。 例：一个图像的RGB像素值可以用二维数组表示。 int image[100][100][3]; // 100x100像素的图像，每个像素有RGB三个值 ">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-18T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-18T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数组 array">
+<meta name="twitter:description" content="数组的特点：
+
+固定大小：数组在创建时必须指定大小，一旦定义，大小不能更改。这意味着，如果需要存储更多的数据，必须创建一个新的数组并复制数据。
+元素类型相同：数组中的所有元素必须是相同类型的数据（如整数、字符、浮点数等）。
+按索引访问：数组的每个元素都有一个唯一的索引，索引从0开始，允许直接访问任何元素。
+连续内存：数组的元素在内存中是连续存储的，这使得数组具有较快的访问速度。
+
+数组的缺点：
+
+固定大小：数组一旦创建，其大小是固定的，无法动态扩展。如果数据量超出了原先设定的大小，必须重新分配更大的数组并复制数据，效率较低。
+浪费内存：如果你事先定义的数组大小过大，可能会浪费内存空间；如果大小过小，可能会导致无法存储所有数据。
+插入和删除效率低：数组中的元素是连续存储的，因此在数组中间插入或删除元素时，需要移动大量的数据，效率较低。
+
+示例（C&#43;&#43;）：
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() 
+{
+    // 声明并初始化一个包含5个整数的数组
+    int arr[5] = {1, 2, 3, 4, 5};  
+
+    // 访问数组元素
+    cout &lt;&lt; &#34;数组的第一个元素: &#34; &lt;&lt; arr[0] &lt;&lt; endl;  // 输出 1
+
+    // 修改数组元素
+    arr[2] = 10;  // 将数组中第三个元素修改为 10
+
+    // 输出修改后的数组元素
+    cout &lt;&lt; &#34;修改后的第三个元素: &#34; &lt;&lt; arr[2] &lt;&lt; endl;  // 输出 10
+
+    return 0;
+}
+数组的操作：
+
+访问元素：通过索引访问数组中的元素。例如，arr[3] 访问数组 arr 的第四个元素（索引从0开始）。
+修改元素：通过指定索引修改数组中的元素。例如，arr[1] = 20 将数组中第二个元素的值改为20。
+遍历数组：通过循环遍历数组中的每个元素。例如，使用 for 循环来访问所有元素。
+
+for (int i = 0; i &lt; 5; i&#43;&#43;) 
+{
+    cout &lt;&lt; arr[i] &lt;&lt; &#34; &#34;;
+}
+
+数组初始化：在声明时，你可以通过花括号 {} 初始化数组，或者使用循环动态赋值。
+
+数组的应用：
+
+存储一组相同类型的数据：最常见的应用是存储同类型的数据集合，例如学生的成绩、多个传感器的测量值等。
+
+例：存储班级学生的数学成绩。
+
+
+
+int scores[30];  // 存储30个学生的成绩
+
+实现栈和队列：通过数组可以实现栈（后进先出）和队列（先进先出）的数据结构。
+
+例：使用数组来实现一个队列：
+
+
+
+int queue[100];
+int front = -1, rear = -1;
+
+数据处理和分析：在数据科学和计算机科学中，数组广泛用于存储和处理数据。
+
+例：用数组存储每日气温数据，进行温度变化分析。
+
+
+排序和查找：数组是许多经典排序和查找算法（如冒泡排序、二分查找）的基础数据结构。
+
+例：使用数组进行排序：
+
+
+
+for (int i = 0; i &lt; 5; i&#43;&#43;) 
+{
+    for (int j = 0; j &lt; 5 - i - 1; j&#43;&#43;) 
+    {
+        if (arr[j] &gt; arr[j &#43; 1]) 
+        {
+            swap(arr[j], arr[j &#43; 1]);
+        }
+    }
+}
+
+图像处理：在图像处理中，像素值通常以二维数组的形式存储，用于表示图像中的颜色和亮度。
+
+例：一个图像的RGB像素值可以用二维数组表示。
+
+
+
+int image[100][100][3];  // 100x100像素的图像，每个像素有RGB三个值
+">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "数组 array",
+      "item": "http://localhost:1313/posts/%E6%95%B0%E7%BB%84array/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "数组 array",
+  "name": "数组 array",
+  "description": "数组的特点： 固定大小：数组在创建时必须指定大小，一旦定义，大小不能更改。这意味着，如果需要存储更多的数据，必须创建一个新的数组并复制数据。 元素类型相同：数组中的所有元素必须是相同类型的数据（如整数、字符、浮点数等）。 按索引访问：数组的每个元素都有一个唯一的索引，索引从0开始，允许直接访问任何元素。 连续内存：数组的元素在内存中是连续存储的，这使得数组具有较快的访问速度。 数组的缺点： 固定大小：数组一旦创建，其大小是固定的，无法动态扩展。如果数据量超出了原先设定的大小，必须重新分配更大的数组并复制数据，效率较低。 浪费内存：如果你事先定义的数组大小过大，可能会浪费内存空间；如果大小过小，可能会导致无法存储所有数据。 插入和删除效率低：数组中的元素是连续存储的，因此在数组中间插入或删除元素时，需要移动大量的数据，效率较低。 示例（C++）： #include \u0026lt;iostream\u0026gt; using namespace std; int main() { // 声明并初始化一个包含5个整数的数组 int arr[5] = {1, 2, 3, 4, 5}; // 访问数组元素 cout \u0026lt;\u0026lt; \u0026#34;数组的第一个元素: \u0026#34; \u0026lt;\u0026lt; arr[0] \u0026lt;\u0026lt; endl; // 输出 1 // 修改数组元素 arr[2] = 10; // 将数组中第三个元素修改为 10 // 输出修改后的数组元素 cout \u0026lt;\u0026lt; \u0026#34;修改后的第三个元素: \u0026#34; \u0026lt;\u0026lt; arr[2] \u0026lt;\u0026lt; endl; // 输出 10 return 0; } 数组的操作： 访问元素：通过索引访问数组中的元素。例如，arr[3] 访问数组 arr 的第四个元素（索引从0开始）。 修改元素：通过指定索引修改数组中的元素。例如，arr[1] = 20 将数组中第二个元素的值改为20。 遍历数组：通过循环遍历数组中的每个元素。例如，使用 for 循环来访问所有元素。 for (int i = 0; i \u0026lt; 5; i++) { cout \u0026lt;\u0026lt; arr[i] \u0026lt;\u0026lt; \u0026#34; \u0026#34;; } 数组初始化：在声明时，你可以通过花括号 {} 初始化数组，或者使用循环动态赋值。 数组的应用： 存储一组相同类型的数据：最常见的应用是存储同类型的数据集合，例如学生的成绩、多个传感器的测量值等。 例：存储班级学生的数学成绩。 int scores[30]; // 存储30个学生的成绩 实现栈和队列：通过数组可以实现栈（后进先出）和队列（先进先出）的数据结构。 例：使用数组来实现一个队列： int queue[100]; int front = -1, rear = -1; 数据处理和分析：在数据科学和计算机科学中，数组广泛用于存储和处理数据。 例：用数组存储每日气温数据，进行温度变化分析。 排序和查找：数组是许多经典排序和查找算法（如冒泡排序、二分查找）的基础数据结构。 例：使用数组进行排序： for (int i = 0; i \u0026lt; 5; i++) { for (int j = 0; j \u0026lt; 5 - i - 1; j++) { if (arr[j] \u0026gt; arr[j + 1]) { swap(arr[j], arr[j + 1]); } } } 图像处理：在图像处理中，像素值通常以二维数组的形式存储，用于表示图像中的颜色和亮度。 例：一个图像的RGB像素值可以用二维数组表示。 int image[100][100][3]; // 100x100像素的图像，每个像素有RGB三个值 ",
+  "keywords": [
+    
+  ],
+  "articleBody": "数组的特点： 固定大小：数组在创建时必须指定大小，一旦定义，大小不能更改。这意味着，如果需要存储更多的数据，必须创建一个新的数组并复制数据。 元素类型相同：数组中的所有元素必须是相同类型的数据（如整数、字符、浮点数等）。 按索引访问：数组的每个元素都有一个唯一的索引，索引从0开始，允许直接访问任何元素。 连续内存：数组的元素在内存中是连续存储的，这使得数组具有较快的访问速度。 数组的缺点： 固定大小：数组一旦创建，其大小是固定的，无法动态扩展。如果数据量超出了原先设定的大小，必须重新分配更大的数组并复制数据，效率较低。 浪费内存：如果你事先定义的数组大小过大，可能会浪费内存空间；如果大小过小，可能会导致无法存储所有数据。 插入和删除效率低：数组中的元素是连续存储的，因此在数组中间插入或删除元素时，需要移动大量的数据，效率较低。 示例（C++）： #include using namespace std; int main() { // 声明并初始化一个包含5个整数的数组 int arr[5] = {1, 2, 3, 4, 5}; // 访问数组元素 cout \u003c\u003c \"数组的第一个元素: \" \u003c\u003c arr[0] \u003c\u003c endl; // 输出 1 // 修改数组元素 arr[2] = 10; // 将数组中第三个元素修改为 10 // 输出修改后的数组元素 cout \u003c\u003c \"修改后的第三个元素: \" \u003c\u003c arr[2] \u003c\u003c endl; // 输出 10 return 0; } 数组的操作： 访问元素：通过索引访问数组中的元素。例如，arr[3] 访问数组 arr 的第四个元素（索引从0开始）。 修改元素：通过指定索引修改数组中的元素。例如，arr[1] = 20 将数组中第二个元素的值改为20。 遍历数组：通过循环遍历数组中的每个元素。例如，使用 for 循环来访问所有元素。 for (int i = 0; i \u003c 5; i++) { cout \u003c\u003c arr[i] \u003c\u003c \" \"; } 数组初始化：在声明时，你可以通过花括号 {} 初始化数组，或者使用循环动态赋值。 数组的应用： 存储一组相同类型的数据：最常见的应用是存储同类型的数据集合，例如学生的成绩、多个传感器的测量值等。 例：存储班级学生的数学成绩。 int scores[30]; // 存储30个学生的成绩 实现栈和队列：通过数组可以实现栈（后进先出）和队列（先进先出）的数据结构。 例：使用数组来实现一个队列： int queue[100]; int front = -1, rear = -1; 数据处理和分析：在数据科学和计算机科学中，数组广泛用于存储和处理数据。 例：用数组存储每日气温数据，进行温度变化分析。 排序和查找：数组是许多经典排序和查找算法（如冒泡排序、二分查找）的基础数据结构。 例：使用数组进行排序： for (int i = 0; i \u003c 5; i++) { for (int j = 0; j \u003c 5 - i - 1; j++) { if (arr[j] \u003e arr[j + 1]) { swap(arr[j], arr[j + 1]); } } } 图像处理：在图像处理中，像素值通常以二维数组的形式存储，用于表示图像中的颜色和亮度。 例：一个图像的RGB像素值可以用二维数组表示。 int image[100][100][3]; // 100x100像素的图像，每个像素有RGB三个值 ",
+  "wordCount" : "163",
+  "inLanguage": "en",
+  "datePublished": "2025-02-18T00:00:00Z",
+  "dateModified": "2025-02-18T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Lin Mohan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/%E6%95%B0%E7%BB%84array/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lin Mohan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class=" dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Lin Mohan">
+                <img src="http://localhost:1313/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">Lin Mohan</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/notes/" title="📒 Notes">
+                    <span>📒 Notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/thoughts/" title="💭 Thoughts">
+                    <span>💭 Thoughts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/monthly-report/" title="📈 Monthly Report">
+                    <span>📈 Monthly Report</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="🗂️ Archive">
+                    <span>🗂️ Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/friends/" title="🤝 Friends">
+                    <span>🤝 Friends</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="🔍 Search">
+                    <span>🔍 Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="ℹ️ About">
+                    <span>ℹ️ About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      数组 array
+    </h1>
+    <div class="post-meta"><span title='2025-02-18 00:00:00 +0000 UTC'>February 18, 2025</span>&nbsp;&middot;&nbsp;1 min&nbsp;&middot;&nbsp;Lin Mohan
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#数组的特点">数组的特点：</a></li>
+    <li><a href="#数组的缺点">数组的缺点：</a></li>
+    <li><a href="#示例c">示例（C++）：</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="数组的特点">数组的特点：</h2>
+<ol>
+<li><strong>固定大小</strong>：数组在创建时必须指定大小，一旦定义，大小不能更改。这意味着，如果需要存储更多的数据，必须创建一个新的数组并复制数据。</li>
+<li><strong>元素类型相同</strong>：数组中的所有元素必须是相同类型的数据（如整数、字符、浮点数等）。</li>
+<li><strong>按索引访问</strong>：数组的每个元素都有一个唯一的索引，索引从0开始，允许直接访问任何元素。</li>
+<li><strong>连续内存</strong>：数组的元素在内存中是连续存储的，这使得数组具有较快的访问速度。</li>
+</ol>
+<h2 id="数组的缺点">数组的缺点：</h2>
+<ol>
+<li><strong>固定大小</strong>：数组一旦创建，其大小是固定的，无法动态扩展。如果数据量超出了原先设定的大小，必须重新分配更大的数组并复制数据，效率较低。</li>
+<li><strong>浪费内存</strong>：如果你事先定义的数组大小过大，可能会浪费内存空间；如果大小过小，可能会导致无法存储所有数据。</li>
+<li><strong>插入和删除效率低</strong>：数组中的元素是连续存储的，因此在数组中间插入或删除元素时，需要移动大量的数据，效率较低。</li>
+</ol>
+<h2 id="示例c">示例（C++）：</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#4c8317">#include</span> <span style="color:#4c8317">&lt;iostream&gt;</span><span style="color:#4c8317">
+</span></span></span><span style="display:flex;"><span><span style="color:#4c8317"></span><span style="color:#00a">using</span> <span style="color:#00a">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">int</span> <span style="color:#0a0">main</span>() 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic">// 声明并初始化一个包含5个整数的数组
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    <span style="color:#0aa">int</span> arr[<span style="color:#099">5</span>] = {<span style="color:#099">1</span>, <span style="color:#099">2</span>, <span style="color:#099">3</span>, <span style="color:#099">4</span>, <span style="color:#099">5</span>};  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic">// 访问数组元素
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    cout &lt;&lt; <span style="color:#a50">&#34;数组的第一个元素: &#34;</span> &lt;&lt; arr[<span style="color:#099">0</span>] &lt;&lt; endl;  <span style="color:#aaa;font-style:italic">// 输出 1
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic">// 修改数组元素
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    arr[<span style="color:#099">2</span>] = <span style="color:#099">10</span>;  <span style="color:#aaa;font-style:italic">// 将数组中第三个元素修改为 10
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic">// 输出修改后的数组元素
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>    cout &lt;&lt; <span style="color:#a50">&#34;修改后的第三个元素: &#34;</span> &lt;&lt; arr[<span style="color:#099">2</span>] &lt;&lt; endl;  <span style="color:#aaa;font-style:italic">// 输出 10
+</span></span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">return</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="数组的操作">数组的操作：</h3>
+<ol>
+<li><strong>访问元素</strong>：通过索引访问数组中的元素。例如，<code>arr[3]</code> 访问数组 <code>arr</code> 的第四个元素（索引从0开始）。</li>
+<li><strong>修改元素</strong>：通过指定索引修改数组中的元素。例如，<code>arr[1] = 20</code> 将数组中第二个元素的值改为20。</li>
+<li><strong>遍历数组</strong>：通过循环遍历数组中的每个元素。例如，使用 <code>for</code> 循环来访问所有元素。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a">for</span> (<span style="color:#0aa">int</span> i = <span style="color:#099">0</span>; i &lt; <span style="color:#099">5</span>; i++) 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    cout &lt;&lt; arr[i] &lt;&lt; <span style="color:#a50">&#34; &#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="4">
+<li><strong>数组初始化</strong>：在声明时，你可以通过花括号 <code>{}</code> 初始化数组，或者使用循环动态赋值。</li>
+</ol>
+<h3 id="数组的应用">数组的应用：</h3>
+<ol>
+<li><strong>存储一组相同类型的数据</strong>：最常见的应用是存储同类型的数据集合，例如学生的成绩、多个传感器的测量值等。
+<ul>
+<li>例：存储班级学生的数学成绩。</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#0aa">int</span> scores[<span style="color:#099">30</span>];  <span style="color:#aaa;font-style:italic">// 存储30个学生的成绩
+</span></span></span></code></pre></div><ol start="2">
+<li><strong>实现栈和队列</strong>：通过数组可以实现栈（后进先出）和队列（先进先出）的数据结构。
+<ul>
+<li>例：使用数组来实现一个队列：</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#0aa">int</span> queue[<span style="color:#099">100</span>];
+</span></span><span style="display:flex;"><span><span style="color:#0aa">int</span> front = -<span style="color:#099">1</span>, rear = -<span style="color:#099">1</span>;
+</span></span></code></pre></div><ol start="3">
+<li><strong>数据处理和分析</strong>：在数据科学和计算机科学中，数组广泛用于存储和处理数据。
+<ul>
+<li>例：用数组存储每日气温数据，进行温度变化分析。</li>
+</ul>
+</li>
+<li><strong>排序和查找</strong>：数组是许多经典排序和查找算法（如冒泡排序、二分查找）的基础数据结构。
+<ul>
+<li>例：使用数组进行排序：</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a">for</span> (<span style="color:#0aa">int</span> i = <span style="color:#099">0</span>; i &lt; <span style="color:#099">5</span>; i++) 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">for</span> (<span style="color:#0aa">int</span> j = <span style="color:#099">0</span>; j &lt; <span style="color:#099">5</span> - i - <span style="color:#099">1</span>; j++) 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#00a">if</span> (arr[j] &gt; arr[j + <span style="color:#099">1</span>]) 
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            swap(arr[j], arr[j + <span style="color:#099">1</span>]);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="5">
+<li><strong>图像处理</strong>：在图像处理中，像素值通常以二维数组的形式存储，用于表示图像中的颜色和亮度。
+<ul>
+<li>例：一个图像的RGB像素值可以用二维数组表示。</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#0aa">int</span> image[<span style="color:#099">100</span>][<span style="color:#099">100</span>][<span style="color:#099">3</span>];  <span style="color:#aaa;font-style:italic">// 100x100像素的图像，每个像素有RGB三个值
+</span></span></span></code></pre></div>
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+            <span>&copy; 2025 Lin Mohan</span> · 
+
+    <span>
+        Built with 
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a>.
+    </span>
+
+</footer>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>

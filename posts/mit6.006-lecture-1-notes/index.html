@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>【MIT 6.006】Lecture 1 Notes | Lin Mohan</title>
+<meta name="keywords" content="">
+<meta name="description" content="本文件内容源自麻省理工学院开放课程资料平台，根据官方英文讲义翻译而成，由 ChatGPT 初步翻译，并经人工精校润色。打印版参见：https://linmoh.github.io/mit6.006/l1.html
+
+算法导论：6.006
+麻省理工学院
+讲师：Erik Demaine、Jason Ku 和 Justin Solomon
+讲座 1：导论
+本课程的目标是教会你如何解决计算问题，并说明你的解决方案是正确且高效的。
+问题
+
+
+问题输入与正确输出之间的二元关系
+
+
+通常不会为所有输入指定每一个正确输出（太多了！）
+
+
+提供一个可验证的谓词（属性），正确输出必须满足它
+
+
+6.006 研究的是大规模、通用输入空间上的问题
+
+
+非通用：小输入实例
+
+例子：这个房间里是否有两位同生日的学生？
+
+
+
+通用：任意大的输入
+
+例子：给定任意 n 位学生，是否存在一对同生日的学生？
+若生日只在 365 天中选，对于 n &gt; 365，根据鸽巢原理，答案一定为真
+假设生日的精度超过 n（包含年份、时间等）
+
+
+
+算法
+
+
+一个过程：将每个输入映射到一个输出（确定性）
+
+
+若算法对每个问题输入都返回正确输出，则称其解决了该问题
+
+
+例子：一个解决同生日问题的算法
+
+保持一个姓名和生日的记录（初始为空）
+按某个顺序询问每个学生
+∗ 若生日已在记录中，返回这对学生！
+∗ 否则，将姓名和生日加入记录
+若全部学生都询问完仍无结果，则返回 None
+
+
+
+正确性
+
+
+程序/算法是有限大小，如何证明其正确？
+
+
+对于小输入，可使用情况分析
+
+
+对于任意大的输入，算法必须以某种方式使用递归或循环
+
+
+必须使用数学归纳法（递归在计算机科学中的关键原因）
+
+
+例子：生日匹配算法的正确性证明
+
+对 k 归纳：记录中已有的学生数量
+假设：若前 k 位中有匹配，算法在询问第 k&#43;1 位前就返回
+基础情况：k = 0，前 k 位无匹配
+假设归纳假设对 k = k₀ 成立，考虑 k = k₀ &#43; 1
+若前 k₀ 位已有匹配，算法已返回（由归纳）
+否则，若前 k₀ &#43; 1 位有匹配，匹配一定包含第 k₀ &#43; 1 位
+那么算法直接检查第 k₀ &#43; 1 位学生的生日是否已在记录中
+
+
+
+效率
+
+
+算法生成正确输出的速度有多快？">
+<meta name="author" content="Lin Mohan">
+<link rel="canonical" href="http://localhost:1313/posts/mit6.006-lecture-1-notes/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fe613e7f063ee47b50be6d3cdd37d9a40f7ea043e6255a4b79a840557d1e605c.css" integrity="sha256-/mE&#43;fwY&#43;5HtQvm083TfZpA9&#43;oEPmJVpLeahAVX0eYFw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/mit6.006-lecture-1-notes/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="http://localhost:1313/posts/mit6.006-lecture-1-notes/">
+  <meta property="og:site_name" content="Lin Mohan">
+  <meta property="og:title" content="【MIT 6.006】Lecture 1 Notes">
+  <meta property="og:description" content="本文件内容源自麻省理工学院开放课程资料平台，根据官方英文讲义翻译而成，由 ChatGPT 初步翻译，并经人工精校润色。打印版参见：https://linmoh.github.io/mit6.006/l1.html
+算法导论：6.006
+麻省理工学院
+讲师：Erik Demaine、Jason Ku 和 Justin Solomon
+讲座 1：导论 本课程的目标是教会你如何解决计算问题，并说明你的解决方案是正确且高效的。
+问题 问题输入与正确输出之间的二元关系
+通常不会为所有输入指定每一个正确输出（太多了！）
+提供一个可验证的谓词（属性），正确输出必须满足它
+6.006 研究的是大规模、通用输入空间上的问题
+非通用：小输入实例
+例子：这个房间里是否有两位同生日的学生？ 通用：任意大的输入
+例子：给定任意 n 位学生，是否存在一对同生日的学生？ 若生日只在 365 天中选，对于 n &gt; 365，根据鸽巢原理，答案一定为真 假设生日的精度超过 n（包含年份、时间等） 算法 一个过程：将每个输入映射到一个输出（确定性）
+若算法对每个问题输入都返回正确输出，则称其解决了该问题
+例子：一个解决同生日问题的算法
+保持一个姓名和生日的记录（初始为空） 按某个顺序询问每个学生 ∗ 若生日已在记录中，返回这对学生！ ∗ 否则，将姓名和生日加入记录 若全部学生都询问完仍无结果，则返回 None 正确性 程序/算法是有限大小，如何证明其正确？
+对于小输入，可使用情况分析
+对于任意大的输入，算法必须以某种方式使用递归或循环
+必须使用数学归纳法（递归在计算机科学中的关键原因）
+例子：生日匹配算法的正确性证明
+对 k 归纳：记录中已有的学生数量 假设：若前 k 位中有匹配，算法在询问第 k&#43;1 位前就返回 基础情况：k = 0，前 k 位无匹配 假设归纳假设对 k = k₀ 成立，考虑 k = k₀ &#43; 1 若前 k₀ 位已有匹配，算法已返回（由归纳） 否则，若前 k₀ &#43; 1 位有匹配，匹配一定包含第 k₀ &#43; 1 位 那么算法直接检查第 k₀ &#43; 1 位学生的生日是否已在记录中 效率 算法生成正确输出的速度有多快？">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-01T00:00:00+08:00">
+    <meta property="article:modified_time" content="2025-06-01T00:00:00+08:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【MIT 6.006】Lecture 1 Notes">
+<meta name="twitter:description" content="本文件内容源自麻省理工学院开放课程资料平台，根据官方英文讲义翻译而成，由 ChatGPT 初步翻译，并经人工精校润色。打印版参见：https://linmoh.github.io/mit6.006/l1.html
+
+算法导论：6.006
+麻省理工学院
+讲师：Erik Demaine、Jason Ku 和 Justin Solomon
+讲座 1：导论
+本课程的目标是教会你如何解决计算问题，并说明你的解决方案是正确且高效的。
+问题
+
+
+问题输入与正确输出之间的二元关系
+
+
+通常不会为所有输入指定每一个正确输出（太多了！）
+
+
+提供一个可验证的谓词（属性），正确输出必须满足它
+
+
+6.006 研究的是大规模、通用输入空间上的问题
+
+
+非通用：小输入实例
+
+例子：这个房间里是否有两位同生日的学生？
+
+
+
+通用：任意大的输入
+
+例子：给定任意 n 位学生，是否存在一对同生日的学生？
+若生日只在 365 天中选，对于 n &gt; 365，根据鸽巢原理，答案一定为真
+假设生日的精度超过 n（包含年份、时间等）
+
+
+
+算法
+
+
+一个过程：将每个输入映射到一个输出（确定性）
+
+
+若算法对每个问题输入都返回正确输出，则称其解决了该问题
+
+
+例子：一个解决同生日问题的算法
+
+保持一个姓名和生日的记录（初始为空）
+按某个顺序询问每个学生
+∗ 若生日已在记录中，返回这对学生！
+∗ 否则，将姓名和生日加入记录
+若全部学生都询问完仍无结果，则返回 None
+
+
+
+正确性
+
+
+程序/算法是有限大小，如何证明其正确？
+
+
+对于小输入，可使用情况分析
+
+
+对于任意大的输入，算法必须以某种方式使用递归或循环
+
+
+必须使用数学归纳法（递归在计算机科学中的关键原因）
+
+
+例子：生日匹配算法的正确性证明
+
+对 k 归纳：记录中已有的学生数量
+假设：若前 k 位中有匹配，算法在询问第 k&#43;1 位前就返回
+基础情况：k = 0，前 k 位无匹配
+假设归纳假设对 k = k₀ 成立，考虑 k = k₀ &#43; 1
+若前 k₀ 位已有匹配，算法已返回（由归纳）
+否则，若前 k₀ &#43; 1 位有匹配，匹配一定包含第 k₀ &#43; 1 位
+那么算法直接检查第 k₀ &#43; 1 位学生的生日是否已在记录中
+
+
+
+效率
+
+
+算法生成正确输出的速度有多快？">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "【MIT 6.006】Lecture 1 Notes",
+      "item": "http://localhost:1313/posts/mit6.006-lecture-1-notes/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【MIT 6.006】Lecture 1 Notes",
+  "name": "【MIT 6.006】Lecture 1 Notes",
+  "description": "本文件内容源自麻省理工学院开放课程资料平台，根据官方英文讲义翻译而成，由 ChatGPT 初步翻译，并经人工精校润色。打印版参见：https://linmoh.github.io/mit6.006/l1.html\n算法导论：6.006\n麻省理工学院\n讲师：Erik Demaine、Jason Ku 和 Justin Solomon\n讲座 1：导论 本课程的目标是教会你如何解决计算问题，并说明你的解决方案是正确且高效的。\n问题 问题输入与正确输出之间的二元关系\n通常不会为所有输入指定每一个正确输出（太多了！）\n提供一个可验证的谓词（属性），正确输出必须满足它\n6.006 研究的是大规模、通用输入空间上的问题\n非通用：小输入实例\n例子：这个房间里是否有两位同生日的学生？ 通用：任意大的输入\n例子：给定任意 n 位学生，是否存在一对同生日的学生？ 若生日只在 365 天中选，对于 n \u0026gt; 365，根据鸽巢原理，答案一定为真 假设生日的精度超过 n（包含年份、时间等） 算法 一个过程：将每个输入映射到一个输出（确定性）\n若算法对每个问题输入都返回正确输出，则称其解决了该问题\n例子：一个解决同生日问题的算法\n保持一个姓名和生日的记录（初始为空） 按某个顺序询问每个学生 ∗ 若生日已在记录中，返回这对学生！ ∗ 否则，将姓名和生日加入记录 若全部学生都询问完仍无结果，则返回 None 正确性 程序/算法是有限大小，如何证明其正确？\n对于小输入，可使用情况分析\n对于任意大的输入，算法必须以某种方式使用递归或循环\n必须使用数学归纳法（递归在计算机科学中的关键原因）\n例子：生日匹配算法的正确性证明\n对 k 归纳：记录中已有的学生数量 假设：若前 k 位中有匹配，算法在询问第 k+1 位前就返回 基础情况：k = 0，前 k 位无匹配 假设归纳假设对 k = k₀ 成立，考虑 k = k₀ + 1 若前 k₀ 位已有匹配，算法已返回（由归纳） 否则，若前 k₀ + 1 位有匹配，匹配一定包含第 k₀ + 1 位 那么算法直接检查第 k₀ + 1 位学生的生日是否已在记录中 效率 算法生成正确输出的速度有多快？\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "本文件内容源自麻省理工学院开放课程资料平台，根据官方英文讲义翻译而成，由 ChatGPT 初步翻译，并经人工精校润色。打印版参见：https://linmoh.github.io/mit6.006/l1.html\n算法导论：6.006\n麻省理工学院\n讲师：Erik Demaine、Jason Ku 和 Justin Solomon\n讲座 1：导论 本课程的目标是教会你如何解决计算问题，并说明你的解决方案是正确且高效的。\n问题 问题输入与正确输出之间的二元关系\n通常不会为所有输入指定每一个正确输出（太多了！）\n提供一个可验证的谓词（属性），正确输出必须满足它\n6.006 研究的是大规模、通用输入空间上的问题\n非通用：小输入实例\n例子：这个房间里是否有两位同生日的学生？ 通用：任意大的输入\n例子：给定任意 n 位学生，是否存在一对同生日的学生？ 若生日只在 365 天中选，对于 n \u003e 365，根据鸽巢原理，答案一定为真 假设生日的精度超过 n（包含年份、时间等） 算法 一个过程：将每个输入映射到一个输出（确定性）\n若算法对每个问题输入都返回正确输出，则称其解决了该问题\n例子：一个解决同生日问题的算法\n保持一个姓名和生日的记录（初始为空） 按某个顺序询问每个学生 ∗ 若生日已在记录中，返回这对学生！ ∗ 否则，将姓名和生日加入记录 若全部学生都询问完仍无结果，则返回 None 正确性 程序/算法是有限大小，如何证明其正确？\n对于小输入，可使用情况分析\n对于任意大的输入，算法必须以某种方式使用递归或循环\n必须使用数学归纳法（递归在计算机科学中的关键原因）\n例子：生日匹配算法的正确性证明\n对 k 归纳：记录中已有的学生数量 假设：若前 k 位中有匹配，算法在询问第 k+1 位前就返回 基础情况：k = 0，前 k 位无匹配 假设归纳假设对 k = k₀ 成立，考虑 k = k₀ + 1 若前 k₀ 位已有匹配，算法已返回（由归纳） 否则，若前 k₀ + 1 位有匹配，匹配一定包含第 k₀ + 1 位 那么算法直接检查第 k₀ + 1 位学生的生日是否已在记录中 效率 算法生成正确输出的速度有多快？\n可用时间测量，但希望性能不依赖于机器 想法！统计算法返回前执行的固定时间操作数 通常依赖输入大小：输入越大，时间越长 输入大小通常称为 n，但不总是！ 若算法以多项式时间返回，则称其为高效 有时某些问题不存在高效算法！（参见第 20 讲） 渐进符号（Asymptotic Notation）：忽略常数因子与低阶项\n上界 (O)、下界 (Ω)、紧界 (Θ) 时间估计基于：1GHz 单核机器，每周期执行一次操作 宇宙中的粒子数估计 \u003c 10¹⁰⁰ 输入规模 常数 对数 线性 对数线性 二次 多项式 指数 n Θ(1) Θ(log n) Θ(n) Θ(n log n) Θ(n²) Θ(n^c) 2^Θ(n^c) 1000 1 ≈ 10 1000 ≈ 10,000 1,000,000 1000^c 2^1000 ≈ 10^301 Time 1 ns 10 ns 1 µs 10 µs 1 ms 10^(3c−9) s 10^281 millenia 计算模型 指定机器能以 O(1) 时间执行哪些操作\n本课程使用的模型称为 Word-RAM\n机器字：w 位的块（w 为字长）\n内存：可寻址的机器字序列\n处理器支持对 O(1) 数量的机器字执行许多 O(1) 时间操作：\n整数运算：(+、-、*、//、%) 逻辑操作符：(\u0026\u0026, ||, !, ==, \u003c, \u003e, \u003c=, \u003e=) 位运算：(\u0026, |, «, », …) 给定地址 a：可读取、写入地址 a 的机器字 内存地址必须能访问内存中所有位置\n要求：w ≥ 表示最大地址所需的位数，即 log₂n 32 位字 → 最多约 4GB 内存 64 位字 → 最多约 16EB 内存 Python 是一个更复杂的计算模型，基于 Word-RAM 实现\n数据结构 数据结构是一种用于存储非常量数据，并支持一组操作的方法\n一组操作称为接口\nSequence（序列）：外在顺序（第一个、最后一个、第 n 个） Set（集合）：内在属性排序（基于键的查询） 同一接口可能由不同数据结构实现，性能也不同\n例子：静态数组（Static Array）\n固定宽度槽位，固定长度，静态序列接口 StaticArray(n)：分配大小为 n 的静态数组并初始化为 0，耗时 Θ(n) StaticArray.get_at(i)：返回索引 i 处的值，耗时 Θ(1) StaticArray.set_at(i, x)：将 x 写入索引 i，耗时 Θ(1) 存储的机器字也可存放更大对象的地址 类似 Python 的 tuple 加上 set_at(i, x)\nPython list 是动态数组（详见第 2 讲）\n示例代码：生日匹配 def birthday_match(students): ''' 找到一对同生日的学生 输入：由 (name, bday) 元组构成的元组 输出：学生姓名组成的元组或 None ''' n = len(students) # O(1) record = StaticArray(n) # O(n) for k in range(n): # n (name1, bday1) = students[k] # O(1) # 若生日已在记录中，返回这对学生 for i in range(k): # k (name2, bday2) = record.get_at(i) # O(1) if bday1 == bday2: # O(1) return (name1, name2) # O(1) record.set_at(k, (name1, bday1)) # O(1) return None # O(1) 示例：运行时间分析 两层循环：外层 k ∈ {0, …, n−1}，内层 i ∈ {0, …, k}\n运行时间为：O(n) + ∑ₖ₌₀ⁿ⁻¹ (O(1) + k·O(1)) = O(n²)\nn 的二次方是多项式时间，算高效吗？\n改用其他数据结构来优化 record！ 如何解决算法问题 转化为你已知的问题（使用数据结构或算法） 搜索问题（数据结构） 排序算法 最短路径算法 Static Array (L01) Insertion Sort (L03) BFS (L09) Linked List (L02) Selection Sort (L03) DAG Relax (L11) Dynamic Array (L02) Merge Sort (L03) DFS (L10) Sorted Array (L03) Counting Sort (L05) Topo Sort (L10) Direct-Access Array (L04) Radix Sort (L05) Bellman-Ford (L12) Hash Table (L04) AVL Sort (L07) Dijkstra (L13) Balanced BST (L06-L07) Heap Sort (L08) Johnson (L14) Binary Heap (L08) Floyd-Warshall (L18) 自行设计（递归）算法\n暴力破解 减而治之 分治 动态规划（第 15–19 讲） 贪心 / 增量法 MIT 开放式课程资料平台 https://ocw.mit.edu 6.006 《算法导论》 2020 春季学期\n如需引用材料或查看使用条款，请访问： https://ocw.mit.edu/terms\n",
+  "wordCount" : "432",
+  "inLanguage": "en",
+  "datePublished": "2025-06-01T00:00:00+08:00",
+  "dateModified": "2025-06-01T00:00:00+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Lin Mohan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/mit6.006-lecture-1-notes/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lin Mohan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class=" dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Lin Mohan">
+                <img src="http://localhost:1313/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">Lin Mohan</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/notes/" title="📒 Notes">
+                    <span>📒 Notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/thoughts/" title="💭 Thoughts">
+                    <span>💭 Thoughts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/monthly-report/" title="📈 Monthly Report">
+                    <span>📈 Monthly Report</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="🗂️ Archive">
+                    <span>🗂️ Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/friends/" title="🤝 Friends">
+                    <span>🤝 Friends</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="🔍 Search">
+                    <span>🔍 Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="ℹ️ About">
+                    <span>ℹ️ About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      【MIT 6.006】Lecture 1 Notes
+    </h1>
+    <div class="post-meta"><span title='2025-06-01 00:00:00 +0800 CST'>June 1, 2025</span>&nbsp;&middot;&nbsp;3 min&nbsp;&middot;&nbsp;Lin Mohan
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>本文件内容源自<a href="https://ocw.mit.edu" target="_blank">麻省理工学院开放课程资料平台</a>，根据官方英文讲义翻译而成，由 ChatGPT 初步翻译，并经人工精校润色。打印版参见：<a href="https://linmoh.github.io/mit6.006/l1.html" target="_blank">https://linmoh.github.io/mit6.006/l1.html</a></p>
+<hr>
+<p><strong>算法导论：6.006</strong></p>
+<p><strong>麻省理工学院</strong></p>
+<p><strong>讲师：Erik Demaine、Jason Ku 和 Justin Solomon</strong></p>
+<h1 id="讲座-1导论"><strong>讲座 1：导论</strong></h1>
+<p>本课程的目标是教会你如何解决计算问题，并说明你的解决方案是<strong>正确</strong>且<strong>高效</strong>的。</p>
+<h3 id="问题">问题</h3>
+<ul>
+<li>
+<p>问题输入与正确输出之间的二元关系</p>
+</li>
+<li>
+<p>通常不会为所有输入指定每一个正确输出（太多了！）</p>
+</li>
+<li>
+<p>提供一个可验证的谓词（属性），正确输出必须满足它</p>
+</li>
+<li>
+<p>6.006 研究的是<strong>大规模、通用输入空间</strong>上的问题</p>
+</li>
+<li>
+<p>非通用：小输入实例</p>
+<ul>
+<li>例子：这个房间里是否有两位同生日的学生？</li>
+</ul>
+</li>
+<li>
+<p>通用：任意大的输入</p>
+<ul>
+<li>例子：给定任意 n 位学生，是否存在一对同生日的学生？</li>
+<li>若生日只在 365 天中选，对于 n &gt; 365，根据鸽巢原理，答案一定为真</li>
+<li>假设生日的精度超过 n（包含年份、时间等）</li>
+</ul>
+</li>
+</ul>
+<h3 id="算法">算法</h3>
+<ul>
+<li>
+<p>一个过程：将每个输入映射到一个输出（确定性）</p>
+</li>
+<li>
+<p>若算法对每个问题输入都返回正确输出，则称其<strong>解决了该问题</strong></p>
+</li>
+<li>
+<p>例子：一个解决同生日问题的算法</p>
+<ul>
+<li>保持一个姓名和生日的记录（初始为空）</li>
+<li>按某个顺序询问每个学生
+∗ 若生日已在记录中，返回这对学生！
+∗ 否则，将姓名和生日加入记录</li>
+<li>若全部学生都询问完仍无结果，则返回 None</li>
+</ul>
+</li>
+</ul>
+<h3 id="正确性">正确性</h3>
+<ul>
+<li>
+<p>程序/算法是有限大小，如何证明其正确？</p>
+</li>
+<li>
+<p>对于小输入，可使用<strong>情况分析</strong></p>
+</li>
+<li>
+<p>对于任意大的输入，算法必须以某种方式使用<strong>递归</strong>或<strong>循环</strong></p>
+</li>
+<li>
+<p>必须使用<strong>数学归纳法</strong>（递归在计算机科学中的关键原因）</p>
+</li>
+<li>
+<p>例子：生日匹配算法的正确性证明</p>
+<ul>
+<li>对 k 归纳：记录中已有的学生数量</li>
+<li>假设：若前 k 位中有匹配，算法在询问第 k+1 位前就返回</li>
+<li>基础情况：k = 0，前 k 位无匹配</li>
+<li>假设归纳假设对 k = k₀ 成立，考虑 k = k₀ + 1</li>
+<li>若前 k₀ 位已有匹配，算法已返回（由归纳）</li>
+<li>否则，若前 k₀ + 1 位有匹配，匹配一定包含第 k₀ + 1 位</li>
+<li>那么算法直接检查第 k₀ + 1 位学生的生日是否已在记录中</li>
+</ul>
+</li>
+</ul>
+<h3 id="效率">效率</h3>
+<ul>
+<li>
+<p>算法生成正确输出的速度有多快？</p>
+<ul>
+<li>可用时间测量，但希望性能<strong>不依赖于机器</strong></li>
+<li>想法！统计算法返回前执行的固定时间操作数</li>
+<li>通常依赖输入大小：输入越大，时间越长</li>
+<li>输入大小通常称为 <code>n</code>，但不总是！</li>
+<li>若算法以<strong>多项式时间</strong>返回，则称其为高效</li>
+<li>有时某些问题<strong>不存在高效算法</strong>！（参见第 20 讲）</li>
+</ul>
+</li>
+<li>
+<p>渐进符号（Asymptotic Notation）：忽略常数因子与低阶项</p>
+<ul>
+<li>上界 (O)、下界 (Ω)、紧界 (Θ)</li>
+<li>时间估计基于：1GHz 单核机器，每周期执行一次操作</li>
+<li>宇宙中的粒子数估计 &lt; 10¹⁰⁰</li>
+</ul>
+</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>输入规模</th>
+          <th>常数</th>
+          <th>对数</th>
+          <th>线性</th>
+          <th>对数线性</th>
+          <th>二次</th>
+          <th>多项式</th>
+          <th>指数</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>n</code></td>
+          <td>Θ(1)</td>
+          <td>Θ(log n)</td>
+          <td>Θ(n)</td>
+          <td>Θ(n log n)</td>
+          <td>Θ(n²)</td>
+          <td>Θ(n^c)</td>
+          <td>2^Θ(n^c)</td>
+      </tr>
+      <tr>
+          <td>1000</td>
+          <td>1</td>
+          <td>≈ 10</td>
+          <td>1000</td>
+          <td>≈ 10,000</td>
+          <td>1,000,000</td>
+          <td>1000^c</td>
+          <td>2^1000 ≈ 10^301</td>
+      </tr>
+      <tr>
+          <td>Time</td>
+          <td>1 ns</td>
+          <td>10 ns</td>
+          <td>1 µs</td>
+          <td>10 µs</td>
+          <td>1 ms</td>
+          <td>10^(3c−9) s</td>
+          <td>10^281 millenia</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="计算模型">计算模型</h3>
+<ul>
+<li>
+<p>指定机器能以 O(1) 时间执行哪些操作</p>
+</li>
+<li>
+<p>本课程使用的模型称为 <strong>Word-RAM</strong></p>
+</li>
+<li>
+<p>机器字：w 位的块（w 为字长）</p>
+</li>
+<li>
+<p>内存：可寻址的机器字序列</p>
+</li>
+<li>
+<p>处理器支持对 O(1) 数量的机器字执行许多 O(1) 时间操作：</p>
+<ul>
+<li>整数运算：(+、-、*、//、%)</li>
+<li>逻辑操作符：(&amp;&amp;, ||, !, ==, &lt;, &gt;, &lt;=, &gt;=)</li>
+<li>位运算：(&amp;, |, &laquo;, &raquo;, &hellip;)</li>
+<li>给定地址 a：可读取、写入地址 a 的机器字</li>
+</ul>
+</li>
+<li>
+<p>内存地址必须能访问内存中所有位置</p>
+<ul>
+<li>要求：w ≥ 表示最大地址所需的位数，即 log₂n</li>
+<li>32 位字 → 最多约 4GB 内存</li>
+<li>64 位字 → 最多约 16EB 内存</li>
+</ul>
+</li>
+<li>
+<p>Python 是一个更复杂的计算模型，<strong>基于 Word-RAM 实现</strong></p>
+</li>
+</ul>
+<h3 id="数据结构">数据结构</h3>
+<ul>
+<li>
+<p>数据结构是一种用于存储<strong>非常量数据</strong>，并支持一组操作的方法</p>
+</li>
+<li>
+<p>一组操作称为<strong>接口</strong></p>
+<ul>
+<li>Sequence（序列）：外在顺序（第一个、最后一个、第 n 个）</li>
+<li>Set（集合）：内在属性排序（基于键的查询）</li>
+</ul>
+</li>
+<li>
+<p>同一接口可能由不同数据结构实现，性能也不同</p>
+</li>
+<li>
+<p>例子：静态数组（Static Array）</p>
+<ul>
+<li>固定宽度槽位，固定长度，静态序列接口</li>
+<li><code>StaticArray(n)</code>：分配大小为 n 的静态数组并初始化为 0，耗时 Θ(n)</li>
+<li><code>StaticArray.get_at(i)</code>：返回索引 i 处的值，耗时 Θ(1)</li>
+<li><code>StaticArray.set_at(i, x)</code>：将 x 写入索引 i，耗时 Θ(1)</li>
+<li>存储的机器字也可存放更大对象的地址</li>
+</ul>
+</li>
+<li>
+<p>类似 Python 的 tuple 加上 set_at(i, x)</p>
+</li>
+<li>
+<p>Python list 是<strong>动态数组</strong>（详见第 2 讲）</p>
+</li>
+</ul>
+<h3 id="示例代码生日匹配">示例代码：生日匹配</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">def</span> <span style="color:#0a0">birthday_match</span>(students):
+</span></span><span style="display:flex;"><span>    <span style="color:#a50">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#a50">    找到一对同生日的学生
+</span></span></span><span style="display:flex;"><span><span style="color:#a50">    输入：由 (name, bday) 元组构成的元组
+</span></span></span><span style="display:flex;"><span><span style="color:#a50">    输出：学生姓名组成的元组或 None
+</span></span></span><span style="display:flex;"><span><span style="color:#a50">    &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    n = <span style="color:#0aa">len</span>(students)            <span style="color:#aaa;font-style:italic"># O(1)</span>
+</span></span><span style="display:flex;"><span>    record = StaticArray(n)      <span style="color:#aaa;font-style:italic"># O(n)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">for</span> k <span style="color:#00a">in</span> <span style="color:#0aa">range</span>(n):           <span style="color:#aaa;font-style:italic"># n</span>
+</span></span><span style="display:flex;"><span>        (name1, bday1) = students[k]  <span style="color:#aaa;font-style:italic"># O(1)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#aaa;font-style:italic"># 若生日已在记录中，返回这对学生</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a">for</span> i <span style="color:#00a">in</span> <span style="color:#0aa">range</span>(k):       <span style="color:#aaa;font-style:italic"># k</span>
+</span></span><span style="display:flex;"><span>            (name2, bday2) = record.get_at(i)  <span style="color:#aaa;font-style:italic"># O(1)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a">if</span> bday1 == bday2:   <span style="color:#aaa;font-style:italic"># O(1)</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a">return</span> (name1, name2)  <span style="color:#aaa;font-style:italic"># O(1)</span>
+</span></span><span style="display:flex;"><span>        record.set_at(k, (name1, bday1))  <span style="color:#aaa;font-style:italic"># O(1)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">return</span> <span style="color:#00a">None</span>                  <span style="color:#aaa;font-style:italic"># O(1)</span>
+</span></span></code></pre></div><h3 id="示例运行时间分析">示例：运行时间分析</h3>
+<ul>
+<li>
+<p>两层循环：外层 k ∈ {0, &hellip;, n−1}，内层 i ∈ {0, &hellip;, k}</p>
+</li>
+<li>
+<p>运行时间为：O(n) + ∑ₖ₌₀ⁿ⁻¹ (O(1) + k·O(1)) = O(n²)</p>
+</li>
+<li>
+<p>n 的二次方是<strong>多项式时间</strong>，算高效吗？</p>
+<ul>
+<li>改用其他数据结构来优化 record！</li>
+</ul>
+</li>
+</ul>
+<h3 id="如何解决算法问题">如何解决算法问题</h3>
+<ol>
+<li><strong>转化为你已知的问题</strong>（使用数据结构或算法）</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th>搜索问题（数据结构）</th>
+          <th>排序算法</th>
+          <th>最短路径算法</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Static Array (L01)</td>
+          <td>Insertion Sort (L03)</td>
+          <td>BFS (L09)</td>
+      </tr>
+      <tr>
+          <td>Linked List (L02)</td>
+          <td>Selection Sort (L03)</td>
+          <td>DAG Relax (L11)</td>
+      </tr>
+      <tr>
+          <td>Dynamic Array (L02)</td>
+          <td>Merge Sort (L03)</td>
+          <td>DFS (L10)</td>
+      </tr>
+      <tr>
+          <td>Sorted Array (L03)</td>
+          <td>Counting Sort (L05)</td>
+          <td>Topo Sort (L10)</td>
+      </tr>
+      <tr>
+          <td>Direct-Access Array (L04)</td>
+          <td>Radix Sort (L05)</td>
+          <td>Bellman-Ford (L12)</td>
+      </tr>
+      <tr>
+          <td>Hash Table (L04)</td>
+          <td>AVL Sort (L07)</td>
+          <td>Dijkstra (L13)</td>
+      </tr>
+      <tr>
+          <td>Balanced BST (L06-L07)</td>
+          <td>Heap Sort (L08)</td>
+          <td>Johnson (L14)</td>
+      </tr>
+      <tr>
+          <td>Binary Heap (L08)</td>
+          <td></td>
+          <td>Floyd-Warshall (L18)</td>
+      </tr>
+  </tbody>
+</table>
+<ol start="2">
+<li>
+<p><strong>自行设计（递归）算法</strong></p>
+<ul>
+<li>暴力破解</li>
+<li>减而治之</li>
+<li>分治</li>
+<li><strong>动态规划</strong>（第 15–19 讲）</li>
+<li>贪心 / 增量法</li>
+</ul>
+</li>
+</ol>
+<p>MIT 开放式课程资料平台
+<a href="https://ocw.mit.edu" target="_blank">https://ocw.mit.edu</a>
+6.006 《算法导论》
+2020 春季学期</p>
+<p>如需引用材料或查看使用条款，请访问： <a href="https://ocw.mit.edu/terms" target="_blank">https://ocw.mit.edu/terms</a></p>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+            <span>&copy; 2025 Lin Mohan</span> · 
+
+    <span>
+        Built with 
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a>.
+    </span>
+
+</footer>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>
