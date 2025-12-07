@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>我掌握的技术栈 | Lin Mohan</title>
+<meta name="keywords" content="">
+<meta name="description" content="🖥️ 操作系统
+
+Windows 系列：Windows XP、Windows 7、Windows 8、Windows 10、Windows 11
+macOS
+Linux 发行版：Ubuntu、Arch Linux、Kali
+BSD 系列：OpenBSD
+
+💻 编程语言
+
+C&#43;&#43;
+Python
+JavaScript
+HTML / CSS
+
+🛠️ 工具与框架
+
+Adobe Photoshop
+Blender
+Adobe Illustrator
+Hexo
+Hugo
+Unreal Engine 4 / 5
+
+⚙️ 常用开发环境
+
+主力系统：Arch Linux
+IDE：Visual Studio、VS Code
+构建工具：g&#43;&#43;
+版本控制：Git、GitHub
+终端工具：zsh
+
+🐧 Linux 运维经验
+
+基础操作：系统安装、用户权限、挂载、软件包管理（pacman / apt）
+服务管理：使用 systemd、配置 SSH、Nginx 等服务
+熟悉基本的日志查看与问题排查方法
+
+🎮 小插曲：做过一款“胎死腹中”的游戏
+曾尝试使用 Unreal Engine 5 开发一款游戏，但因为队友太拉，项目草草结束。
+但也因此接触到了虚幻引擎的蓝图系统和关卡搭建，对游戏开发产生了一定兴趣。">
+<meta name="author" content="Lin Mohan">
+<link rel="canonical" href="http://localhost:1313/posts/%E6%88%91%E6%8E%8C%E6%8F%A1%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A0%88/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fe613e7f063ee47b50be6d3cdd37d9a40f7ea043e6255a4b79a840557d1e605c.css" integrity="sha256-/mE&#43;fwY&#43;5HtQvm083TfZpA9&#43;oEPmJVpLeahAVX0eYFw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/%E6%88%91%E6%8E%8C%E6%8F%A1%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A0%88/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="http://localhost:1313/posts/%E6%88%91%E6%8E%8C%E6%8F%A1%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A0%88/">
+  <meta property="og:site_name" content="Lin Mohan">
+  <meta property="og:title" content="我掌握的技术栈">
+  <meta property="og:description" content="🖥️ 操作系统 Windows 系列：Windows XP、Windows 7、Windows 8、Windows 10、Windows 11 macOS Linux 发行版：Ubuntu、Arch Linux、Kali BSD 系列：OpenBSD 💻 编程语言 C&#43;&#43; Python JavaScript HTML / CSS 🛠️ 工具与框架 Adobe Photoshop Blender Adobe Illustrator Hexo Hugo Unreal Engine 4 / 5 ⚙️ 常用开发环境 主力系统：Arch Linux IDE：Visual Studio、VS Code 构建工具：g&#43;&#43; 版本控制：Git、GitHub 终端工具：zsh 🐧 Linux 运维经验 基础操作：系统安装、用户权限、挂载、软件包管理（pacman / apt） 服务管理：使用 systemd、配置 SSH、Nginx 等服务 熟悉基本的日志查看与问题排查方法 🎮 小插曲：做过一款“胎死腹中”的游戏 曾尝试使用 Unreal Engine 5 开发一款游戏，但因为队友太拉，项目草草结束。
+但也因此接触到了虚幻引擎的蓝图系统和关卡搭建，对游戏开发产生了一定兴趣。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-02T14:19:00+08:00">
+    <meta property="article:modified_time" content="2025-06-02T14:19:00+08:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我掌握的技术栈">
+<meta name="twitter:description" content="🖥️ 操作系统
+
+Windows 系列：Windows XP、Windows 7、Windows 8、Windows 10、Windows 11
+macOS
+Linux 发行版：Ubuntu、Arch Linux、Kali
+BSD 系列：OpenBSD
+
+💻 编程语言
+
+C&#43;&#43;
+Python
+JavaScript
+HTML / CSS
+
+🛠️ 工具与框架
+
+Adobe Photoshop
+Blender
+Adobe Illustrator
+Hexo
+Hugo
+Unreal Engine 4 / 5
+
+⚙️ 常用开发环境
+
+主力系统：Arch Linux
+IDE：Visual Studio、VS Code
+构建工具：g&#43;&#43;
+版本控制：Git、GitHub
+终端工具：zsh
+
+🐧 Linux 运维经验
+
+基础操作：系统安装、用户权限、挂载、软件包管理（pacman / apt）
+服务管理：使用 systemd、配置 SSH、Nginx 等服务
+熟悉基本的日志查看与问题排查方法
+
+🎮 小插曲：做过一款“胎死腹中”的游戏
+曾尝试使用 Unreal Engine 5 开发一款游戏，但因为队友太拉，项目草草结束。
+但也因此接触到了虚幻引擎的蓝图系统和关卡搭建，对游戏开发产生了一定兴趣。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "我掌握的技术栈",
+      "item": "http://localhost:1313/posts/%E6%88%91%E6%8E%8C%E6%8F%A1%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A0%88/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "我掌握的技术栈",
+  "name": "我掌握的技术栈",
+  "description": "🖥️ 操作系统 Windows 系列：Windows XP、Windows 7、Windows 8、Windows 10、Windows 11 macOS Linux 发行版：Ubuntu、Arch Linux、Kali BSD 系列：OpenBSD 💻 编程语言 C++ Python JavaScript HTML / CSS 🛠️ 工具与框架 Adobe Photoshop Blender Adobe Illustrator Hexo Hugo Unreal Engine 4 / 5 ⚙️ 常用开发环境 主力系统：Arch Linux IDE：Visual Studio、VS Code 构建工具：g++ 版本控制：Git、GitHub 终端工具：zsh 🐧 Linux 运维经验 基础操作：系统安装、用户权限、挂载、软件包管理（pacman / apt） 服务管理：使用 systemd、配置 SSH、Nginx 等服务 熟悉基本的日志查看与问题排查方法 🎮 小插曲：做过一款“胎死腹中”的游戏 曾尝试使用 Unreal Engine 5 开发一款游戏，但因为队友太拉，项目草草结束。\n但也因此接触到了虚幻引擎的蓝图系统和关卡搭建，对游戏开发产生了一定兴趣。\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "🖥️ 操作系统 Windows 系列：Windows XP、Windows 7、Windows 8、Windows 10、Windows 11 macOS Linux 发行版：Ubuntu、Arch Linux、Kali BSD 系列：OpenBSD 💻 编程语言 C++ Python JavaScript HTML / CSS 🛠️ 工具与框架 Adobe Photoshop Blender Adobe Illustrator Hexo Hugo Unreal Engine 4 / 5 ⚙️ 常用开发环境 主力系统：Arch Linux IDE：Visual Studio、VS Code 构建工具：g++ 版本控制：Git、GitHub 终端工具：zsh 🐧 Linux 运维经验 基础操作：系统安装、用户权限、挂载、软件包管理（pacman / apt） 服务管理：使用 systemd、配置 SSH、Nginx 等服务 熟悉基本的日志查看与问题排查方法 🎮 小插曲：做过一款“胎死腹中”的游戏 曾尝试使用 Unreal Engine 5 开发一款游戏，但因为队友太拉，项目草草结束。\n但也因此接触到了虚幻引擎的蓝图系统和关卡搭建，对游戏开发产生了一定兴趣。\n",
+  "wordCount" : "66",
+  "inLanguage": "en",
+  "datePublished": "2025-06-02T14:19:00+08:00",
+  "dateModified": "2025-06-02T14:19:00+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Lin Mohan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/%E6%88%91%E6%8E%8C%E6%8F%A1%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A0%88/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lin Mohan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class=" dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Lin Mohan">
+                <img src="http://localhost:1313/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">Lin Mohan</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/notes/" title="📒 Notes">
+                    <span>📒 Notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/thoughts/" title="💭 Thoughts">
+                    <span>💭 Thoughts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/monthly-report/" title="📈 Monthly Report">
+                    <span>📈 Monthly Report</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="🗂️ Archive">
+                    <span>🗂️ Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/friends/" title="🤝 Friends">
+                    <span>🤝 Friends</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="🔍 Search">
+                    <span>🔍 Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="ℹ️ About">
+                    <span>ℹ️ About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      我掌握的技术栈
+    </h1>
+    <div class="post-meta"><span title='2025-06-02 14:19:00 +0800 CST'>June 2, 2025</span>&nbsp;&middot;&nbsp;1 min&nbsp;&middot;&nbsp;Lin Mohan
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h3 id="-操作系统">🖥️ 操作系统</h3>
+<ul>
+<li>Windows 系列：Windows XP、Windows 7、Windows 8、Windows 10、Windows 11</li>
+<li>macOS</li>
+<li>Linux 发行版：Ubuntu、Arch Linux、Kali</li>
+<li>BSD 系列：OpenBSD</li>
+</ul>
+<h3 id="-编程语言">💻 编程语言</h3>
+<ul>
+<li>C++</li>
+<li>Python</li>
+<li>JavaScript</li>
+<li>HTML / CSS</li>
+</ul>
+<h3 id="-工具与框架">🛠️ 工具与框架</h3>
+<ul>
+<li>Adobe Photoshop</li>
+<li>Blender</li>
+<li>Adobe Illustrator</li>
+<li>Hexo</li>
+<li>Hugo</li>
+<li>Unreal Engine 4 / 5</li>
+</ul>
+<h3 id="-常用开发环境">⚙️ 常用开发环境</h3>
+<ul>
+<li>主力系统：Arch Linux</li>
+<li>IDE：Visual Studio、VS Code</li>
+<li>构建工具：g++</li>
+<li>版本控制：Git、GitHub</li>
+<li>终端工具：zsh</li>
+</ul>
+<h3 id="-linux-运维经验">🐧 Linux 运维经验</h3>
+<ul>
+<li>基础操作：系统安装、用户权限、挂载、软件包管理（<code>pacman</code> / <code>apt</code>）</li>
+<li>服务管理：使用 <code>systemd</code>、配置 SSH、Nginx 等服务</li>
+<li>熟悉基本的日志查看与问题排查方法</li>
+</ul>
+<h3 id="-小插曲做过一款胎死腹中的游戏">🎮 小插曲：做过一款“胎死腹中”的游戏</h3>
+<p>曾尝试使用 Unreal Engine 5 开发一款游戏，但因为队友太拉，项目草草结束。<br>
+但也因此接触到了虚幻引擎的蓝图系统和关卡搭建，对游戏开发产生了一定兴趣。</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+            <span>&copy; 2025 Lin Mohan</span> · 
+
+    <span>
+        Built with 
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a>.
+    </span>
+
+</footer>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>
