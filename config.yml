@@ -121,6 +121,8 @@ params:
 
     assets:
         disableScrollBarStyle: false
+        disableFingerprinting: true
+
 
     cover:
         hiddenInList: false
