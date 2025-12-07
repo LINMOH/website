@@ -1,3 +1,0 @@
-User-agent: *
-Disallow:
-Sitemap: https://linmoh.github.io/website/sitemap.xml
