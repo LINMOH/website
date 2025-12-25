@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Ubuntu Server 24.04 &#43; Nextcloud 安装食用指北 | Lin Mohan</title>
+<meta name="keywords" content="">
+<meta name="description" content="本文记录了我在旧电脑上搭建 Ubuntu Server 24.04 并安装 Nextcloud 的过程。包括从官网下载镜像、安装系统、分区、配置账户和 SSH、设置静态 IP，以及通过 Snap 安装 Nextcloud。完成后即可在局域网内访问服务器，搭建个人私有云服务。">
+<meta name="author" content="Lin Mohan">
+<link rel="canonical" href="https://linmohan.fun/notes/ubuntu&#43;nextcloud/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://linmohan.fun/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://linmohan.fun/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://linmohan.fun/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://linmohan.fun/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://linmohan.fun/notes/ubuntu&#43;nextcloud/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://linmohan.fun/notes/ubuntu&#43;nextcloud/">
+  <meta property="og:site_name" content="Lin Mohan">
+  <meta property="og:title" content="Ubuntu Server 24.04 &#43; Nextcloud 安装食用指北">
+  <meta property="og:description" content="本文记录了我在旧电脑上搭建 Ubuntu Server 24.04 并安装 Nextcloud 的过程。包括从官网下载镜像、安装系统、分区、配置账户和 SSH、设置静态 IP，以及通过 Snap 安装 Nextcloud。完成后即可在局域网内访问服务器，搭建个人私有云服务。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notes">
+    <meta property="article:published_time" content="2025-07-08T00:00:00+08:00">
+    <meta property="article:modified_time" content="2025-07-08T00:00:00+08:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu Server 24.04 &#43; Nextcloud 安装食用指北">
+<meta name="twitter:description" content="本文记录了我在旧电脑上搭建 Ubuntu Server 24.04 并安装 Nextcloud 的过程。包括从官网下载镜像、安装系统、分区、配置账户和 SSH、设置静态 IP，以及通过 Snap 安装 Nextcloud。完成后即可在局域网内访问服务器，搭建个人私有云服务。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Books",
+      "item": "https://linmohan.fun/notes/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Ubuntu Server 24.04 + Nextcloud 安装食用指北",
+      "item": "https://linmohan.fun/notes/ubuntu+nextcloud/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Ubuntu Server 24.04 + Nextcloud 安装食用指北",
+  "name": "Ubuntu Server 24.04 \u002b Nextcloud 安装食用指北",
+  "description": "本文记录了我在旧电脑上搭建 Ubuntu Server 24.04 并安装 Nextcloud 的过程。包括从官网下载镜像、安装系统、分区、配置账户和 SSH、设置静态 IP，以及通过 Snap 安装 Nextcloud。完成后即可在局域网内访问服务器，搭建个人私有云服务。",
+  "keywords": [
+    
+  ],
+  "articleBody": "因为新电脑到手，陪伴了我五年的第一台个人电脑终于从一线退役了。不过退役不等于闲置，正好想起之前折腾过的 Nextcloud。虽然这台电脑性能有点差，但拿来做个私有云服务器还是绰绰有余的。\nStep 1：安装 Ubuntu Server 24.04 因为熟悉 Ubuntu，就直接选它了。\n首先从 Ubuntu 官网 下载服务器版本镜像。\n（我这里用虚拟机重现安装过程）\n语言选择英语，无需多言。\n键盘布局默认即可。\n如果没有特别需求，不建议选“最小安装”。推荐勾选安装第三方驱动，可以省去后续手动装驱动的麻烦。\n实体机安装建议使用有线网，或手机通过 USB 共享网络。\n代理地址一般不需要配置。\n系统会自动查找最近的镜像源。\n硬盘选择默认即可，如果有多块硬盘要注意选对目标盘。\n建议给根分区（/）多分点空间，不然装东西容易捉襟见肘。\n我另外还分了个 /home 分区。\n（分区时，输入一个很大的数字即可分配剩余所有空间）\n接着继续即可。\n设置账户和密码。\n这一步……广告时间？\n我的 笔记本 服务器长期放角落，所以选上安装 SSH，方便远程登录。\n没有特别需要的服务，直接跳过。\n耐心等待安装过程结束。\n看到提示重启就说明安装完成！\nStep 2：配置静态 IP 运行以下命令查看网卡配置文件名：\nls /etc/netplan 比如我的文件是 50-cloud-init.yaml，接着编辑它：\nsudo vim /etc/netplan/50-cloud-init.yaml 将内容改为如下格式（注意缩进必须是空格，不能用 Tab）：\nnetwork: version: 2 renderer: networkd ethernets: enp3s0: # 请改为你的实际网卡名 dhcp4: false addresses: - 192.168.6.129/24 # 改为你想设定的 IP gateway4: 192.168.6.1 # 改为你的网关 nameservers: addresses: - 1.1.1.1 - 8.8.8.8 保存并退出后，记下你设定的 IP（如 192.168.6.129），然后在另一台电脑上测试 SSH 连接：\nssh mohan@192.168.6.129 Step 3：安装 Nextcloud 执行以下命令：\nsudo apt update sudo apt install snapd sudo snap install nextcloud 安装完成后，在同一局域网的电脑上，用浏览器访问你的服务器 IP（可通过 ip a 查看）即可进入 Nextcloud 的安装页面。设置数据库和管理员账户信息后，稍等片刻就能使用你的私有云了。\n",
+  "wordCount" : "107",
+  "inLanguage": "en",
+  "datePublished": "2025-07-08T00:00:00+08:00",
+  "dateModified": "2025-07-08T00:00:00+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Lin Mohan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://linmohan.fun/notes/ubuntu+nextcloud/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lin Mohan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://linmohan.fun/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class=" dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://linmohan.fun/" accesskey="h" title="Lin Mohan">
+                <img src="https://linmohan.fun/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">Lin Mohan</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://linmohan.fun/notes/" title="📒 Notes">
+                    <span>📒 Notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/thoughts/" title="💭 Thoughts">
+                    <span>💭 Thoughts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/monthly-report/" title="📈 Monthly Report">
+                    <span>📈 Monthly Report</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/archive/" title="🗂️ Archive">
+                    <span>🗂️ Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/friends/" title="🤝 Friends">
+                    <span>🤝 Friends</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/search/" title="🔍 Search">
+                    <span>🔍 Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/about" title="ℹ️ About">
+                    <span>ℹ️ About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://linmohan.fun/">Home</a>&nbsp;»&nbsp;<a href="https://linmohan.fun/notes/">Books</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Ubuntu Server 24.04 &#43; Nextcloud 安装食用指北
+    </h1>
+    <div class="post-meta"><span title='2025-07-08 00:00:00 +0800 CST'>July 8, 2025</span>&nbsp;&middot;&nbsp;1 min&nbsp;&middot;&nbsp;Lin Mohan
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#step-1安装-ubuntu-server-2404">Step 1：安装 Ubuntu Server 24.04</a></li>
+    <li><a href="#step-2配置静态-ip">Step 2：配置静态 IP</a></li>
+    <li><a href="#step-3安装-nextcloud">Step 3：安装 Nextcloud</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>因为新电脑到手，陪伴了我五年的第一台个人电脑终于从一线退役了。不过退役不等于闲置，正好想起之前折腾过的 Nextcloud。虽然这台电脑性能有点差，但拿来做个私有云服务器还是绰绰有余的。</p>
+<p><img alt="20250530 211939" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/3ce6ddb43e519d09238c27c3e050089d.jpg"></p>
+<h2 id="step-1安装-ubuntu-server-2404">Step 1：安装 Ubuntu Server 24.04</h2>
+<p>因为熟悉 Ubuntu，就直接选它了。</p>
+<p>首先从 <a href="https://ubuntu.com/download/server" target="_blank">Ubuntu 官网</a> 下载服务器版本镜像。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/0b36f6b8327260a5ec675d1029c7c1f8.png"></p>
+<p>（我这里用虚拟机重现安装过程）</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/7c8795de1598e811e9cde9839dd3750f.png"></p>
+<p>语言选择英语，无需多言。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/5a231ae92cd4ed6abbbeef0b83e77aae.png"></p>
+<p>键盘布局默认即可。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/c6e243d1bb8a0129a4aaf4ed2ed619b6.png"></p>
+<p>如果没有特别需求，不建议选“最小安装”。推荐勾选安装第三方驱动，可以省去后续手动装驱动的麻烦。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/6ed2b1f4589da8b32cd84bcc9d68623b.png"></p>
+<p>实体机安装建议使用有线网，或手机通过 USB 共享网络。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/8dcbb5df3fe80a4c5a60d62e1cf05ec6.png"></p>
+<p>代理地址一般不需要配置。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/0f51b82cc67a9a1f446d57b8d37a8b34.png"></p>
+<p>系统会自动查找最近的镜像源。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/5fccaa63b4a5f865656a8fab4664599f.png"></p>
+<p>硬盘选择默认即可，如果有多块硬盘要注意选对目标盘。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/6830fba92415efca07b439e6ba8d9476.png"></p>
+<p>建议给根分区（<code>/</code>）多分点空间，不然装东西容易捉襟见肘。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/1ff13ec62b2ca9cfdfb6592954123c72.png"></p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/f8f2a29b03ad438121aa01ee9dddf4ea.png"></p>
+<p>我另外还分了个 <code>/home</code> 分区。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/bd9b3581fc5f88a91f43a93b5960599c.png"></p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/a1a0f1e2d093b77018f2569433952067.png"></p>
+<p>（分区时，输入一个很大的数字即可分配剩余所有空间）</p>
+<p>接着继续即可。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/7f95d2574aedfb8b2831ff359cd3ed61.png"></p>
+<p>设置账户和密码。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/16d0fde5d7b849d8bf6e364daabc5ce3.png"></p>
+<p>这一步……广告时间？</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/7ad6f4f309edeaa4fa8d0ed0363d39b4.png"></p>
+<p>我的 <del>笔记本</del> 服务器长期放角落，所以选上安装 SSH，方便远程登录。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/d9313467a5f56aef1076a045c55bf8aa.png"></p>
+<p>没有特别需要的服务，直接跳过。</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/08/6a708c5542d043d5761d0f1ccc2747dd.png"></p>
+<p>耐心等待安装过程结束。</p>
+<p><img alt="image" loading="lazy" src="https://pic1.imgdb.cn/item/686d055958cb8da5c896db29.png"></p>
+<p>看到提示重启就说明安装完成！</p>
+<p><img loading="lazy" src="https://pic1.imgdb.cn/item/686d086c58cb8da5c896e6f4.png"></p>
+<hr>
+<h2 id="step-2配置静态-ip">Step 2：配置静态 IP</h2>
+<p>运行以下命令查看网卡配置文件名：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls /etc/netplan
+</span></span></code></pre></div><p>比如我的文件是 <code>50-cloud-init.yaml</code>，接着编辑它：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo vim /etc/netplan/50-cloud-init.yaml
+</span></span></code></pre></div><p><img loading="lazy" src="https://pic1.imgdb.cn/item/686d0c5a58cb8da5c896f4d7.png"></p>
+<p>将内容改为如下格式（注意缩进必须是空格，不能用 Tab）：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#1e90ff;font-weight:bold">network</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#1e90ff;font-weight:bold">version</span>:<span style="color:#bbb"> </span><span style="color:#099">2</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#1e90ff;font-weight:bold">renderer</span>:<span style="color:#bbb"> </span>networkd<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#1e90ff;font-weight:bold">ethernets</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#1e90ff;font-weight:bold">enp3s0</span>:<span style="color:#bbb">  </span><span style="color:#aaa;font-style:italic"># 请改为你的实际网卡名</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#1e90ff;font-weight:bold">dhcp4</span>:<span style="color:#bbb"> </span><span style="color:#00a">false</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#1e90ff;font-weight:bold">addresses</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>- <span style="color:#099">192.168.6.129</span>/24 <span style="color:#bbb"> </span><span style="color:#aaa;font-style:italic"># 改为你想设定的 IP</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#1e90ff;font-weight:bold">gateway4</span>:<span style="color:#bbb"> </span><span style="color:#099">192.168.6.1</span><span style="color:#bbb">  </span><span style="color:#aaa;font-style:italic"># 改为你的网关</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#1e90ff;font-weight:bold">nameservers</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#1e90ff;font-weight:bold">addresses</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">          </span>- <span style="color:#099">1.1.1.1</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">          </span>- <span style="color:#099">8.8.8.8</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p>保存并退出后，记下你设定的 IP（如 <code>192.168.6.129</code>），然后在另一台电脑上测试 SSH 连接：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh mohan@192.168.6.129
+</span></span></code></pre></div><hr>
+<h2 id="step-3安装-nextcloud">Step 3：安装 Nextcloud</h2>
+<p>执行以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install snapd
+</span></span><span style="display:flex;"><span>sudo snap install nextcloud
+</span></span></code></pre></div><p>安装完成后，在同一局域网的电脑上，用浏览器访问你的服务器 IP（可通过 <code>ip a</code> 查看）即可进入 Nextcloud 的安装页面。设置数据库和管理员账户信息后，稍等片刻就能使用你的私有云了。</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer><script src="https://giscus.app/client.js"
+        data-repo="LINMOH/discussions"
+        data-repo-id="R_kgDOOvKQHA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOOvKQHM4Cqfyc"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+            <span>&copy; 2025 Lin Mohan</span> · 
+
+    <span>
+        Built with 
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a>.
+    </span>
+
+</footer>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>

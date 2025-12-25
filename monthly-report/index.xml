@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Monthly Report on Lin Mohan</title>
+    <link>https://linmohan.fun/monthly-report/</link>
+    <description>Recent content in Monthly Report on Lin Mohan</description>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 18 Oct 2025 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://linmohan.fun/monthly-report/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【九月、十月月报】</title>
+      <link>https://linmohan.fun/monthly-report/202509-10/</link>
+      <pubDate>Sat, 18 Oct 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/monthly-report/202509-10/</guid>
+      <description>这两个月我全力投入文化课，暂时放下了 OI，所以九月月报没能及时更新。团队 TATEN 人数突破 20 人，我也重新设计了 logo。我们的视频作品播放量达 1.6 万，下期视频计划更专业。此外，我发布了暗猫的炮姐漫剪修复视频，并改版了主页，使其更简洁美观。学业方面，月考排在校 16 名，老师鼓励我争取前五。我也即将告别半年的双休生活，迎接新的学习节奏。</description>
+    </item>
+    <item>
+      <title>【八月月报】暑假总结</title>
+      <link>https://linmohan.fun/monthly-report/202508/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/monthly-report/202508/</guid>
+      <description>暑假期间，我组建了计算机科学团队 TATEN，参与并完成了多个项目，包括个人笔记网站 TATEN、开源项目 NeoPage 和二次元资讯网站 AniDay。同时利用闲置笔记本进行实践和学习，通过团队协作与项目开发积累了宝贵经验，为新学期做好了准备。</description>
+    </item>
+    <item>
+      <title>【七月月报】</title>
+      <link>https://linmohan.fun/monthly-report/202507/</link>
+      <pubDate>Sat, 19 Jul 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/monthly-report/202507/</guid>
+      <description>这个月我经历了期末考试，数学成绩比预期稍好，但整体排名仍不理想。在 OI 方面几乎没有练习，状态比较放松。我还捡到了一台老联想主机，虽然主板坏了，但换掉后可以用作下载机。本月网站也有更新，新增了二十多本电子书，并计划把知识类文章迁移到我的笔记本进行整理。下个月的目标是冲刺 CSP-J 一等奖，学习 JavaScript，并继续学习《CSAPP》。</description>
+    </item>
+    <item>
+      <title>【六月月报】新机上阵，算法进阶与「第一桶金」</title>
+      <link>https://linmohan.fun/monthly-report/202506/</link>
+      <pubDate>Sat, 14 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://linmohan.fun/monthly-report/202506/</guid>
+      <description>我入手了新电脑，硬件升级满足游戏与 UE5 需求；在 OI 上坚持刷题，学业准备升级考试；网站收获打赏鼓励，B站更新了 C++ 版 Lemon 视频，六月在技术和心态上都有进步。</description>
+    </item>
+    <item>
+      <title>【五月月报】 算法、建站、焦虑与成长</title>
+      <link>https://linmohan.fun/monthly-report/202505/</link>
+      <pubDate>Sat, 17 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://linmohan.fun/monthly-report/202505/</guid>
+      <description>这个月我主要集中在算法刷题和建站实践上。在洛谷累计通过了 112 道题，并参加了入门赛，发现自己的薄弱环节，也在《深入浅出程序设计竞赛》中学习排序算法。学业方面，地生一模总分校第一、县第五。个人项目上，我整理了 GitHub 代码库，并重启了建站兴趣，做了波奇酱同人页，同时尝试了多种域名实验。心态上虽然有些焦虑，但我提醒自己专注成长、走自己的路。下个月计划每周至少刷 15 题，持续更新博客，完善项目，并准备 CSP-J 初赛。</description>
+    </item>
+  </channel>
+</rss>

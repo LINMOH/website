@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>并发和并行 | Lin Mohan</title>
+<meta name="keywords" content="">
+<meta name="description" content="本文介绍了并发与并行的基本概念及其区别。并发强调多个任务同时推进，通过时间共享和上下文切换实现；并行则指多个任务在物理上同时执行，通常依赖多核处理器或多线程技术。文章还讲解了线程级并发、指令级并行以及 SIMD 并行，并分析了现代 CPU 如何通过流水线、超标量等技术实现高效执行。理解并发与并行是优化程序性能的基础。">
+<meta name="author" content="Lin Mohan">
+<link rel="canonical" href="https://linmohan.fun/notes/concurrencyandparallelism/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://linmohan.fun/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://linmohan.fun/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://linmohan.fun/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://linmohan.fun/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://linmohan.fun/notes/concurrencyandparallelism/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://linmohan.fun/notes/concurrencyandparallelism/">
+  <meta property="og:site_name" content="Lin Mohan">
+  <meta property="og:title" content="并发和并行">
+  <meta property="og:description" content="本文介绍了并发与并行的基本概念及其区别。并发强调多个任务同时推进，通过时间共享和上下文切换实现；并行则指多个任务在物理上同时执行，通常依赖多核处理器或多线程技术。文章还讲解了线程级并发、指令级并行以及 SIMD 并行，并分析了现代 CPU 如何通过流水线、超标量等技术实现高效执行。理解并发与并行是优化程序性能的基础。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notes">
+    <meta property="article:published_time" content="2025-08-22T00:00:00+08:00">
+    <meta property="article:modified_time" content="2025-08-22T00:00:00+08:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="并发和并行">
+<meta name="twitter:description" content="本文介绍了并发与并行的基本概念及其区别。并发强调多个任务同时推进，通过时间共享和上下文切换实现；并行则指多个任务在物理上同时执行，通常依赖多核处理器或多线程技术。文章还讲解了线程级并发、指令级并行以及 SIMD 并行，并分析了现代 CPU 如何通过流水线、超标量等技术实现高效执行。理解并发与并行是优化程序性能的基础。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Books",
+      "item": "https://linmohan.fun/notes/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "并发和并行",
+      "item": "https://linmohan.fun/notes/concurrencyandparallelism/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "并发和并行",
+  "name": "并发和并行",
+  "description": "本文介绍了并发与并行的基本概念及其区别。并发强调多个任务同时推进，通过时间共享和上下文切换实现；并行则指多个任务在物理上同时执行，通常依赖多核处理器或多线程技术。文章还讲解了线程级并发、指令级并行以及 SIMD 并行，并分析了现代 CPU 如何通过流水线、超标量等技术实现高效执行。理解并发与并行是优化程序性能的基础。",
+  "keywords": [
+    
+  ],
+  "articleBody": "背景知识：线程与进程\n在计算机的发展中，有两个持续的追求：让计算机能做更多事情和让计算机运行的更快。这两个目标都可以通过让 CPU 同时执行多个任务来实现。于是衍生出了两个概念：\n并发（Concurrency）：系统中存在多个同时进行的活动。 并行（Parallelism）：利用并发来提高系统运行速度。 并行可以在计算机的多个层次上体现，以下从高到低说明三种类型。\n并行和并发的形式 线程级并发（Thread-Level Concurren） 线程级并发基于进程的概念，可以让多个控制流同时执行。\n时间共享（time-sharing）：20 世纪 60 年代，出现了时间共享系统，计算机通过快速上下文切换实现模拟并发执行。 Categorizing different processor configurations.\n单处理器系统（Uniprocessor）：通过时间共享实现模拟并发。\n多处理器系统（Multiprocessor）：多个 CPU（核心）由操作系统统一控制，可实现真正的并行。\n多核处理器（Multi-core）：在同一颗芯片上集成多个 CPU 核心，每个核心有独立的 L1、L2，共享 L3 和 RAM。 超线程技术 / 同时多线程（Hyperthreading/Simultaneous Multi-Threading）：单个 CPU（核心）可以同时执行多个线程，利用空闲资源提高性能.如 AMD RYZEN 9 9950X 的 16 核 CPU 可以同时执行 32 个线程。 Multi-core processor organization.\n指令级并行 了解指令级并行，需要先了解几个和 CPU 时钟有关的概念。\nCPU 时钟（Clock）：CPU时钟是中央处理器自带的计时单元，其基本工作单位为时钟周期，即处理器执行操作的最小时间单位。 时钟周期（Clock Cycle）：时钟频率的倒数，是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU 仅完成一个最基本的动作。 时钟频率 / 时钟速度（Clock Frequency / Clock Rate）：CPU 每秒能完成的时钟周期数，单位为 Hz、GHz。决定 CPU 执行指令的速度。时钟频率越高，理论上 CPU 执行指令越快。 时钟周期时间= 1 时钟频率 指令周期 / 提取－执行周期（Instruction cycle / fetch-and-execute cycle）：CPU 完成一条机器指令所需要的时钟周期数。 指令执行时间=指令周期数 × 时钟周期时间\nCPU 主频（CPU Clock Speed / CPU Clock Rate）：CPU 内部核心运行的时钟频率。 总线频率（Bus / Front Side Bus, FSB）：CPU 与内存、外围设备通信的频率，影响数据传输速度。 超频（Overclocking）：提高 CPU 时钟频率以提升性能，但会增加功耗和发热，需要散热和稳定性保证。 回到指令级并行，现代处理器可以同时执行多条指令：\n早期微处理器（如 8086）执行一条指令需要多个时钟周期。 现代处理器可以在一个时钟周期内处理 2~4 条指令。 超标量处理器（Superscalar Processors）：能在一个周期内执行多条指令，具体比较复杂，以后会进一步研究。 但是，时钟周期的定义中有在一个时钟周期内，CPU 仅完成一个最基本的动作，为什么现代处理器可以在一个时钟周期内处理 2~3 条指令呢？\n理论上，CPU 时钟周期很短，每个周期只能驱动一个基本操作（如寄存器读取、ALU 加法、内存访问等），所以如果没有优化，CPU 执行一条完整指令需要多个时钟周期。\n这就和几个技术相关：\n流水线（Pipelining）：简单来说，流水线技术就是将指令执行分解为多个阶段，每个阶段同时处理不同指令的不同部分。具体深入相当复杂，这里部研究。 超标量 / 多发射（Superscalar / Multiple Issue）：现代 CPU 核心有多个执行单元（ALU、FPU、加载/存储单元），在一个时钟周期内，可以同时发射多条指令到不同单元执行。结合流水线，每个时钟周期实际上可能有 2–4 条指令同时在不同阶段执行。 高级技术：太过复杂，这里不做研究。 超流水线（Deep Pipeline） 向量化 / SIMD 多核并行 所以在现代 CPU 中，单条指令仍然需要多个周期完成。流水线 + 超标量 + 高级并行技术让 CPU 可以在同一时钟周期处理多条指令，看起来像一个周期完成多条指令，实质是硬件并行。\n应用程序可以通过优化代码，提高指令级并行，从而让程序运行更快。\nSIMD 并行（单指令、多数据并行） 这是最底层的并行方式，涉及 CPU 底层，不深究。\n并行和并发的区别 Erlang 之父 Joe Armstrong 用一张漫画解释了并行和并发：\n并发和并行都是对“多任务”处理的描述，其中并发是轮流处理，而并行是同时处理。\n展开来讲，并发是多个任务同时使用一个 CPU 核心，依赖时间共享，通过上下文切换，在不同任务之间切换 CPU 控制权。多个任务使用核心的时间不一定是一样的。看起来同时在进行，但实际上 CPU 核心一次只能处理一个任务。可以类比单核 CPU 的多任务。\n而并行是多个任务使用多个 CPU 核心，从物理上同时执行，可以类比多核 CPU。\n所以，可以概括出：\n并发是对多任务调度和组织的描述，关注“如何让任务能一起推进”。 并行是对物理执行方式的描述，关注“如何让多个任务真同时运行”。 并发可以没有并行（单核 CPU 靠时间共享和上下文切换）。 并行必然包含并发（多核多任务调度）。 为什么说并行必然包含并发？ 这就涉及到任务调度和执行本质的理解。\n从任务角度看 并发：多个任务同时存在，并且都在推进。 并行：多个任务在物理上真正同时运行。 也就是说，要实现并行，前提是系统中多个任务并存，而“多个任务并存”就是并发的定义。 从操作系统看 并行执行时，多个核心同时跑不同任务。但是核心数往往 \u003c 任务数，比如 4 核 CPU 跑 100 个任务。这时，操作系统依然要用并发调度（时间片 + 上下文切换），把更多任务“并发地”映射到有限的核心上。所以，并行只是并发的一种特殊实现形式。\n总结 并发和并行是理解现代计算机性能优化的核心概念。随着多核处理器、超线程、GPU 并行计算等技术的发展，今天的软件开发者不仅需要理解操作系统层面的并发模型，还要学会利用底层硬件提供的并行能力，从而让程序真正跑得更快。了解并发和并行，是学习并发编程的第一块敲门砖。\n参考文献 Bryant, R. E., \u0026 O’Hallaron, D. R. (2015). Computer Systems: A Programmer’s Perspective (3rd ed.). Pearson.\n",
+  "wordCount" : "218",
+  "inLanguage": "en",
+  "datePublished": "2025-08-22T00:00:00+08:00",
+  "dateModified": "2025-08-22T00:00:00+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Lin Mohan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://linmohan.fun/notes/concurrencyandparallelism/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lin Mohan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://linmohan.fun/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class=" dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://linmohan.fun/" accesskey="h" title="Lin Mohan">
+                <img src="https://linmohan.fun/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">Lin Mohan</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://linmohan.fun/notes/" title="📒 Notes">
+                    <span>📒 Notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/thoughts/" title="💭 Thoughts">
+                    <span>💭 Thoughts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/monthly-report/" title="📈 Monthly Report">
+                    <span>📈 Monthly Report</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/archive/" title="🗂️ Archive">
+                    <span>🗂️ Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/friends/" title="🤝 Friends">
+                    <span>🤝 Friends</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/search/" title="🔍 Search">
+                    <span>🔍 Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/about" title="ℹ️ About">
+                    <span>ℹ️ About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://linmohan.fun/">Home</a>&nbsp;»&nbsp;<a href="https://linmohan.fun/notes/">Books</a></div>
+    <h1 class="post-title entry-hint-parent">
+      并发和并行
+    </h1>
+    <div class="post-meta"><span title='2025-08-22 00:00:00 +0800 CST'>August 22, 2025</span>&nbsp;&middot;&nbsp;2 min&nbsp;&middot;&nbsp;Lin Mohan
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#并行和并发的形式">并行和并发的形式</a></li>
+    <li><a href="#并行和并发的区别">并行和并发的区别</a></li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>背景知识：<a href="https://linmohan.fun/notes/processandthread/" target="_blank">线程与进程</a></p>
+<p>在计算机的发展中，有两个持续的追求：让计算机能做更多事情和让计算机运行的更快。这两个目标都可以通过让 CPU 同时执行多个任务来实现。于是衍生出了两个概念：</p>
+<ul>
+<li><strong>并发</strong>（Concurrency）：系统中存在多个同时进行的活动。</li>
+<li><strong>并行</strong>（Parallelism）：利用并发来提高系统运行速度。</li>
+</ul>
+<p>并行可以在计算机的多个层次上体现，以下从高到低说明三种类型。</p>
+<h2 id="并行和并发的形式">并行和并发的形式</h2>
+<h3 id="线程级并发thread-level-concurren">线程级并发（Thread-Level Concurren）</h3>
+<p>线程级并发基于进程的概念，可以让多个控制流同时执行。</p>
+<ul>
+<li><strong>时间共享</strong>（time-sharing）：20 世纪 60 年代，出现了时间共享系统，计算机通过快速上下文切换实现<strong>模拟</strong>并发执行。</li>
+</ul>
+<div align="center">
+  <img src="https://pic1.imgdb.cn/item/68a832c958cb8da5c842b502.png" />
+<p>Categorizing different processor configurations.</p>
+</div>
+<ul>
+<li>
+<p><strong>单处理器系统</strong>（Uniprocessor）：通过时间共享实现模拟并发。</p>
+</li>
+<li>
+<p><strong>多处理器系统</strong>（Multiprocessor）：多个 CPU（核心）由操作系统统一控制，可实现真正的并行。</p>
+<ul>
+<li><strong>多核处理器</strong>（Multi-core）：在同一颗芯片上集成多个 CPU 核心，每个核心有独立的 L1、L2，共享 L3 和 RAM。</li>
+<li><strong>超线程技术 / 同时多线程</strong>（Hyperthreading/Simultaneous Multi-Threading）：单个 CPU（核心）可以同时执行多个线程，利用空闲资源提高性能.如 AMD RYZEN 9 9950X 的 16 核 CPU 可以同时执行 32 个线程。</li>
+</ul>
+</li>
+</ul>
+<div align="center">
+  <img src="https://pic1.imgdb.cn/item/68a832ff58cb8da5c842b521.png" alt="image.png">
+<p>Multi-core processor organization.</p>
+</div>
+<h3 id="指令级并行">指令级并行</h3>
+<p>了解指令级并行，需要先了解几个和 CPU 时钟有关的概念。</p>
+<ul>
+<li><strong>CPU 时钟</strong>（Clock）：CPU时钟是中央处理器自带的计时单元，其基本工作单位为时钟周期，即处理器执行操作的最小时间单位。</li>
+<li><strong>时钟周期</strong>（Clock Cycle）：时钟频率的倒数，是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU 仅完成一个最基本的动作。</li>
+<li><strong>时钟频率 / 时钟速度</strong>（Clock Frequency / Clock Rate）：CPU 每秒能完成的时钟周期数，单位为 Hz、GHz。决定 CPU 执行指令的速度。时钟频率越高，理论上 CPU 执行指令越快。</li>
+</ul>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  <mo>时钟周期时间=</mo>  <mfrac>    <mn>1</mn>    <mrow>      <mo>时钟频率</mo>    </mrow>  </mfrac></math></p>
+<ul>
+<li><strong>指令周期 / 提取－执行周期</strong>（Instruction cycle / fetch-and-execute cycle）：CPU 完成一条机器指令所需要的时钟周期数。</li>
+</ul>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  <mo>指令执行时间=指令周期数</mo>  <mo>×</mo>  <mo>时钟周期时间</mo></math></p>
+<ul>
+<li><strong>CPU 主频</strong>（CPU Clock Speed / CPU Clock Rate）：CPU 内部核心运行的时钟频率。</li>
+<li><strong>总线频率</strong>（Bus / Front Side Bus, FSB）：CPU 与内存、外围设备通信的频率，影响数据传输速度。</li>
+<li><strong>超频</strong>（Overclocking）：提高 CPU 时钟频率以提升性能，但会增加功耗和发热，需要散热和稳定性保证。</li>
+</ul>
+<p>回到指令级并行，现代处理器可以同时执行多条指令：</p>
+<ul>
+<li>早期微处理器（如 8086）执行一条指令需要多个时钟周期。</li>
+<li>现代处理器可以在一个时钟周期内处理 2~4 条指令。</li>
+<li><strong>超标量处理器</strong>（Superscalar Processors）：能在一个周期内执行多条指令，具体比较复杂，以后会进一步研究。</li>
+</ul>
+<p>但是，时钟周期的定义中有<code>在一个时钟周期内，CPU 仅完成一个最基本的动作</code>，为什么现代处理器可以在一个时钟周期内处理 2~3 条指令呢？</p>
+<p>理论上，CPU 时钟周期很短，每个周期只能驱动一个基本操作（如寄存器读取、ALU 加法、内存访问等），所以如果没有优化，CPU 执行一条完整指令需要多个时钟周期。</p>
+<p>这就和几个技术相关：</p>
+<ul>
+<li><strong>流水线</strong>（Pipelining）：简单来说，流水线技术就是将指令执行分解为多个阶段，每个阶段同时处理不同指令的不同部分。具体深入相当复杂，这里部研究。</li>
+<li><strong>超标量 / 多发射</strong>（Superscalar / Multiple Issue）：现代 CPU 核心有多个执行单元（ALU、FPU、加载/存储单元），在一个时钟周期内，可以同时发射多条指令到不同单元执行。结合流水线，每个时钟周期实际上可能有 2–4 条指令同时在不同阶段执行。</li>
+<li><strong>高级技术</strong>：太过复杂，这里不做研究。
+<ul>
+<li>超流水线（Deep Pipeline）</li>
+<li>向量化 / SIMD</li>
+<li>多核并行</li>
+</ul>
+</li>
+</ul>
+<p>所以在现代 CPU 中，单条指令仍然需要多个周期完成。流水线 + 超标量 + 高级并行技术让 CPU 可以在同一时钟周期处理多条指令，看起来像一个周期完成多条指令，实质是硬件并行。</p>
+<p>应用程序可以通过优化代码，提高指令级并行，从而让程序运行更快。</p>
+<h3 id="simd-并行单指令多数据并行">SIMD 并行（单指令、多数据并行）</h3>
+<p>这是最底层的并行方式，涉及 CPU 底层，不深究。</p>
+<h2 id="并行和并发的区别">并行和并发的区别</h2>
+<p>Erlang 之父 Joe Armstrong 用一张漫画解释了并行和并发：</p>
+<div align="center">
+  <img src="https://pic1.imgdb.cn/item/68a8478558cb8da5c842c26f.png" alt="image.png">
+</div>
+<p>并发和并行都是对“多任务”处理的描述，其中<strong>并发</strong>是轮流处理，而<strong>并行</strong>是同时处理。</p>
+<p>展开来讲，<strong>并发</strong>是多个任务同时使用一个 CPU 核心，依赖时间共享，通过上下文切换，在不同任务之间切换 CPU 控制权。多个任务使用核心的时间不一定是一样的。看起来同时在进行，但实际上 CPU 核心一次只能处理一个任务。可以类比单核 CPU 的多任务。</p>
+<p>而<strong>并行</strong>是多个任务使用多个 CPU 核心，从物理上同时执行，可以类比多核 CPU。</p>
+<p>所以，可以概括出：</p>
+<ul>
+<li>并发是对多任务调度和组织的描述，关注“如何让任务能一起推进”。</li>
+<li>并行是对物理执行方式的描述，关注“如何让多个任务真同时运行”。</li>
+<li>并发可以没有并行（单核 CPU 靠时间共享和上下文切换）。</li>
+<li>并行必然包含并发（多核多任务调度）。</li>
+</ul>
+<h3 id="为什么说并行必然包含并发">为什么说并行必然包含并发？</h3>
+<p>这就涉及到任务调度和执行本质的理解。</p>
+<ol>
+<li>从任务角度看
+<ul>
+<li>并发：多个任务同时存在，并且都在推进。</li>
+<li>并行：多个任务在物理上真正同时运行。
+<ul>
+<li>也就是说，要实现并行，前提是系统中<strong>多个任务并存</strong>，而“多个任务并存”就是并发的定义。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>从操作系统看</li>
+</ol>
+<p>并行执行时，多个核心同时跑不同任务。但是核心数往往 &lt; 任务数，比如 4 核 CPU 跑 100 个任务。这时，操作系统依然要用<strong>并发调度</strong>（时间片 + 上下文切换），把更多任务“并发地”映射到有限的核心上。所以，并行只是并发的一种特殊实现形式。</p>
+<h2 id="总结">总结</h2>
+<p>并发和并行是理解现代计算机性能优化的核心概念。随着多核处理器、超线程、GPU 并行计算等技术的发展，今天的软件开发者不仅需要理解操作系统层面的并发模型，还要学会利用底层硬件提供的并行能力，从而让程序真正跑得更快。了解并发和并行，是学习并发编程的第一块敲门砖。</p>
+<h2 id="参考文献">参考文献</h2>
+<p>Bryant, R. E., &amp; O&rsquo;Hallaron, D. R. (2015). Computer Systems: A Programmer&rsquo;s Perspective (3rd ed.). Pearson.</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer><script src="https://giscus.app/client.js"
+        data-repo="LINMOH/discussions"
+        data-repo-id="R_kgDOOvKQHA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOOvKQHM4Cqfyc"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+            <span>&copy; 2025 Lin Mohan</span> · 
+
+    <span>
+        Built with 
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a>.
+    </span>
+
+</footer>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>

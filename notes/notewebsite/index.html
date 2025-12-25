@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>用 Hugo &#43; Lotus Docs 重构我的个人笔记网站 | Lin Mohan</title>
+<meta name="keywords" content="">
+<meta name="description" content="我将个人笔记网站从 HonKit 主题重构为基于 Hugo 的 Lotus Docs 主题。文章详细介绍了 Hugo、Golang 安装步骤、主题配置，以及首页自动跳转的解决方案，并展示了本地预览与最终部署到 GitHub Pages 的效果，让笔记网站既美观又实用。">
+<meta name="author" content="Lin Mohan">
+<link rel="canonical" href="https://linmohan.fun/notes/notewebsite/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://linmohan.fun/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://linmohan.fun/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://linmohan.fun/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://linmohan.fun/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://linmohan.fun/notes/notewebsite/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://linmohan.fun/notes/notewebsite/">
+  <meta property="og:site_name" content="Lin Mohan">
+  <meta property="og:title" content="用 Hugo &#43; Lotus Docs 重构我的个人笔记网站">
+  <meta property="og:description" content="我将个人笔记网站从 HonKit 主题重构为基于 Hugo 的 Lotus Docs 主题。文章详细介绍了 Hugo、Golang 安装步骤、主题配置，以及首页自动跳转的解决方案，并展示了本地预览与最终部署到 GitHub Pages 的效果，让笔记网站既美观又实用。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notes">
+    <meta property="article:published_time" content="2025-07-26T00:00:00+08:00">
+    <meta property="article:modified_time" content="2025-07-26T00:00:00+08:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用 Hugo &#43; Lotus Docs 重构我的个人笔记网站">
+<meta name="twitter:description" content="我将个人笔记网站从 HonKit 主题重构为基于 Hugo 的 Lotus Docs 主题。文章详细介绍了 Hugo、Golang 安装步骤、主题配置，以及首页自动跳转的解决方案，并展示了本地预览与最终部署到 GitHub Pages 的效果，让笔记网站既美观又实用。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Books",
+      "item": "https://linmohan.fun/notes/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "用 Hugo + Lotus Docs 重构我的个人笔记网站",
+      "item": "https://linmohan.fun/notes/notewebsite/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "用 Hugo + Lotus Docs 重构我的个人笔记网站",
+  "name": "用 Hugo \u002b Lotus Docs 重构我的个人笔记网站",
+  "description": "我将个人笔记网站从 HonKit 主题重构为基于 Hugo 的 Lotus Docs 主题。文章详细介绍了 Hugo、Golang 安装步骤、主题配置，以及首页自动跳转的解决方案，并展示了本地预览与最终部署到 GitHub Pages 的效果，让笔记网站既美观又实用。",
+  "keywords": [
+    
+  ],
+  "articleBody": "我之前搭建的 个人笔记 使用的是 HonKit 的默认主题，界面难免有些简陋。某次在 GitHub 冲浪时偶然发现了这个主题：Lotus Docs，第一眼就被它吸引住了——颜值非常高，而且基于 Hugo 构建，demo 页面直接让我心动：\n于是，我决定对笔记站进行一次重构。\n安装 Hugo + Golang + Lotus Docs 首先使用 winget 安装 Hugo：\nwinget install Hugo.Hugo.Extended 然后创建一个新站点：\nhugo new site mysite cd mysite 这将在 mysite 文件夹中生成 Hugo 项目的基础目录结构。\n根据 GitHub 上的 README，这个主题依赖 Golang，因此需要先从 Golang 官网 下载并安装 Go。\n此外，Lotus Docs 使用了 Hugo 的 Bootstrap 模块，需要将项目初始化为 Hugo 模块：\nhugo mod init github.com/linmoh/note 然后在项目根目录执行以下命令以添加主题：\ngit init git submodule add https://github.com/colinwilson/lotusdocs themes/lotusdocs 接着，替换配置文件为以下内容（config.toml）：\nbaseURL = 'http://example.org/' languageCode = 'en-us' title = 'Mohan 的笔记本' contentDir = 'content' enableEmoji = true [module] [[module.imports]] path = \"github.com/colinwilson/lotusdocs\" disable = false [[module.imports]] path = \"github.com/gohugoio/hugo-mod-bootstrap-scss/v5\" disable = false [markup] [markup.tableOfContents] startLevel = 1 endLevel = 3 [markup.goldmark] [markup.goldmark.renderer] unsafe = true [markup.goldmark.parser] [markup.goldmark.parser.attribute] block = true 然后启动本地服务：\nhugo server 浏览器打开 http://127.0.0.1:1313/ 即可看到本地预览效果：\n修改默认首页（登录页） 但我并不想保留主题默认的首页（官方称其为“登录页”），在官方文档中也没有找到禁用的设置项。\n于是我采用了最直接的方法，将 layouts/index.html 修改为以下内容，实现自动跳转：\n\u003c!DOCTYPE html\u003e \u003chtml\u003e \u003chead\u003e \u003cmeta http-equiv=\"refresh\" content=\"0; url=/docs\" /\u003e \u003c/head\u003e \u003cbody\u003e \u003c/body\u003e \u003c/html\u003e 虽然有点暴力，但确实能用。不过我总觉得这样不太优雅。\n偶然间在 Issues 区发现了 这个：\n思路和我不谋而合，关键是已经有人提交了 Pull Request：\n看起来非常理想，完美契合我的需求。\n可惜一看版本计划，该功能预计将在 3.0 版本中上线：\n而目前 release 页面中，最新版还是 0.2：\n也就是说，这个功能暂时还不能直接使用。\n回头看看那个 Pull Request，发现其实实现也挺简单粗暴的：\n他也是通过修改 layouts/index.html 来实现跳转，和我的做法大同小异。所以我就直接参考他的代码，拷贝过来了。\n经过测试，完美运行：\n部署到 GitHub 并配置好 GitHub Pages 后，现在你就可以通过这个地址访问我的网站了：\n👉 https://taten.xyz/\n如果你还想添加评论系统、深色模式切换等功能，也可以继续拓展 Hugo 模块。我后续可能会写一篇进阶版教程，敬请期待。\n如有问题，欢迎交流！\n",
+  "wordCount" : "178",
+  "inLanguage": "en",
+  "datePublished": "2025-07-26T00:00:00+08:00",
+  "dateModified": "2025-07-26T00:00:00+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Lin Mohan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://linmohan.fun/notes/notewebsite/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lin Mohan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://linmohan.fun/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class=" dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://linmohan.fun/" accesskey="h" title="Lin Mohan">
+                <img src="https://linmohan.fun/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">Lin Mohan</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://linmohan.fun/notes/" title="📒 Notes">
+                    <span>📒 Notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/thoughts/" title="💭 Thoughts">
+                    <span>💭 Thoughts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/monthly-report/" title="📈 Monthly Report">
+                    <span>📈 Monthly Report</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/archive/" title="🗂️ Archive">
+                    <span>🗂️ Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/friends/" title="🤝 Friends">
+                    <span>🤝 Friends</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/search/" title="🔍 Search">
+                    <span>🔍 Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://linmohan.fun/about" title="ℹ️ About">
+                    <span>ℹ️ About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://linmohan.fun/">Home</a>&nbsp;»&nbsp;<a href="https://linmohan.fun/notes/">Books</a></div>
+    <h1 class="post-title entry-hint-parent">
+      用 Hugo &#43; Lotus Docs 重构我的个人笔记网站
+    </h1>
+    <div class="post-meta"><span title='2025-07-26 00:00:00 +0800 CST'>July 26, 2025</span>&nbsp;&middot;&nbsp;1 min&nbsp;&middot;&nbsp;Lin Mohan
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装-hugo--golang--lotus-docs">安装 Hugo + Golang + Lotus Docs</a></li>
+    <li><a href="#修改默认首页登录页">修改默认首页（登录页）</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>我之前搭建的 <a href="https://taten.xyz/" target="_blank">个人笔记</a> 使用的是 HonKit 的默认主题，界面难免有些简陋。某次在 GitHub 冲浪时偶然发现了这个主题：<a href="https://github.com/colinwilson/lotusdocs" target="_blank">Lotus Docs</a>，第一眼就被它吸引住了——颜值非常高，而且基于 Hugo 构建，demo 页面直接让我心动：</p>
+<p><img alt="demo" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/26/41f160c7df85e9e46b1914277c7315e1.png"></p>
+<p>于是，我决定对笔记站进行一次重构。</p>
+<hr>
+<h2 id="安装-hugo--golang--lotus-docs">安装 Hugo + Golang + Lotus Docs</h2>
+<p>首先使用 <code>winget</code> 安装 Hugo：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>winget install Hugo.Hugo.Extended
+</span></span></code></pre></div><p>然后创建一个新站点：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site mysite
+</span></span><span style="display:flex;"><span><span style="color:#0aa">cd</span> mysite
+</span></span></code></pre></div><p>这将在 <code>mysite</code> 文件夹中生成 Hugo 项目的基础目录结构。</p>
+<p>根据 GitHub 上的 README，这个主题依赖 Golang，因此需要先从 <a href="https://go.dev/doc/install" target="_blank">Golang 官网</a> 下载并安装 Go。</p>
+<p>此外，Lotus Docs 使用了 Hugo 的 Bootstrap 模块，需要将项目初始化为 Hugo 模块：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo mod init github.com/linmoh/note
+</span></span></code></pre></div><p>然后在项目根目录执行以下命令以添加主题：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/colinwilson/lotusdocs themes/lotusdocs
+</span></span></code></pre></div><p>接着，替换配置文件为以下内容（<code>config.toml</code>）：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>baseURL = <span style="color:#a50">&#39;http://example.org/&#39;</span>
+</span></span><span style="display:flex;"><span>languageCode = <span style="color:#a50">&#39;en-us&#39;</span>
+</span></span><span style="display:flex;"><span>title = <span style="color:#a50">&#39;Mohan 的笔记本&#39;</span>
+</span></span><span style="display:flex;"><span>contentDir = <span style="color:#a50">&#39;content&#39;</span>
+</span></span><span style="display:flex;"><span>enableEmoji = <span style="color:#00a">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[module]
+</span></span><span style="display:flex;"><span>    [[module.imports]]
+</span></span><span style="display:flex;"><span>        path = <span style="color:#a50">&#34;github.com/colinwilson/lotusdocs&#34;</span>
+</span></span><span style="display:flex;"><span>        disable = <span style="color:#00a">false</span>
+</span></span><span style="display:flex;"><span>    [[module.imports]]
+</span></span><span style="display:flex;"><span>        path = <span style="color:#a50">&#34;github.com/gohugoio/hugo-mod-bootstrap-scss/v5&#34;</span>
+</span></span><span style="display:flex;"><span>        disable = <span style="color:#00a">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[markup]
+</span></span><span style="display:flex;"><span>  [markup.tableOfContents]
+</span></span><span style="display:flex;"><span>    startLevel = <span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span>    endLevel = <span style="color:#099">3</span>
+</span></span><span style="display:flex;"><span>  [markup.goldmark]
+</span></span><span style="display:flex;"><span>    [markup.goldmark.renderer]
+</span></span><span style="display:flex;"><span>      unsafe = <span style="color:#00a">true</span>
+</span></span><span style="display:flex;"><span>    [markup.goldmark.parser]
+</span></span><span style="display:flex;"><span>      [markup.goldmark.parser.attribute]
+</span></span><span style="display:flex;"><span>        block = <span style="color:#00a">true</span>
+</span></span></code></pre></div><p>然后启动本地服务：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo server
+</span></span></code></pre></div><p>浏览器打开 <code>http://127.0.0.1:1313/</code> 即可看到本地预览效果：</p>
+<p><img loading="lazy" src="https://s1.imagehub.cc/images/2025/07/26/210705d18630de3925330272e8b8ccba.png"></p>
+<hr>
+<h2 id="修改默认首页登录页">修改默认首页（登录页）</h2>
+<p>但我并不想保留主题默认的首页（官方称其为“登录页”），在官方文档中也没有找到禁用的设置项。</p>
+<p>于是我采用了最直接的方法，将 <code>layouts/index.html</code> 修改为以下内容，实现自动跳转：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#4c8317">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#1e90ff;font-weight:bold">html</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#1e90ff;font-weight:bold">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#1e90ff;font-weight:bold">meta</span> <span style="color:#1e90ff">http-equiv</span>=<span style="color:#a50">&#34;refresh&#34;</span> <span style="color:#1e90ff">content</span>=<span style="color:#a50">&#34;0; url=/docs&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#1e90ff;font-weight:bold">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#1e90ff;font-weight:bold">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#1e90ff;font-weight:bold">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#1e90ff;font-weight:bold">html</span>&gt;
+</span></span></code></pre></div><p>虽然有点暴力，但确实能用。不过我总觉得这样不太优雅。</p>
+<p>偶然间在 Issues 区发现了 <a href="https://github.com/colinwilson/lotusdocs/issues/170" target="_blank">这个</a>：</p>
+<p><img loading="lazy" src="https://s1.imagehub.cc/images/2025/07/26/c5cf3f53711b3289ac212ada63940e42.png"></p>
+<p>思路和我不谋而合，关键是已经有人提交了 Pull Request：</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/26/8f629921c122331ccedf80856deb443d.png"></p>
+<p>看起来非常理想，完美契合我的需求。</p>
+<p>可惜一看版本计划，该功能预计将在 <strong>3.0</strong> 版本中上线：</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/26/22381ef773f78dca97dee52942ce2dd0.png"></p>
+<p>而目前 release 页面中，最新版还是 0.2：</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/26/dc7cb9e9d81e7337905723a37fd00781.png"></p>
+<p>也就是说，这个功能暂时还不能直接使用。</p>
+<p>回头看看那个 Pull Request，发现其实实现也挺简单粗暴的：</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/26/f5985853e3fbee05c56b9fe2028d0284.png"></p>
+<p>他也是通过修改 <code>layouts/index.html</code> 来实现跳转，和我的做法大同小异。所以我就直接参考他的代码，拷贝过来了。</p>
+<p>经过测试，完美运行：</p>
+<p><img alt="image" loading="lazy" src="https://s1.imagehub.cc/images/2025/07/26/b65258a3f3077d840715d973bc883a0d.png"></p>
+<hr>
+<p>部署到 GitHub 并配置好 GitHub Pages 后，现在你就可以通过这个地址访问我的网站了：</p>
+<p>👉 <a href="https://taten.xyz/" target="_blank">https://taten.xyz/</a></p>
+<hr>
+<p>如果你还想添加评论系统、深色模式切换等功能，也可以继续拓展 Hugo 模块。我后续可能会写一篇进阶版教程，敬请期待。</p>
+<p>如有问题，欢迎交流！</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer><script src="https://giscus.app/client.js"
+        data-repo="LINMOH/discussions"
+        data-repo-id="R_kgDOOvKQHA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOOvKQHM4Cqfyc"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+            <span>&copy; 2025 Lin Mohan</span> · 
+
+    <span>
+        Built with 
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a>.
+    </span>
+
+</footer>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>

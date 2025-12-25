@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Books on Lin Mohan</title>
+    <link>https://linmohan.fun/notes/</link>
+    <description>Recent content in Books on Lin Mohan</description>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 25 Aug 2025 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://linmohan.fun/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Amdahl 定律</title>
+      <link>https://linmohan.fun/notes/amdahl/</link>
+      <pubDate>Mon, 25 Aug 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/notes/amdahl/</guid>
+      <description>我在这篇文章中学习了 Amdahl 定律，它告诉我系统整体性能的提升受限于未优化部分的比例。即使某部分被大幅加速，如果它只占系统的一小部分，整体提升也不明显。这个定律让我明白，在优化程序或系统时，应该优先优化那些占比大的关键部分，才能真正显著提高整体效率。</description>
+    </item>
+    <item>
+      <title>并发和并行</title>
+      <link>https://linmohan.fun/notes/concurrencyandparallelism/</link>
+      <pubDate>Fri, 22 Aug 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/notes/concurrencyandparallelism/</guid>
+      <description>本文介绍了并发与并行的基本概念及其区别。并发强调多个任务同时推进，通过时间共享和上下文切换实现；并行则指多个任务在物理上同时执行，通常依赖多核处理器或多线程技术。文章还讲解了线程级并发、指令级并行以及 SIMD 并行，并分析了现代 CPU 如何通过流水线、超标量等技术实现高效执行。理解并发与并行是优化程序性能的基础。</description>
+    </item>
+    <item>
+      <title>线程与进程</title>
+      <link>https://linmohan.fun/notes/processandthread/</link>
+      <pubDate>Thu, 21 Aug 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/notes/processandthread/</guid>
+      <description>我在这篇文章中学习了进程和线程的概念。进程是操作系统分配资源的基本单位，拥有独立的内存和资源；线程是进程内的执行单元，负责实际运算和任务处理，多个线程共享同一进程的资源。通过理解它们的区别与联系，我明白了单核 CPU 如何通过上下文切换实现“伪并发”，多核 CPU 如何同时运行不同线程提高效率，也认识到线程和进程在并发编程、面试及操作系统学习中的重要性。</description>
+    </item>
+    <item>
+      <title>用 Hugo &#43; Lotus Docs 重构我的个人笔记网站</title>
+      <link>https://linmohan.fun/notes/notewebsite/</link>
+      <pubDate>Sat, 26 Jul 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/notes/notewebsite/</guid>
+      <description>我将个人笔记网站从 HonKit 主题重构为基于 Hugo 的 Lotus Docs 主题。文章详细介绍了 Hugo、Golang 安装步骤、主题配置，以及首页自动跳转的解决方案，并展示了本地预览与最终部署到 GitHub Pages 的效果，让笔记网站既美观又实用。</description>
+    </item>
+    <item>
+      <title>Ubuntu Server 24.04 &#43; Nextcloud 安装食用指北</title>
+      <link>https://linmohan.fun/notes/ubuntu&#43;nextcloud/</link>
+      <pubDate>Tue, 08 Jul 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/notes/ubuntu&#43;nextcloud/</guid>
+      <description>本文记录了我在旧电脑上搭建 Ubuntu Server 24.04 并安装 Nextcloud 的过程。包括从官网下载镜像、安装系统、分区、配置账户和 SSH、设置静态 IP，以及通过 Snap 安装 Nextcloud。完成后即可在局域网内访问服务器，搭建个人私有云服务。</description>
+    </item>
+    <item>
+      <title>进制转换</title>
+      <link>https://linmohan.fun/notes/base-conversion/</link>
+      <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://linmohan.fun/notes/base-conversion/</guid>
+      <description>本文介绍了二进制、八进制和十六进制的基本概念与转换方法，讲解了如何将其他进制数按权展开转换为十进制，以及十进制转其他进制的技巧。文章还说明了进制转换在计算机原理、编程实践、网络通信和密码学等领域的重要应用，帮助读者理解计算机数值表示的本质。</description>
+    </item>
+  </channel>
+</rss>

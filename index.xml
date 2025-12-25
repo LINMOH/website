@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Lin Mohan</title>
+    <link>https://linmohan.fun/</link>
+    <description>Recent content on Lin Mohan</description>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 26 Dec 2025 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://linmohan.fun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Guestbook</title>
+      <link>https://linmohan.fun/message/</link>
+      <pubDate>Fri, 26 Dec 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/message/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Welcome to the Guestbook!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This is a place for communication and feedback. Whether you have suggestions about the blog content, questions about technical topics, or simply want to say hello, you are welcome to leave your message here.&lt;/p&gt;
+&lt;h2 id=&#34;guidelines&#34;&gt;Guidelines&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Please be polite and respectful to others.&lt;/li&gt;
+&lt;li&gt;Advertising, illegal, or inappropriate content is not allowed.&lt;/li&gt;
+&lt;li&gt;Try to describe your questions or suggestions clearly so that I can reply as soon as possible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;privacy-notice&#34;&gt;Privacy Notice&lt;/h2&gt;
+&lt;p&gt;All messages will be publicly visible. Please avoid sharing personal or sensitive information.
+If you prefer private communication, feel free to contact me through the provided contact details.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About me</title>
+      <link>https://linmohan.fun/about/</link>
+      <pubDate>Sun, 09 Nov 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/about/</guid>
+      <description>&lt;h1 id=&#34;hello&#34;&gt;Hello,&lt;/h1&gt;
+&lt;p&gt;On the Internet, I often go by the nickname “LinMH”, and my real name is Lin Mohan. I am a middle school student from Shandong, China with a strong interest in computer science.&lt;/p&gt;
+&lt;h2 id=&#34;about-me&#34;&gt;About Me&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The person called Lin Mohan.&lt;br&gt;
+Born in 2010, from a provincial capital city in northern China.&lt;br&gt;
+He attended a local school for middle school and entered county high school through &lt;a href=&#34;http://jnedu.jinan.gov.cn/art/2024/5/11/art_48443_4791507.html&#34; target=&#34;_blank&#34;&gt;direct promotion&lt;/a&gt;. As early as primary school, he started learning programming and actively participated in related activities. Although many details have gradually faded from memory, this experience laid a solid foundation for his journey in computer science.&lt;br&gt;
+He is passionate about exploring new knowledge, especially in the field of computer science. Coding, website development, debugging, and assembling computers bring him great joy and motivate him to continuously improve. He hopes not only to master technical skills but also to cultivate keen observation and rigorous logical thinking.&lt;br&gt;
+He respects historical and cultural figures, whose thoughts serve as lifelong learning role models.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>【九月、十月月报】</title>
+      <link>https://linmohan.fun/monthly-report/202509-10/</link>
+      <pubDate>Sat, 18 Oct 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/monthly-report/202509-10/</guid>
+      <description>这两个月我全力投入文化课，暂时放下了 OI，所以九月月报没能及时更新。团队 TATEN 人数突破 20 人，我也重新设计了 logo。我们的视频作品播放量达 1.6 万，下期视频计划更专业。此外，我发布了暗猫的炮姐漫剪修复视频，并改版了主页，使其更简洁美观。学业方面，月考排在校 16 名，老师鼓励我争取前五。我也即将告别半年的双休生活，迎接新的学习节奏。</description>
+    </item>
+    <item>
+      <title>唐雎不辱使命？</title>
+      <link>https://linmohan.fun/thoughts/tangju/</link>
+      <pubDate>Fri, 12 Sep 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/thoughts/tangju/</guid>
+      <description>《唐雎不辱使命》故事在文学上描写了唐雎挺剑面谏、震慑秦王，从而保全安陵国的情节，但从历史真实性来看几乎不可能发生。根据《史记》和《资治通鉴》，唐雎不可能带剑面见秦王，安陵国的存续更可能依靠秦王的政治策略和大义，而非士人的勇气。这表明该故事很可能是汉人为了贬秦而加工的文学化版本。</description>
+    </item>
+    <item>
+      <title>Amdahl 定律</title>
+      <link>https://linmohan.fun/notes/amdahl/</link>
+      <pubDate>Mon, 25 Aug 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/notes/amdahl/</guid>
+      <description>我在这篇文章中学习了 Amdahl 定律，它告诉我系统整体性能的提升受限于未优化部分的比例。即使某部分被大幅加速，如果它只占系统的一小部分，整体提升也不明显。这个定律让我明白，在优化程序或系统时，应该优先优化那些占比大的关键部分，才能真正显著提高整体效率。</description>
+    </item>
+    <item>
+      <title>并发和并行</title>
+      <link>https://linmohan.fun/notes/concurrencyandparallelism/</link>
+      <pubDate>Fri, 22 Aug 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/notes/concurrencyandparallelism/</guid>
+      <description>本文介绍了并发与并行的基本概念及其区别。并发强调多个任务同时推进，通过时间共享和上下文切换实现；并行则指多个任务在物理上同时执行，通常依赖多核处理器或多线程技术。文章还讲解了线程级并发、指令级并行以及 SIMD 并行，并分析了现代 CPU 如何通过流水线、超标量等技术实现高效执行。理解并发与并行是优化程序性能的基础。</description>
+    </item>
+    <item>
+      <title>Friends</title>
+      <link>https://linmohan.fun/friends/</link>
+      <pubDate>Thu, 21 Aug 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/friends/</guid>
+      <description>&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Name&lt;/th&gt;
+          &lt;th&gt;Website&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Avatar&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;TATEN&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://taten.xyz&#34; target=&#34;_blank&#34;&gt;https://taten.xyz&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;一群热爱编程的学生，致力于探索技术的无限可能。&lt;/td&gt;
+          &lt;td&gt;&lt;img alt=&#34;TATEN&#34; loading=&#34;lazy&#34; src=&#34;https://s1.imagehub.cc/images/2025/10/18/d98ee6f0b53fceae8b21eea8cd4a1845.png&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Yaten&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://yaten-z.github.io/&#34; target=&#34;_blank&#34;&gt;https://yaten-z.github.io/&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;「世界多变而永恒，文字孤独却自由」&lt;/td&gt;
+          &lt;td&gt;&lt;img alt=&#34;Yaten&#34; loading=&#34;lazy&#34; src=&#34;https://s1.imagehub.cc/images/2025/05/30/55439681d8b3c2d988638c133e160a56.jpg&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Susan&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://mryoung2022.github.io/&#34; target=&#34;_blank&#34;&gt;https://mryoung2022.github.io/&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;img alt=&#34;susan&#34; loading=&#34;lazy&#34; src=&#34;https://s1.imagehub.cc/images/2025/11/29/4f89970e09825cb0f04c9989e370dc9d.png&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;HHYYYY&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://hhyyyy.cn/&#34; target=&#34;_blank&#34;&gt;https://hhyyyy.cn/&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;用科技之眼探索世界，用光影之笔记录瞬间&lt;/td&gt;
+          &lt;td&gt;&lt;img alt=&#34;HHYYYY&#34; loading=&#34;lazy&#34; src=&#34;https://s1.imagehub.cc/images/2025/07/31/1fe122170bc941cc696119b9aaca6ead.jpg&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;LGCM&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;http://www.LGCM.xyz&#34; target=&#34;_blank&#34;&gt;http://www.LGCM.xyz&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;半个软件工程师&lt;/td&gt;
+          &lt;td&gt;&lt;img alt=&#34;LGCM&#34; loading=&#34;lazy&#34; src=&#34;https://s1.imagehub.cc/images/2025/07/30/75fb3a7a7532703f2e7f0c095dc417f1.jpg&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Errorsia&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;http://errorsia.com&#34; target=&#34;_blank&#34;&gt;http://errorsia.com&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;N/A&lt;/td&gt;
+          &lt;td&gt;&lt;img alt=&#34;Errorsia&#34; loading=&#34;lazy&#34; src=&#34;https://s1.imagehub.cc/images/2025/07/30/86668972c5b3fb5e440c6e1bba1f69db.png&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;HungryHenry&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://hungryhenry.cn&#34; target=&#34;_blank&#34;&gt;https://hungryhenry.cn&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;不是在写bug，就是在debug🐛&lt;/td&gt;
+          &lt;td&gt;&lt;img alt=&#34;HungryHenry&#34; loading=&#34;lazy&#34; src=&#34;https://s1.imagehub.cc/images/2025/07/31/4b1f583c02e682ac790c6bfa7a52ec0b.jpg&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Ruibin_Ningh&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://www.ruibin-ningh.top/&#34; target=&#34;_blank&#34;&gt;https://www.ruibin-ningh.top/&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;不争于表象，只专于底层&lt;/td&gt;
+          &lt;td&gt;&lt;img alt=&#34;Ruibin_Ningh&#34; loading=&#34;lazy&#34; src=&#34;https://s1.imagehub.cc/images/2025/07/31/b2e402249619e45fd0a227d7f5161d5a.jpg&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Zyx_2012&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://blog.zyx-2012.cn&#34; target=&#34;_blank&#34;&gt;https://blog.zyx-2012.cn&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;专注于笔记、分享的博客&lt;/td&gt;
+          &lt;td&gt;&lt;img alt=&#34;Zyx_2012&#34; loading=&#34;lazy&#34; src=&#34;https://blog.zyx-2012.cn/favicon.ico&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;GuYang17&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://guyang17.github.io/&#34; target=&#34;_blank&#34;&gt;https://guyang17.github.io/&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;编程爱好者 | Minecraft玩家&lt;/td&gt;
+          &lt;td&gt;&lt;img alt=&#34;GuYang17&#34; loading=&#34;lazy&#34; src=&#34;https://avatars.githubusercontent.com/u/196782409?v=4&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;柠檬星&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://blog.lemonstar.me&#34; target=&#34;_blank&#34;&gt;https://blog.lemonstar.me&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;天空就是一杯橘子味的柠檬汽水&lt;/td&gt;
+          &lt;td&gt;&lt;img alt=&#34;柠檬星&#34; loading=&#34;lazy&#34; src=&#34;https://blog.lemonstar.me/img/site-icon-lemon.png&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;link-exchange--friends-request&#34;&gt;Link Exchange / Friends Request&lt;/h1&gt;
+&lt;p&gt;Thank you for visiting my website! I am happy to exchange links with like-minded friends who share an interest in computer science, programming, or personal blogs.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>线程与进程</title>
+      <link>https://linmohan.fun/notes/processandthread/</link>
+      <pubDate>Thu, 21 Aug 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/notes/processandthread/</guid>
+      <description>我在这篇文章中学习了进程和线程的概念。进程是操作系统分配资源的基本单位，拥有独立的内存和资源；线程是进程内的执行单元，负责实际运算和任务处理，多个线程共享同一进程的资源。通过理解它们的区别与联系，我明白了单核 CPU 如何通过上下文切换实现“伪并发”，多核 CPU 如何同时运行不同线程提高效率，也认识到线程和进程在并发编程、面试及操作系统学习中的重要性。</description>
+    </item>
+    <item>
+      <title>【八月月报】暑假总结</title>
+      <link>https://linmohan.fun/monthly-report/202508/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/monthly-report/202508/</guid>
+      <description>暑假期间，我组建了计算机科学团队 TATEN，参与并完成了多个项目，包括个人笔记网站 TATEN、开源项目 NeoPage 和二次元资讯网站 AniDay。同时利用闲置笔记本进行实践和学习，通过团队协作与项目开发积累了宝贵经验，为新学期做好了准备。</description>
+    </item>
+    <item>
+      <title>关于我们的团队</title>
+      <link>https://linmohan.fun/thoughts/team/</link>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/thoughts/team/</guid>
+      <description>我从一个习惯独处、不善表达的孤独少年，因遇到 Susan、Yaten 以及其他志同道合的伙伴，逐渐走出封闭，建立了属于我们的小团队。通过网络交流、协作项目，我感受到了陪伴、支持与成长，也因能帮助别人而充满幸福。团队让我不再孤单，也让我开始愿意表达、分享和承担，这段经历成为我生命中珍贵的存在。</description>
+    </item>
+    <item>
+      <title>用 Hugo &#43; Lotus Docs 重构我的个人笔记网站</title>
+      <link>https://linmohan.fun/notes/notewebsite/</link>
+      <pubDate>Sat, 26 Jul 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/notes/notewebsite/</guid>
+      <description>我将个人笔记网站从 HonKit 主题重构为基于 Hugo 的 Lotus Docs 主题。文章详细介绍了 Hugo、Golang 安装步骤、主题配置，以及首页自动跳转的解决方案，并展示了本地预览与最终部署到 GitHub Pages 的效果，让笔记网站既美观又实用。</description>
+    </item>
+    <item>
+      <title>【七月月报】</title>
+      <link>https://linmohan.fun/monthly-report/202507/</link>
+      <pubDate>Sat, 19 Jul 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/monthly-report/202507/</guid>
+      <description>这个月我经历了期末考试，数学成绩比预期稍好，但整体排名仍不理想。在 OI 方面几乎没有练习，状态比较放松。我还捡到了一台老联想主机，虽然主板坏了，但换掉后可以用作下载机。本月网站也有更新，新增了二十多本电子书，并计划把知识类文章迁移到我的笔记本进行整理。下个月的目标是冲刺 CSP-J 一等奖，学习 JavaScript，并继续学习《CSAPP》。</description>
+    </item>
+    <item>
+      <title>Github 上的有趣项目</title>
+      <link>https://linmohan.fun/thoughts/githubprojects/</link>
+      <pubDate>Wed, 09 Jul 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/thoughts/githubprojects/</guid>
+      <description>我整理了一些我觉得在 GitHub 上很有趣的项目，包括 Logo 生成器、人人都有诺奖、个人主页模板、字体库、音乐播放器、追番插件等。这些项目有的实用，有的好玩，也有的能美化主页或展示技能，让我在学习和娱乐中都能找到灵感与乐趣。</description>
+    </item>
+    <item>
+      <title>Ubuntu Server 24.04 &#43; Nextcloud 安装食用指北</title>
+      <link>https://linmohan.fun/notes/ubuntu&#43;nextcloud/</link>
+      <pubDate>Tue, 08 Jul 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/notes/ubuntu&#43;nextcloud/</guid>
+      <description>本文记录了我在旧电脑上搭建 Ubuntu Server 24.04 并安装 Nextcloud 的过程。包括从官网下载镜像、安装系统、分区、配置账户和 SSH、设置静态 IP，以及通过 Snap 安装 Nextcloud。完成后即可在局域网内访问服务器，搭建个人私有云服务。</description>
+    </item>
+    <item>
+      <title>电脑性能到底有多重要？</title>
+      <link>https://linmohan.fun/thoughts/huaweinb/</link>
+      <pubDate>Thu, 03 Jul 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/thoughts/huaweinb/</guid>
+      <description>本文评测了华为 MateBook Fold 非凡大师折叠屏电脑，指出其高价格、有限性能和折叠屏设计的实用性不足，认为它更像概念展示产品而非适合日常使用的高性价比工具。</description>
+    </item>
+    <item>
+      <title>十五岁，以及这一路走来的风景【补充】</title>
+      <link>https://linmohan.fun/thoughts/fifteen/</link>
+      <pubDate>Tue, 17 Jun 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/thoughts/fifteen/</guid>
+      <description>我回顾了自己十五年的成长，分享了性格特点、学业历程、编程学习、兴趣爱好和旅行体验。我坦诚面对遗憾，也反思过去，同时展望未来的梦想和目标。我相信通过努力，我能不断成长，也愿意保持对生活和学习的热情与坚持。</description>
+    </item>
+    <item>
+      <title>【六月月报】新机上阵，算法进阶与「第一桶金」</title>
+      <link>https://linmohan.fun/monthly-report/202506/</link>
+      <pubDate>Sat, 14 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://linmohan.fun/monthly-report/202506/</guid>
+      <description>我入手了新电脑，硬件升级满足游戏与 UE5 需求；在 OI 上坚持刷题，学业准备升级考试；网站收获打赏鼓励，B站更新了 C++ 版 Lemon 视频，六月在技术和心态上都有进步。</description>
+    </item>
+    <item>
+      <title>音乐</title>
+      <link>https://linmohan.fun/thoughts/music/</link>
+      <pubDate>Mon, 09 Jun 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/thoughts/music/</guid>
+      <description>本文整理了多首二次元及非二次元经典音乐，包括动漫主题曲、米津玄师作品以及钢琴纯音乐，分享了作者对这些曲目的喜爱与个人感受，呈现丰富的音乐世界。</description>
+    </item>
+    <item>
+      <title>感谢支持</title>
+      <link>https://linmohan.fun/thoughts/thanksforthesupport/</link>
+      <pubDate>Mon, 02 Jun 2025 14:20:00 +0800</pubDate>
+      <guid>https://linmohan.fun/thoughts/thanksforthesupport/</guid>
+      <description>第一桶金</description>
+    </item>
+    <item>
+      <title>国产软件，越做越「重」</title>
+      <link>https://linmohan.fun/thoughts/domesticsoftware/</link>
+      <pubDate>Sun, 25 May 2025 00:00:00 +0800</pubDate>
+      <guid>https://linmohan.fun/thoughts/domesticsoftware/</guid>
+      <description>我发现国产 App 越做越“重”：图标百变、首页信息洪流、功能臃肿，占用空间远超海外同类软件。我感叹国内软件在广告与增长压力下牺牲了专注与简洁，用户只能在喧嚣中寻找自己的秩序。</description>
+    </item>
+    <item>
+      <title>关于音乐</title>
+      <link>https://linmohan.fun/thoughts/aboutmusic/</link>
+      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://linmohan.fun/thoughts/aboutmusic/</guid>
+      <description>我反感娱乐圈乱象与饭圈文化，更喜欢米津玄师的《Lemon》，但看到有人把其悼念情感改编成嚼柠檬的内容，我觉得空洞且不尊重原作，希望音乐创作能保持真实情感与尊严。</description>
+    </item>
+    <item>
+      <title>焦虑的夜。</title>
+      <link>https://linmohan.fun/thoughts/%E7%84%A6%E8%99%91%E7%9A%84%E5%A4%9C/</link>
+      <pubDate>Thu, 22 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://linmohan.fun/thoughts/%E7%84%A6%E8%99%91%E7%9A%84%E5%A4%9C/</guid>
+      <description>我感到焦虑，看着比我年纪小的同学在算法上超越自己，怀疑能力与努力，缺乏引路人。但我也提醒自己，焦虑意味着在意与不甘心，我仍想摸索自己的路，坚持尝试。</description>
+    </item>
+    <item>
+      <title>【五月月报】 算法、建站、焦虑与成长</title>
+      <link>https://linmohan.fun/monthly-report/202505/</link>
+      <pubDate>Sat, 17 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://linmohan.fun/monthly-report/202505/</guid>
+      <description>这个月我主要集中在算法刷题和建站实践上。在洛谷累计通过了 112 道题，并参加了入门赛，发现自己的薄弱环节，也在《深入浅出程序设计竞赛》中学习排序算法。学业方面，地生一模总分校第一、县第五。个人项目上，我整理了 GitHub 代码库，并重启了建站兴趣，做了波奇酱同人页，同时尝试了多种域名实验。心态上虽然有些焦虑，但我提醒自己专注成长、走自己的路。下个月计划每周至少刷 15 题，持续更新博客，完善项目，并准备 CSP-J 初赛。</description>
+    </item>
+    <item>
+      <title>进制转换</title>
+      <link>https://linmohan.fun/notes/base-conversion/</link>
+      <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://linmohan.fun/notes/base-conversion/</guid>
+      <description>本文介绍了二进制、八进制和十六进制的基本概念与转换方法，讲解了如何将其他进制数按权展开转换为十进制，以及十进制转其他进制的技巧。文章还说明了进制转换在计算机原理、编程实践、网络通信和密码学等领域的重要应用，帮助读者理解计算机数值表示的本质。</description>
+    </item>
+    <item>
+      <title>逻辑谬误</title>
+      <link>https://linmohan.fun/thoughts/%E9%80%BB%E8%BE%91%E8%B0%AC%E8%AF%AF/</link>
+      <pubDate>Mon, 17 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://linmohan.fun/thoughts/%E9%80%BB%E8%BE%91%E8%B0%AC%E8%AF%AF/</guid>
+      <description>我在这篇文章中学习了各种逻辑谬误，包括形式逻辑谬误和非形式逻辑谬误。我了解了它们的定义、常见例子以及反驳方法。通过这些知识，我学会了如何识别别人的错误推理，并用合理的事实或论证进行回应，提高了自己的批判性思维能力，也能更自信地参与讨论。</description>
+    </item>
+    <item>
+      <title>技研录，开站！</title>
+      <link>https://linmohan.fun/thoughts/%E6%8A%80%E7%A0%94%E5%BD%95-%E5%BC%80%E7%AB%99/</link>
+      <pubDate>Mon, 20 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://linmohan.fun/thoughts/%E6%8A%80%E7%A0%94%E5%BD%95-%E5%BC%80%E7%AB%99/</guid>
+      <description>我创建了这个网站，记录自己在编程、语言学习和历史上的探索与成长，希望展示成果、分享思考，并与志同道合的人交流，共同进步，勇敢追梦，成就更好的自己。</description>
+    </item>
+  </channel>
+</rss>
